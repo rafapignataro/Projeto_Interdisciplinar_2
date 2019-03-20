@@ -1,7 +1,8 @@
 {
   "name": "projeto_interdisciplinar_2",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Projeto interdisciplinar do primeiro semestre(2018_2) de TECH ESPM\r Site Node gerenciável com banco mySQL",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,5 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4"
-  },
-  "description": ""
+  }
 }
