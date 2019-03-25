@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Srisakdi';
+}
+
+body {
+	background-color: #535c68;
+	text-align: center;
+}
+
+#text {
+	margin-top: 20%;
+	color: #eccc68;
+	font-size: 80px;
+}	
