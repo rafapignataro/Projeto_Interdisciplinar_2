@@ -1,0 +1,17 @@
+body {
+    background-color: #f7f8fa;
+}
+
+.sidebar-container {
+    width: 100%;
+    height: 100px;
+    background-color: red;
+}
+
+.sidebar {
+    margin: 5% auto;
+}
+
+.sidebar-lists {
+    margin: 5% auto;
+}
