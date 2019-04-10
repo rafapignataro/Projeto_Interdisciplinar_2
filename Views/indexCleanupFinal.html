@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bank</title>
+    <link type="text/css" rel="stylesheet" href="../public/css/indexCssFinal.css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href="../dist/hamburgers.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body id="body">
+    <div class="bugbank">
+        <!------------------------------------------------------HEADER------------------------------------------------------------------------>
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="header-container">
+                    <div class="header-left">
+                        <button class="hamburger hamburger--slider" type="button" id="header-toggle-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="header-center">
+                        <div class="header-logos-wrapper">
+                            <div class="header-logos">
+                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false"/>
+                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <button type="button" class="header-search-button"><span class="fa fa-search"></span></button>
+                        <button type="button" class="header-signin-button"><span class="fa fa-sign-in"></span></button>
+                    </div>
+                </div>
+                <div class="header-complement-wrapper">
+                    <div class="header-complement">
+                        <div class="header-search-mobile">
+                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                        </div>
+                        <button type="button" class="header-cancel-button">CANCEL</button>
+                    </div>
+                </div>
+                <div class="login-wrapper fade">
+                    <img src="../Public/Imagens/modal.svg" class="login-shape"/>
+                    <div class="login-modal">
+                        <div class="login-modal-switch">
+
+                        </div>
+                        <div class="login-modal-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------SIDEBAR------------------------------------------------------------------------>
+        <div class="sidebar-wrapper">
+            <div class="sidebar-container">
+                <div class="sidebar-scroller">
+                    <div class="sidebar-lists">
+                        <ul class="sidebar" id="lista-bugs">
+                            <li id="sidebar-list-title" class="noselection">
+                                MEUS BUGS
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 2</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 3</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="sidebar" id="lista-contribs">
+                            <li id="sidebar-list-title" class="noselection">
+                                MINHAS CONTRIBUIÇÕES
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 4</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 5</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 6</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 7</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 8</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 9</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
+        <div class="content-wrapper">
+            <div class="content">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+    <script>
+
+        //----------------------------------------------------------MOBILE----------------------------------------------------------------------
+        var $hamburger = $(".hamburger");
+        $hamburger.on("click", function (e) {
+            $hamburger.toggleClass("is-active");
+            $(".sidebar-wrapper").toggleClass('sidebar-wrapper-after');
+            $(".content").toggleClass('noscroll');
+
+            // Do something else, like open/close menu
+        });
+
+        var $headersearchbutton = $(".header-search-button");
+        $headersearchbutton.on("click", function (e) {
+            $(".header-complement").toggleClass('header-complement-after');
+            $(".header-search-mobile").toggleClass('header-search-mobile-after');
+            $(".header-cancel-button").toggleClass('header-cancel-button-after');
+            $(".header-search-button").toggleClass('header-search-button-after');
+            if ($(".header-complement").hasClass('header-complement-after')) {
+                $("input").prop("disabled", false); //Enable
+            }
+            else {
+                $("input").prop("disabled", true); //Disable
+            }
+            });
+
+        var $headercancelbutton = $(".header-cancel-button");
+        $headercancelbutton.on("click", function (e) {
+            $(".header-complement-wrapper").toggleClass('header-complement-wrapper-after');
+            $(".header-complement").toggleClass('header-complement-after');
+            $(".header-search-mobile").toggleClass('header-search-mobile-after');
+            $(".header-cancel-button").toggleClass('header-cancel-button-after');
+            $(".header-search-button").toggleClass('header-search-button-after');
+            if ($(".header-complement").hasClass('header-complement-after')) {
+                $("header-search-bar").prop("disabled", false); //Enable
+            }
+            else {
+                $("header-search-bar").prop("disabled", true); //Disable
+            }
+        });
+
+        var $headersigninbutton = $(".header-signin-button");
+        var animRodando = false;
+        $headersigninbutton.on("click", function () {
+            if (animRodando) {
+                return;
+            }
+            animRodando = true;
+            setTimeout(function () {
+                $(".login-wrapper").toggleClass('fade-show');
+                animRodando = false;
+                setTimeout(function () {  }, 150);
+            }, 1);
+            $(".login-wrapper").toggleClass('login-wrapper-after');
+            $(".header-signin-button").toggleClass('header-signin-button-after');
+            $(".header-signin-button span").toggleClass('fa-sign-in');
+            $(".header-signin-button span").toggleClass('fa-close');
+        });
+        //--------------------------------------------------------------------------------------------------------------------------------------
+    </script>
+</body>
+</html>
