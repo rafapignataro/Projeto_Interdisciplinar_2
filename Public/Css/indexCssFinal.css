@@ -8,11 +8,16 @@ html, body {
     color: #898594;
 }
 
+::placeholder {
+    color: #d9dede;
+    font-style: italic;
+}
+
 .bugbank {
 }
 
 .header-wrapper {
-    z-index: 4;
+    z-index: 5;
     position: fixed;
     height: 75px;
     width: 100%;
@@ -24,7 +29,7 @@ html, body {
 }
 
 .header-container {
-    min-height: 75px;
+    height: 75px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -42,7 +47,6 @@ html, body {
 .header-center {
     padding-right: 15px;
     display: flex;
-    float: left;
 }
 
 .header-logos-wrapper {
@@ -65,10 +69,13 @@ html, body {
     display: inline-block;
 }
 
+.header-search{
+    display:none;
+}
+
 .header-right {
     margin-right: 25px;
     display: flex;
-    float: left;
     width: 64px;
 }
 
@@ -184,13 +191,14 @@ html, body {
     background-color: #f7f8fa;
     position: fixed;
     width: 100%;
-    z-index: 5;
+    z-index: 4;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
     transition: transform 0.2s cubic-bezier(0.77,0.2,0.05,1.0);
     top: 76px;
     bottom: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x:hidden;
 }
 
     .sidebar-wrapper-after {
@@ -198,11 +206,17 @@ html, body {
     }
 
 .sidebar-container {
+    height:100%;
 }
 
 .sidebar-scroller {
     overflow-y: auto;
     height: 100%;
+    margin-right: -16px;
+}
+
+.sidebar-logos-wrapper {
+    display: none;
 }
 
 .sidebar-lists{
@@ -215,9 +229,10 @@ html, body {
 }
 
 #sidebar-list-title {
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 20px;
     font-size: 20px;
+    font-weight: 600;
 }
 
     #sidebar-list-title:hover {
@@ -393,7 +408,7 @@ html, body {
 .content-wrapper {
     overflow:auto;
     position:fixed;
-    width: 100%;
+    width: auto;
     z-index:0;
     top:76px;
     bottom:0;
@@ -492,4 +507,126 @@ html, body {
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
     @media only screen and (min-width: 801px) {
-    }
+        .header{
+        }
+
+        .header-container {
+            margin-left: 350px;
+        }
+
+        .header-left{
+            display:none;
+        }
+
+        .sidebar-wrapper {
+            transform: none;
+            width: 350px;
+            top:0px;
+            z-index: 5;
+        }
+
+        .header-center {
+            padding-left:35px;
+        }
+
+
+        .header-logos-wrapper{
+            display:none;
+        }
+
+        .header-logos {
+        }
+
+        .header-logos-bug {
+            height: 80px;
+            padding-right:20px;
+        }
+
+        .header-logos-curse {
+            height: 100px;
+        }
+
+        .header-right {
+            width: auto;
+        }
+
+        .header-search {
+            display: inline-block;
+        }
+
+        #search-form{
+            position:relative;
+        }
+
+        .header-search-bar {
+            padding-right: 35px;
+            background-color: #fcfdff;
+            box-sizing: border-box;
+            width: 100%;
+            height: 35px;
+        }
+
+        .header-search-button {
+            display: none;
+        }
+
+        .search-clear-button {
+            position:absolute;
+            top: 6px;
+            right: 15px;
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0;
+            color: #d9dede;
+        }
+
+            .search-clear-button:hover {
+                color: #ff2e42;
+            }
+
+        .sidebar {
+            padding-left: 0;
+        }
+
+        .sidebar-logos-wrapper {
+            display: flex;
+        }
+
+        .sidebar-logos {
+            margin-left: 68px;
+        }
+
+        .sidebar-lists {
+            margin-left: 58px;
+            margin-right: 46px;
+        }
+
+        #sidebar-list-title {
+            font-size: 14px;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-list-item-name {
+            font-size: 14px;
+        }
+
+        .sidebar-list-item {
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            padding:10px;
+            margin: 0 5px 0 0;
+        }
+
+        .sidebar li {
+            margin: 0;
+        }
+
+        .content-wrapper {
+            margin-left:350px;
+        }
+
+        }
