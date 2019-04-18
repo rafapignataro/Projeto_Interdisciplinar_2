@@ -33,6 +33,14 @@
                         </div>
                     </div>
                     <div class="header-right">
+                        <div class="header-search">
+                            <form id="search-form" method="get" action="/login">
+                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                                <button type="reset" class="search-clear-button">
+                                    <span class="fa fa-close"></span>
+                                </button>
+                            </form>
+</div>
                         <button type="button" class="header-search-button"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button"><span class="fa fa-sign-in"></span></button>
                     </div>
@@ -104,6 +112,12 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-container">
                 <div class="sidebar-scroller">
+                    <div class="sidebar-logos-wrapper">
+                        <div class="sidebar-logos">
+                            <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+                            <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                        </div>
+                    </div>
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
                             <li id="sidebar-list-title" class="noselection">
@@ -114,6 +128,7 @@
                                     <div class="sidebar-list-item">
                                         <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
                                         <div class="sidebar-list-item-name">Projeto 1</div>
+                                        <img src="../Public/Imagens/CurseIcon.svg" class="" style="height:30px; margin-left:auto" />
                                     </div>
                                 </a>
                             </li>
