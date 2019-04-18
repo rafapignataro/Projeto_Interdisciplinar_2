@@ -8,11 +8,6 @@ html, body {
     color: #898594;
 }
 
-::placeholder {
-    color: #d9dede;
-    font-style: italic;
-}
-
 .bugbank {
 }
 
@@ -29,7 +24,7 @@ html, body {
 }
 
 .header-container {
-    height: 75px;
+    min-height: 75px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -47,6 +42,7 @@ html, body {
 .header-center {
     padding-right: 15px;
     display: flex;
+    float: left;
 }
 
 .header-logos-wrapper {
@@ -69,13 +65,10 @@ html, body {
     display: inline-block;
 }
 
-.header-search{
-    display:none;
-}
-
 .header-right {
     margin-right: 25px;
     display: flex;
+    float: left;
     width: 64px;
 }
 
@@ -89,11 +82,11 @@ html, body {
     transition: color linear 0.1s;
 }
     .header-search-button:hover {
-        color: #ff2e42;
+        color: red;
     }
 
     .header-search-button-after {
-        color: #e25a68;
+        color: darkred;
     }
 
 .header-signin-button {
@@ -108,15 +101,12 @@ html, body {
 }
 
     .header-signin-button:hover {
-        color: #ff2e42;
+        color: red;
     }
 
     .header-signin-button-after {
-        color: #e25a68;
+        color:darkred;
     }
-
-.header-complement-wrapper {
-}
 
 .header-complement {
     position: relative;
@@ -197,8 +187,7 @@ html, body {
     transition: transform 0.2s cubic-bezier(0.77,0.2,0.05,1.0);
     top: 76px;
     bottom: 0;
-    overflow-y: auto;
-    overflow-x:hidden;
+    overflow: auto;
 }
 
     .sidebar-wrapper-after {
@@ -206,17 +195,11 @@ html, body {
     }
 
 .sidebar-container {
-    height:100%;
 }
 
 .sidebar-scroller {
     overflow-y: auto;
     height: 100%;
-    margin-right: -16px;
-}
-
-.sidebar-logos-wrapper {
-    display: none;
 }
 
 .sidebar-lists{
@@ -229,10 +212,9 @@ html, body {
 }
 
 #sidebar-list-title {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-top: 20px;
     font-size: 20px;
-    font-weight: 600;
 }
 
     #sidebar-list-title:hover {
@@ -250,7 +232,7 @@ html, body {
 }
 
     .sidebar li {
-        padding: 0;
+        padding: 10px 0;
         border-radius: 40px;
         transition: background-color 0.3s;
         margin-right: 30px;
@@ -260,17 +242,15 @@ html, body {
             background-color: #e3e7ef;
         }
 
-    .sidebar a {
-        text-decoration: none;
-        color: #232323;
-        transition: color 0.3s ease;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
-    }
+.sidebar a {
+    text-decoration: none;
+    color: #232323;
+    transition: color 0.3s ease;
+}
 
 .sidebar-list-item {
     margin: 5px;
-    padding: 15px;
+    padding: 5px;
     border-radius: 3px;
     display: flex;
     color: #454545;
@@ -294,14 +274,12 @@ html, body {
 .login-wrapper {
     display: none;
     position: fixed;
-    right: 40px;
-    -webkit-filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, .5));
-    filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, .5));
+    right: 25px;
 }
 
 .login-shape {
     align-self: flex-end;
-    height: 17px;
+    filter: drop-shadow (5px 5px 5px #000);
 }
 
 .login-wrapper-after {
@@ -312,103 +290,27 @@ html, body {
 .login-modal {
     display: flex;
     flex-direction: column;
+    width: 300px;
+    height: 300px;
     border-radius: 20px;
     border-top-right-radius: 0px;
-    background-color: #f7f8fa;
-    justify-content: center;
-    align-items:center;
+    background-color: red;
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5);
+    z-index:-1;
 }
 
-.login-modal-switch {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 4px;
-    background-color: #e3e7ef;
-    border-radius: 20px;
-    margin: 12px 12px;
-    -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
-    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+.login-modal-switch{
+    display:flex;
+    flex-direction:row;
 }
 
-.login-modal-content {
-
-}
-
-.login-modal-item{
-    margin-bottom:26px;
-}
-
-#login-form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 300px;
-}
-
-.login-form-label {
-    display: flex;
-    align-self: flex-start;
-    margin-bottom: 8px;
-}
-
-.login-form-input {
-    height: 45px;
-    width: 230px;
-    outline: none;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 40px;
-    background-color: #e3e7ef;
-    color: #898594;
-    transition: 0.3s;
-    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.25);
-    height: 25px;
-}
-
-    .login-form-input:focus {
-        box-shadow: inset 0px 0px 4px rgba(0,0,0,0.5);
-    }
-
-.login-modal-submit{
-    margin: 8px 0;
-}
-
-.login-form-submit {
-    color:white;
-    background: none;
-    background-color: #ff2e42;
-    width:200px;
-    height:50px;
-    border-radius:10px;
-    border:none;
-    outline:none;
-    transition:background-color linear 0.2s;
-}
-
-    .login-form-submit:hover {
-        background-color: #ff062a;
-    }
-
-#login-form-username{
-}
-
-#login-form-password {
-}
-
-#signup-form {
-    display: none;
-    align-items: center;
-    flex-direction: column;
-    height: 450px;
+.login-modal-content{
 }
 
 .content-wrapper {
     overflow:auto;
     position:fixed;
-    width: auto;
+    width: 100%;
     z-index:0;
     top:76px;
     bottom:0;
@@ -442,191 +344,13 @@ html, body {
 
 .fade {
     opacity:0;
-    transition:opacity linear 0.15s, transform linear 0.15s;
-    transform: translateY(-5%);
+    transition:opacity linear 0.15s;
 }
 
 .fade-show {
     opacity: 1;
-    transform: none;
-}
-
-.form-select-container {
-    display: flex;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding: 0 1px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Hide the browser's default radio button */
-.form-select-container input {
-    cursor: pointer;
-    position: fixed;
-    display:none;
-}
-
-/* Create a custom radio button */
-.form-select-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    width: 132px;
-    background-color: #e3e7ef;
-    border-radius: 20px;
-    transition: background-color linear 0.15s, box-shadow linear 0.15s;
-    font-size: 16px;
-    color: #e25a68;
-    font-weight:600;
-}
-
-/* When the radio button is checked, add a blue background */
-.form-select-container input:checked ~ .form-select-button {
-    background-color: #f7f8fa;
-    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
-    box-shadow: 0 0 5px rgba(0,0,0,0.15);
-    color: #ff2e42;
-}
-
-#login-form-button {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-}
-
-#signup-form-button {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-    @media only screen and (min-width: 801px) {
-        .header{
-        }
-
-        .header-container {
-            margin-left: 350px;
-        }
-
-        .header-left{
-            display:none;
-        }
-
-        .sidebar-wrapper {
-            transform: none;
-            width: 350px;
-            top:0px;
-            z-index: 5;
-        }
-
-        .header-center {
-            padding-left:35px;
-        }
-
-
-        .header-logos-wrapper{
-            display:none;
-        }
-
-        .header-logos {
-        }
-
-        .header-logos-bug {
-            height: 80px;
-            padding-right:20px;
-        }
-
-        .header-logos-curse {
-            height: 100px;
-        }
-
-        .header-right {
-            width: auto;
-        }
-
-        .header-search {
-            display: inline-block;
-        }
-
-        #search-form{
-            position:relative;
-        }
-
-        .header-search-bar {
-            padding-right: 35px;
-            background-color: #fcfdff;
-            box-sizing: border-box;
-            width: 100%;
-            height: 35px;
-        }
-
-        .header-search-button {
-            display: none;
-        }
-
-        .search-clear-button {
-            position:absolute;
-            top: 6px;
-            right: 15px;
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0;
-            color: #d9dede;
-        }
-
-            .search-clear-button:hover {
-                color: #ff2e42;
-            }
-
-        .sidebar {
-            padding-left: 0;
-        }
-
-        .sidebar-logos-wrapper {
-            display: flex;
-        }
-
-        .sidebar-logos {
-            margin-left: 68px;
-        }
-
-        .sidebar-lists {
-            margin-left: 58px;
-            margin-right: 46px;
-        }
-
-        #sidebar-list-title {
-            font-size: 14px;
-            padding-left: 10px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar-list-item-name {
-            font-size: 14px;
-        }
-
-        .sidebar-list-item {
-            padding-left: 0;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            padding:10px;
-            margin: 0 5px 0 0;
-        }
-
-        .sidebar li {
-            margin: 0;
-        }
-
-        .content-wrapper {
-            margin-left:350px;
-        }
-
-        }
+@media only screen and (min-width: 801px) {
+}
