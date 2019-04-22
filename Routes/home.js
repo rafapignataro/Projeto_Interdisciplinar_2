@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const fs = require("fs");
 
-router.get('/code', function(req, res) {
-	res.render("home");
+router.get('/', function(req, res) {
+	res.render('home', { title: 'Code Area' });
 });
+
 
 router.post("/upload", function(req,res){
 	if(req.files){
