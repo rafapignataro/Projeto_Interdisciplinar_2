@@ -74,18 +74,22 @@ html, body {
 }
 
 .header-right {
+    width:65px;
+    justify-content: space-between;
     margin-right: 25px;
     display: flex;
-    width: 64px;
+}
+
+.header-buttons{
+    padding:0;
 }
 
 .header-search-button {
-    padding: 0;
     color: #898594;
     border: none;
     background: none;
     font-size: 26px;
-    outline:none;
+    outline: none;
     transition: color linear 0.1s;
 }
     .header-search-button:hover {
@@ -97,14 +101,13 @@ html, body {
     }
 
 .header-signin-button {
-    padding: 0;
-    padding-left: 15px;
     color: #898594;
     border: none;
     background: none;
     font-size: 28px;
     outline: none;
     transition: color linear 0.1s;
+    width: 24px;
 }
 
     .header-signin-button:hover {
@@ -137,20 +140,17 @@ html, body {
 .header-search-mobile {
     opacity: 0;
     transition: opacity 0.2s;
-    margin-right:10px;
 }
 
     .header-search-mobile-after {
         opacity:1;
     }
 
-.header-search{
-
+.header-search {
+    margin-right: 15px;
 }
 
 .header-search-bar {
-    max-width: 750px;
-    min-width: 125px;
     border: none;
     border-radius: 20px;
     padding: 5px 10px;
@@ -158,7 +158,9 @@ html, body {
     color: #898594;
     transition: 0.3s;
     box-shadow: inset 0px 0px 4px rgba(0,0,0,0.25);
-    height:25px;
+    height: 25px;
+    min-width: 150px;
+    max-width: 350px;
 }
 
     .header-search-bar:focus {
@@ -338,14 +340,13 @@ html, body {
 }
 
 .login-modal-item{
-    margin-bottom:26px;
+    margin-bottom:13px;
 }
 
 #login-form {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 300px;
 }
 
 .login-form-label {
@@ -373,7 +374,8 @@ html, body {
     }
 
 .login-modal-submit{
-    margin: 8px 0;
+    margin-top:13px;
+    margin-bottom:26px;
 }
 
 .login-form-submit {
@@ -402,7 +404,6 @@ html, body {
     display: none;
     align-items: center;
     flex-direction: column;
-    height: 450px;
 }
 
 .content-wrapper {
@@ -506,7 +507,7 @@ html, body {
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-    @media only screen and (min-width: 801px) {
+    @media only screen and (min-width: 1120px) {
         .header{
         }
 
@@ -571,7 +572,7 @@ html, body {
         }
 
         .search-clear-button {
-            position:absolute;
+            position: absolute;
             top: 6px;
             right: 15px;
             background: none;
@@ -579,10 +580,11 @@ html, body {
             outline: none;
             padding: 0;
             color: #d9dede;
+            transition: color linear 0.1s;
         }
 
             .search-clear-button:hover {
-                color: #ff2e42;
+                color: #b4baba;
             }
 
         .sidebar {
