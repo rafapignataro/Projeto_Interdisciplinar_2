@@ -27,32 +27,82 @@
                     <div class="header-center">
                         <div class="header-logos-wrapper">
                             <div class="header-logos">
-                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false"/>
-                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
                             </div>
                         </div>
                     </div>
                     <div class="header-right">
-                        <button type="button" class="header-search-button"><span class="fa fa-search"></span></button>
-                        <button type="button" class="header-signin-button"><span class="fa fa-sign-in"></span></button>
+                        <div class="header-search">
+                            <form id="search-form" method="get" action="/login">
+                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                                <button type="reset" class="search-clear-button">
+                                    <span class="fa fa-close"></span>
+                                </button>
+                            </form>
+                        </div>
+                        <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
+                        <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
                     </div>
                 </div>
                 <div class="header-complement-wrapper">
                     <div class="header-complement">
                         <div class="header-search-mobile">
                             <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <button type="button" class="header-cancel-button">CANCEL</button>
                         </div>
-                        <button type="button" class="header-cancel-button">CANCEL</button>
                     </div>
                 </div>
                 <div class="login-wrapper fade">
                     <img src="../Public/Imagens/modal.svg" class="login-shape"/>
                     <div class="login-modal">
                         <div class="login-modal-switch">
-
+                            <label class="form-select-container">
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="form-select-button" id="login-form-button">Login</span>
+                            </label>
+                            <label class="form-select-container">
+                                <input type="radio" name="radio">
+                                <span class="form-select-button" id="signup-form-button">Sign Up</span>
+                            </label>
                         </div>
-                        <div class="login-modal-content">
 
+                        <div class="login-modal-content">
+                            <form id="login-form" method="get" action="/login">
+                                <div class="login-modal-item">
+                                    <label for="login-form-username" class="login-form-label">Username</label>
+                                    <input type="text" id="login-form-username" class="login-form-input" name="login-form-username">
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="login-form-password" class="login-form-label">Password</label>
+                                    <input type="password" id="login-form-password" class="login-form-input" name="login-form-password">
+                                </div>
+                                <div class="login-modal-submit">
+                                    <input type="submit" class="login-form-submit" value="Log In">
+                                </div>
+                            </form>
+
+                            <form id="signup-form" class="nodisplay" method="post" action="/register">
+                                <div class="login-modal-item">
+                                    <label for="signup-form-email" class="login-form-label">E-mail</label>
+                                    <input type="email" id="signup-form-email" class="login-form-input" name="signup-form-email">
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-username" class="login-form-label">Username</label>
+                                    <input type="text" id="signup-form-username" class="login-form-input" name="signup-form-username">
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-password" class="login-form-label">Password</label>
+                                    <input type="password" id="signup-form-password" class="login-form-input" name="signup-form-password">
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-repeat" class="login-form-label">Repeat Password</label>
+                                    <input type="password" id="signup-form-repeat" class="login-form-input" name="signup-form-repeat">
+                                </div>
+                                <div class="login-modal-submit">
+                                    <input type="submit" class="login-form-submit" value="Register">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -62,6 +112,12 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-container">
                 <div class="sidebar-scroller">
+                    <div class="sidebar-logos-wrapper">
+                        <div class="sidebar-logos">
+                            <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+                            <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                        </div>
+                    </div>
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
                             <li id="sidebar-list-title" class="noselection">
@@ -72,6 +128,7 @@
                                     <div class="sidebar-list-item">
                                         <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
                                         <div class="sidebar-list-item-name">Projeto 1</div>
+                                        <img src="../Public/Imagens/CurseIcon.svg" class="" style="height:30px; margin-left:auto" />
                                     </div>
                                 </a>
                             </li>
@@ -165,7 +222,7 @@
 
         //----------------------------------------------------------MOBILE----------------------------------------------------------------------
         var $hamburger = $(".hamburger");
-        $hamburger.on("click", function (e) {
+        $hamburger.on("click", function () {
             $hamburger.toggleClass("is-active");
             $(".sidebar-wrapper").toggleClass('sidebar-wrapper-after');
             $(".content").toggleClass('noscroll');
@@ -174,21 +231,21 @@
         });
 
         var $headersearchbutton = $(".header-search-button");
-        $headersearchbutton.on("click", function (e) {
+        $headersearchbutton.on("click", function () {
             $(".header-complement").toggleClass('header-complement-after');
             $(".header-search-mobile").toggleClass('header-search-mobile-after');
             $(".header-cancel-button").toggleClass('header-cancel-button-after');
             $(".header-search-button").toggleClass('header-search-button-after');
             if ($(".header-complement").hasClass('header-complement-after')) {
-                $("input").prop("disabled", false); //Enable
+                $(".header-complement-wrapper input").prop("disabled", false); //Enable
             }
             else {
-                $("input").prop("disabled", true); //Disable
+                $(".header-complement-wrapper input").prop("disabled", true); //Disable
             }
             });
 
         var $headercancelbutton = $(".header-cancel-button");
-        $headercancelbutton.on("click", function (e) {
+        $headercancelbutton.on("click", function () {
             $(".header-complement-wrapper").toggleClass('header-complement-wrapper-after');
             $(".header-complement").toggleClass('header-complement-after');
             $(".header-search-mobile").toggleClass('header-search-mobile-after');
@@ -218,6 +275,16 @@
             $(".header-signin-button").toggleClass('header-signin-button-after');
             $(".header-signin-button span").toggleClass('fa-sign-in');
             $(".header-signin-button span").toggleClass('fa-close');
+        });
+
+        $("#login-form-button").on("click", function () {
+            $("#login-form").css({ "display": "flex" });
+            $("#signup-form").css({ "display": "none" });
+        });
+
+        $("#signup-form-button").on("click", function () {
+            $("#login-form").css({ "display": "none" });
+            $("#signup-form").css({ "display": "flex" });
         });
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>

@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 const fs = require("fs");
 
-router.get('/', function(req, res) {
+router.get('/code', function(req, res) {
 	res.render("home");
-
 });
 
-router.post("/", function(req,res){
+router.post("/upload", function(req,res){
 	if(req.files){
 		var file = req.files.filename
 		var filename = file.name;
