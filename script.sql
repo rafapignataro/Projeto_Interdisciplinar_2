@@ -58,7 +58,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Pergunta` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Resposta`
 -- -----------------------------------------------------

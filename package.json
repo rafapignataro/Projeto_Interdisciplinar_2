@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/rafapignataro/Projeto_Interdisciplinar_2#readme",
   "dependencies": {
+    "cookie-parser": "1.4.3",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-async-error-wrapper": "^1.0.3",
     "express-fileupload": "^1.1.3-alpha.1",
     "express-session": "^1.16.1",
     "formidable": "^1.2.1",
