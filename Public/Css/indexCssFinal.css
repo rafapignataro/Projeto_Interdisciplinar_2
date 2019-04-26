@@ -45,7 +45,6 @@ html, body {
 }
 
 .header-center {
-    padding-right: 15px;
     display: flex;
 }
 
@@ -58,14 +57,13 @@ html, body {
 }
 
 .header-logos-bug {
-    height: 50px;
+    height: 45px;
     display: inline-block;
-    padding-right: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
 }
 
 .header-logos-curse {
-    height: 60px;
+    height: 55px;
     display: inline-block;
 }
 
@@ -539,12 +537,13 @@ html, body {
         }
 
         .header-logos-bug {
-            height: 80px;
-            padding-right:20px;
+            height: 70px;
+            padding:0;
         }
 
         .header-logos-curse {
             height: 100px;
+            margin-left:50px;
         }
 
         .header-right {
