@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Bank</title>
+
+    <title><%= title %></title>
     <link type="text/css" rel="stylesheet" href="../public/css/indexCssFinal.css" />
-    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-    <link href="../dist/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
+    <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body id="body">
@@ -30,11 +30,11 @@
                                 <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false"/>
                                 <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
                             </div>
-                        </div>
+                         </div>
                     </div>
                     <div class="header-right">
                         <div class="header-search">
-                            <form id="search-form" method="get" action="/login">
+                            <form id="search-form" method="get" action="/search">
                                 <input class="header-search-bar" type="text" placeholder="Pesquisar..">
                                 <button type="reset" class="search-clear-button">
                                     <span class="fa fa-close"></span>
@@ -218,8 +218,8 @@
             </div>
         </div>
     </div>
+    <!-- Script Frontend -->
     <script>
-
         //----------------------------------------------------------MOBILE----------------------------------------------------------------------
         var $hamburger = $(".hamburger");
         $hamburger.on("click", function () {
@@ -287,6 +287,54 @@
             $("#signup-form").css({ "display": "flex" });
         });
         //--------------------------------------------------------------------------------------------------------------------------------------
+    </script>
+    <!-- Script Backend -->
+    <script type="text/javascript">
+
+        // Login ajax
+        $("#login-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let user = {
+                username: $("#login-form-username").val(),
+                password: $("#login-form-password").val()
+            }
+            $.ajax({
+                url: "/login",
+                type: "GET",
+                data: user,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+        // Signup ajax
+        $("#signup-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let userInfo = {
+                email: $("#signup-form-email").val(),
+                username: $("#signup-form-username").val(),
+                password: $("#signup-form-password").val(),
+                repeat: $("#signup-form-repeat").val()
+            }
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: userInfo,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
     </script>
 </body>
 </html>
