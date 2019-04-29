@@ -75,6 +75,35 @@ router.post('/register', function(req, res) {
 	}
 });
 
+router.get('/getProjects', async (req,res) => {
+	try {
+		await Sql.conectar(async (sql) => {
+			try {
+				sql.query("select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+					res.render('indexAsks', { title: 'Bug Bank', question: result });	
+				});		
+			} catch (ex) {
+				if (ex.code) {
+					switch (ex.code) {
+						case "ER_NO_REFERENCED_ROW":
+						case "ER_NO_REFERENCED_ROW_2":
+							jsonRes(res, 500, "Usuário não existe :(");
+							break;
+						default:
+							jsonRes(res, 500, ex.message || ex.toString());
+							break;
+					}
+				} else {
+					jsonRes(res, 500, ex.message || ex.toString());
+				}
+			}
+		});
+	} catch (ex) {
+		jsonRes(res, 500, ex.message || ex.toString());
+	} 
+});
+
+
 
 
 module.exports = router;

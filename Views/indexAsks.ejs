@@ -210,6 +210,15 @@
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
             <div class="content">
+                <% for(var i=0; i < question.length; i++){ %>
+                <div class="projects">
+                    <h1><%= question[i].title %></h1>
+                    <h2><%= question[i].date %></h2>          
+                    <h3><%= question[i].nick %></h3>
+                    <p><%=  question[i].description %></p> 
+                    <h4><%= question[i].user %></h4> 
+                </div>
+                <% } %>
             </div>
         </div>
     </div>
