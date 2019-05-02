@@ -209,7 +209,7 @@
         </div>
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
-            <div class="content" id="projects"></div>
+        <div class="content" id="projects"></div>
         </div>
     </div>
     <!-- Script Frontend -->
@@ -337,7 +337,7 @@
             cache: false,
             success: (data) => {
                 var projects = $("#projects");
-                
+
                 for(var i=0; i < data.length; i++) {
                     projects.append('<a class="project-link" href="/Project/' + data[i].id + '">'+
                     '<div class="projects">'+
