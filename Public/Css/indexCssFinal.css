@@ -423,17 +423,21 @@ html, body {
     align-content: flex-start;
 }
 
+
+.project-link {
+    text-decoration: none;
+}
+
 .projects {
     width: 300px;
-    height: 400px;
+    height: 200px;
     margin: 10px;
-    background-color: #e74c3c;
+    background-color: #898594;
     color: white;
+    box-shadow: 0 8px 6px -6px black;
+    text-align: center;
 }
 
-.projects h1 {
-
-}
 .noselection {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

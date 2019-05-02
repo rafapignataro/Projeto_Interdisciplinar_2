@@ -11,3 +11,8 @@ values ("Como fazer get e post em Node?",curdate(),"get/post Node", "Estou com d
 ("Stackoverflow no Java",curdate(),"Stackoverflow", "O que é stackoverflow?", 1),
 ("Como fazer circulo no CSS",curdate(),"Circulo CSS", "Queria saber como fazer um circulo com Css", 2),
 ("Problemas com EJS",curdate(),"Problema EJS", "Não sei como implementar o EJS em meu projeto :(", 2);
+
+select * from pergunta;
+select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user , pergunta.id_pergunta as id 
+from pergunta 
+inner join usuario on ( usuario.id_usuario = pergunta.id_usuario);

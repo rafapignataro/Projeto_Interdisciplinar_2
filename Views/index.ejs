@@ -209,8 +209,7 @@
         </div>
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
-            <div class="content">
-            </div>
+            <div class="content" id="projects"></div>
         </div>
     </div>
     <!-- Script Frontend -->
@@ -329,6 +328,29 @@
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
+        });
+
+
+        $.ajax({
+            url: "/getProjects",
+            type: "GET",
+            cache: false,
+            success: (data) => {
+                var projects = $("#projects");
+                
+                for(var i=0; i < data.length; i++) {
+                    projects.append('<a class="project-link" href="/Project/' + data[i].id + '">'+
+                    '<div class="projects">'+
+                        '<h1>' + data[i].title + '</h1>' +
+                        '<p>' + data[i].description + '</p>' +
+                        '<h4>' + data[i].user + '</h4>' +
+                    '</div>' +
+                '</a>');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('error ' + textStatus + " " + errorThrown);
+            }
         });
     </script>
 </body>
