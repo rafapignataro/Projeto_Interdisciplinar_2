@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 //Endereçamento de portas
 app.use("/", require("./routes/index"));
-app.use("/code", require("./routes/home"));
+app.use("/project", require("./routes/project"));
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();

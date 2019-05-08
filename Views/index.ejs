@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title><%= title %></title>
-    <link type="text/css" rel="stylesheet" href="../public/css/indexCssFinal.css" />
+    <title>Bug Bank</title>
+    <link type="text/css" rel="stylesheet" href="../public/css/indexCss.css" />
     <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
     <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,7 +14,7 @@
 <body id="body">
     <div class="bugbank">
         <!------------------------------------------------------HEADER------------------------------------------------------------------------>
-        <div class="header-wrapper">
+        <div class="header-wrapper nav-down">
             <div class="header">
                 <div class="header-container">
                     <div class="header-left">
@@ -23,38 +23,52 @@
                                 <span class="hamburger-inner"></span>
                             </span>
                         </button>
-                    </div>
-                    <div class="header-center">
                         <div class="header-logos-wrapper">
                             <div class="header-logos">
-                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false"/>
-                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
                             </div>
-                         </div>
+                        </div>
+                    </div>
+                    <div class="header-center">
+                        <nav class="navbar">
+                            <a href="" class="navbar-item">Explorar</a>
+                            <a href="" class="navbar-item">Criar um Bug</a>
+                            <a href="" class="navbar-item">Gerenciar Bugs.</a>
+                        </nav>
+                        <form id="search-form" method="get" action="/login">
+                            <span class=" search-bar-icon fa fa-search"></span>
+                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <button type="reset" class="search-clear-button">
+                                <span class="fa fa-close"></span>
+                            </button>
+                        </form>
                     </div>
                     <div class="header-right">
                         <div class="header-search">
-                            <form id="search-form" method="get" action="/search">
-                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
-                                <button type="reset" class="search-clear-button">
-                                    <span class="fa fa-close"></span>
-                                </button>
-                            </form>
                         </div>
-                        <button type="button" class="header-search-button"><span class="fa fa-search"></span></button>
-                        <button type="button" class="header-signin-button"><span class="fa fa-sign-in"></span></button>
+                        <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
+                        <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
+                        <button type="button" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></button>
+                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
                 <div class="header-complement-wrapper">
                     <div class="header-complement">
                         <div class="header-search-mobile">
-                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <form id="search-form" method="get" action="/login">
+                                <span class="search-bar-icon fa fa-search"></span>
+                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                                <button type="reset" class="search-clear-button">
+                                    <span class="fa fa-close"></span>
+                                </button>
+                            </form>
+                            <button type="button" class="header-cancel-button" disabled>CANCEL</button>
                         </div>
-                        <button type="button" class="header-cancel-button">CANCEL</button>
                     </div>
                 </div>
                 <div class="login-wrapper fade">
-                    <img src="../Public/Imagens/modal.svg" class="login-shape"/>
+                    <!--<img src="../Public/Imagens/modal.svg" class="login-shape"/>-->
                     <div class="login-modal">
                         <div class="login-modal-switch">
                             <label class="form-select-container">
@@ -112,12 +126,6 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-container">
                 <div class="sidebar-scroller">
-                    <div class="sidebar-logos-wrapper">
-                        <div class="sidebar-logos">
-                            <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
-                            <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-                        </div>
-                    </div>
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
                             <li id="sidebar-list-title" class="noselection">
@@ -202,6 +210,54 @@
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 10</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 11</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 12</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 13</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 14</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 15</div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -210,17 +266,13 @@
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
             <div class="content">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <div class="perguntas" id="projects">
+                    
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Script Frontend -->
+    <!----------------------------------------------------------MOBILE------------------------------------------------------------------------->
     <script>
-        //----------------------------------------------------------MOBILE----------------------------------------------------------------------
         var $hamburger = $(".hamburger");
         $hamburger.on("click", function () {
             $hamburger.toggleClass("is-active");
@@ -238,11 +290,13 @@
             $(".header-search-button").toggleClass('header-search-button-after');
             if ($(".header-complement").hasClass('header-complement-after')) {
                 $(".header-complement-wrapper input").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
             }
             else {
                 $(".header-complement-wrapper input").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
             }
-            });
+        });
 
         var $headercancelbutton = $(".header-cancel-button");
         $headercancelbutton.on("click", function () {
@@ -253,9 +307,11 @@
             $(".header-search-button").toggleClass('header-search-button-after');
             if ($(".header-complement").hasClass('header-complement-after')) {
                 $("header-search-bar").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
             }
             else {
                 $("header-search-bar").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
             }
         });
 
@@ -269,7 +325,7 @@
             setTimeout(function () {
                 $(".login-wrapper").toggleClass('fade-show');
                 animRodando = false;
-                setTimeout(function () {  }, 150);
+                setTimeout(function () { }, 150);
             }, 1);
             $(".login-wrapper").toggleClass('login-wrapper-after');
             $(".header-signin-button").toggleClass('header-signin-button-after');
@@ -282,12 +338,54 @@
             $("#signup-form").css({ "display": "none" });
         });
 
+        //---------------------------------------------------------------------------------------------------------------
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $(".header-wrapper").outerHeight();
+
+        $(".content-wrapper").scroll(function (event) {
+            didScroll = true;
+        });
+
+        setInterval(function () {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(".content-wrapper").scrollTop();
+
+            // Make sure they scroll more than delta
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('header-wrapper').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('header-wrapper').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
+        }
+        //-------------------------------
+
         $("#signup-form-button").on("click", function () {
             $("#login-form").css({ "display": "none" });
             $("#signup-form").css({ "display": "flex" });
         });
-        //--------------------------------------------------------------------------------------------------------------------------------------
+                //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
+
     <!-- Script Backend -->
     <script type="text/javascript">
 
@@ -334,6 +432,27 @@
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
+        });
+
+        $.ajax({
+            url: "/getProjects",
+            type: "GET",
+            cache: false,
+            success: (data) => {
+                var projects = $("#projects");
+
+                for(var i=0; i < data.length; i++) {
+                    projects.append('<div class="pergunta-container"><a href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + 
+                    '"><div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div></a>' +
+                    '<div class="pergunta-desc"><a href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date +'"><div class="pergunta-titulo">' + data[i].title + 
+                    '</div></a><div class="pergunta-usuario">' + data[i].user + '</div><div class="pergunta-tempo">' + data[i].date + 
+                    '</div><div class="pergunta-tags"></div>');
+                    
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('error ' + textStatus + " " + errorThrown);
+            }
         });
     </script>
 </body>

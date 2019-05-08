@@ -75,6 +75,28 @@ router.post('/register', function(req, res) {
 	}
 });
 
+router.get('/getProjects', async (req,res) => {
+	try {
+		await Sql.conectar(async (sql) => {
+			try {
+				sql.query("select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+					res.json(result);
+				});		
+			} catch (ex) {
+				res.json(ex);
+			}
+		});
+	} catch (ex) {
+		jsonRes(res, 500, ex.message || ex.toString());
+	} 
+});
 
+router.get("/Project/:user&:title&:date", async (req,res) => {
+	var user = req.params.user;
+	var title = req.params.title;
+	var date = req.params.date;
+
+	res.render("project", {title: "Bug Bank", user: user, project_title: title, posted_date: date});
+});
 
 module.exports = router;
