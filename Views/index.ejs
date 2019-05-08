@@ -442,9 +442,9 @@
                 var projects = $("#projects");
 
                 for(var i=0; i < data.length; i++) {
-                    projects.append('<div class="pergunta-container"><a href="/Project/' + data[i].id +
+                    projects.append('<div class="pergunta-container"><a href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + 
                     '"><div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div></a>' +
-                    '<div class="pergunta-desc"><a href="/Project/' + data[i].id + '"><div class="pergunta-titulo">' + data[i].title + 
+                    '<div class="pergunta-desc"><a href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date +'"><div class="pergunta-titulo">' + data[i].title + 
                     '</div></a><div class="pergunta-usuario">' + data[i].user + '</div><div class="pergunta-tempo">' + data[i].date + 
                     '</div><div class="pergunta-tags"></div>');
                     

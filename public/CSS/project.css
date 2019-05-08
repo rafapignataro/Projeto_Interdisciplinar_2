@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+body{
+	background-color: #dbdbdb;
+}
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.div-a {
+	text-decoration: none;
+}
+
+.header-logos-bug {
+    height: 45px;
+}
+
+.header-logos-curse {
+    height: 45px;
+    margin-right:5px;
+}
+
+.project-stuff {
+	background-color: #fff;
+	padding: 5px;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: space-between;
+}
+
+.project-stuff h2 {
+	color: #232323;
+}
+
+.about {
+	display: table;
+	justify-content: space-around;
+	background-color: #f4f4f4;
+	width: 300px;
+	box-sizing: border-box;
+}
+
+
+.about-user a {
+	text-decoration: none;
+	color: #000000;
+	font-size: 20px;
+	display: table-cell;
+	vertical-align: middle;
+	float: left;
+}
+
+.about-date {
+	display: table-cell;
+	vertical-align: middle;
+	float: right;
+}
+
+.jstree-textarea{
+	height: 590px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#jstree {
+	display: inline-block;
+	background-color: #f4f4f4;
+	margin: 0;
+	height: 100%;
+    width: 15%;
+    overflow: auto;
+    vertical-align: bottom;
+    display: inline-block;
+    color: black;
+}
+
+footer {
+	background-color: #fff;
+	border-top: 1px solid black;
+	display: flex;
+	justify-content: flex-end;
+}
+
+footer .theme-mode {
+	display: inline-block;
+}
+
+footer ul li{
+	display: inline-block;
+}
+
+option, select {
+	color: #232323;
+	border: 0;
+}
+
+
