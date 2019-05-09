@@ -9,6 +9,10 @@ router.get('/', function(req, res) {
 	res.render('index', { title: 'Bug Bank' });
 });
 
+router.get('/download', function(req, res) {
+	res.render('download', { title: 'Download' });
+});
+
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
