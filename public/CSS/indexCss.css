@@ -559,7 +559,6 @@ html, body {
 }
 
 .content {
-    <<<<<<< HEAD
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
@@ -654,6 +653,7 @@ html, body {
         background-color: #fff;
         color: #3b4045;
         font-weight: 600;
+        text-align:left;
     }
 
         /* Change color of dropdown links on hover */

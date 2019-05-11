@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Public",
-    "\\Public\\Css",
+    "\\Public\\CSS",
     "\\Views"
   ],
-  "SelectedNode": "\\Views\\index.ejs",
+  "SelectedNode": "\\Public\\CSS\\indexCss.css",
   "PreviewInSolutionExplorer": false
 }
