@@ -272,15 +272,15 @@
                         <div class="perguntas-filtros" style="padding-left:0">
                             <div class="perguntas-filtros-dropdown">
                               <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
-                                  <b>TODAS</b>
+                                  <b id="perguntas-filtros-label-1" data-id="todas">TODAS</b>
                                   <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
-                                     <a href="#">TODAS</a>
-                                     <a href="#">NODE</a>
-                                     <a href="#">REACT</a>
-                                     <a href="#">ANGULAR</a>
-                                     <a href="#">JAVASCRIPT</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="react">REACT</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="angular">ANGULAR</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
                                   </div>
                               </button>
                             </div>
@@ -288,14 +288,14 @@
                         <div class="perguntas-filtros">
                             <div class="perguntas-filtros-dropdown">
                               <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:  
-                                  <b>RECENTE</b>
+                                  <b id="perguntas-filtros-label-2" data-id="recente">RECENTE</b>
                                   <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-2-dropdown">
-                                     <a href="#">RECENTE</a>
-                                     <a href="#">POPULARIDADE</a>
-                                     <a href="#">A-Z</a>
-                                     <a href="#">Z-A</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="recente">RECENTE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="popularidade">POPULARIDADE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="az">A-Z</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="za">Z-A</a>
                                   </div>
                               </button>
                             </div>
@@ -376,7 +376,7 @@
 
         //---------------------------------------------------------------------------------------------------------------
         // Hide Header on on scroll down
-        var didScroll;
+       /* var didScroll;
         var lastScrollTop = 0;
         var delta = 5;
         var navbarHeight = $(".header-wrapper").outerHeight();
@@ -403,16 +403,16 @@
             // This is necessary so you never see what is "behind" the navbar.
             if (st > lastScrollTop && st > navbarHeight) {
                 // Scroll Down
-                $('header-wrapper').removeClass('nav-down').addClass('nav-up');
+                $('.header-wrapper').removeClass('nav-down').addClass('nav-up');
             } else {
                 // Scroll Up
                 if (st + $(window).height() < $(document).height()) {
-                    $('header-wrapper').removeClass('nav-up').addClass('nav-down');
+                    $('.header-wrapper').removeClass('nav-up').addClass('nav-down');
                 }
             }
 
             lastScrollTop = st;
-        }
+        }*/
         //-------------------------------
 
         $("#signup-form-button").on("click", function () {
@@ -422,10 +422,14 @@
 
         $("#perguntas-filtros-btn-1").on("click", function () {
             $("#perguntas-filtros-btn-1").toggleClass("perguntas-filtros-btn-after");
+            $("#perguntas-filtro-2").prop("checked", false);
+            $("#perguntas-filtros-btn-2").removeClass("perguntas-filtros-btn-after");
         });
 
         $("#perguntas-filtros-btn-2").on("click", function () {
             $("#perguntas-filtros-btn-2").toggleClass("perguntas-filtros-btn-after");
+            $("#perguntas-filtro-1").prop("checked", false);
+            $("#perguntas-filtros-btn-1").removeClass("perguntas-filtros-btn-after");
         });
 
         const $menu = $('.perguntas-filtro-check');
@@ -437,6 +441,78 @@
                 $(".perguntas-filtros-btn").removeClass("perguntas-filtros-btn-after");
             }
         });
+
+        function cancelEvent(evt) {
+            if (evt) {
+                if ("isCancelled" in evt)
+                    evt.isCancelled = true;
+                if ("preventDefault" in evt)
+                    evt.preventDefault();
+                if ("stopPropagation" in evt)
+                    evt.stopPropagation();
+            }
+            return false;
+        }
+
+        function atualizaContent() {
+            if ($.active)
+                return;
+
+            var projects = $("#projects");
+            projects.empty();
+
+            $.ajax({
+                url: "/getProjects",
+                type: "GET",
+                cache: false,
+                success: (data) => {
+                    for(var i=0; i < data.length; i++) {
+                        projects.append(
+                            '<div class="pergunta-container">'+
+                                '<a class="pergunta-imagem" href = "/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                    '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
+                                '</a>' +
+                                '<div class="pergunta-desc">' +
+                                    '<a class="pergunta-titulo" href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                        '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
+                                    '</a>'+
+                                    '<div class= "pergunta-desc-sub">'+
+                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
+                                        '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
+                                    '</div>'+
+                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                                '</div>'+
+                            '</div>');
+                    
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        }
+
+        function processaLink(e) {
+            if ($.active)
+                return cancelEvent(e);
+            var id = this.getAttribute("data-id");
+            var target = document.getElementById(this.getAttribute("data-target"));
+            target.setAttribute("data-id", id);
+            target.textContent = this.textContent;
+            atualizaContent();
+            return cancelEvent(e);
+        }
+
+        (function () {
+            var links = document.getElementById("perguntas-filtro-1-dropdown").getElementsByTagName("a");
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = processaLink;
+            }
+            links = document.getElementById("perguntas-filtro-2-dropdown").getElementsByTagName("a");
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = processaLink;
+            }
+        })();
 
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
@@ -489,36 +565,8 @@
             });
         });
 
-        $.ajax({
-            url: "/getProjects",
-            type: "GET",
-            cache: false,
-            success: (data) => {
-                var projects = $("#projects");
-
-                for(var i=0; i < data.length; i++) {
-                    projects.append(
-                        '<div class="pergunta-container">'+
-                            '<a class="pergunta-imagem" href = "/projects/' + data[i].user + '&' + data[i].title + '">' +
-                                '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
-                            '</a>' +
-                            '<div class="pergunta-desc">' +
-                                '<a class="pergunta-titulo" href="/projects/' + data[i].user + '/' + data[i].title + '">' +
-                                    '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
-                                '</a>'+
-                                '<div class= "pergunta-desc-sub">'+
-                                    '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                    '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
-                                '</div>'+
-                                    '<div class= "pergunta-tags" > TAGS </div>' +
-                            '</div>'+
-                        '</div>'); 
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('error ' + textStatus + " " + errorThrown);
-            }
-        });
+        atualizaContent();
     </script>
+</div>
 </body>
 </html>
