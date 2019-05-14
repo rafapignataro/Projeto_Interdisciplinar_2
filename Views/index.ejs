@@ -136,7 +136,7 @@
                                     <div class="sidebar-list-item">
                                         <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
                                         <div class="sidebar-list-item-name">Projeto 1</div>
-                                        <img src="../Public/Imagens/CurseIcon.svg" class="" style="height:30px; margin-left:auto" />
+                                        <img src="../Public/Imagens/NEW.svg" class="item-notification"/>
                                     </div>
                                 </a>
                             </li>
@@ -266,6 +266,42 @@
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
             <div class="content">
+                <div class="perguntas-header">
+                    <div class="perguntas-header-titulo">Todos os Bugs</div>
+                    <div class="perguntas-filtros-container">
+                        <div class="perguntas-filtros" style="padding-left:0">
+                            <div class="perguntas-filtros-dropdown">
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
+                                  <b>TODAS</b>
+                                  <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
+                                  <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
+                                  <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
+                                     <a href="#">TODAS</a>
+                                     <a href="#">NODE</a>
+                                     <a href="#">REACT</a>
+                                     <a href="#">ANGULAR</a>
+                                     <a href="#">JAVASCRIPT</a>
+                                  </div>
+                              </button>
+                            </div>
+                        </div>
+                        <div class="perguntas-filtros">
+                            <div class="perguntas-filtros-dropdown">
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:  
+                                  <b>RECENTE</b>
+                                  <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
+                                  <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
+                                  <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-2-dropdown">
+                                     <a href="#">RECENTE</a>
+                                     <a href="#">POPULARIDADE</a>
+                                     <a href="#">A-Z</a>
+                                     <a href="#">Z-A</a>
+                                  </div>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="perguntas" id="projects">
                     
                 </div>
@@ -383,7 +419,26 @@
             $("#login-form").css({ "display": "none" });
             $("#signup-form").css({ "display": "flex" });
         });
-                //--------------------------------------------------------------------------------------------------------------------------------------
+
+        $("#perguntas-filtros-btn-1").on("click", function () {
+            $("#perguntas-filtros-btn-1").toggleClass("perguntas-filtros-btn-after");
+        });
+
+        $("#perguntas-filtros-btn-2").on("click", function () {
+            $("#perguntas-filtros-btn-2").toggleClass("perguntas-filtros-btn-after");
+        });
+
+        const $menu = $('.perguntas-filtro-check');
+
+        $(document).mouseup(function (e) {
+            if(  !$menu.is(e.target) && $menu.has(e.target).length === 0)//se o target nao for o container ou um dos filhos
+            {
+                $menu.prop("checked",false);
+                $(".perguntas-filtros-btn").removeClass("perguntas-filtros-btn-after");
+            }
+        });
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
 
     <!-- Script Backend -->
@@ -441,26 +496,25 @@
             success: (data) => {
                 var projects = $("#projects");
 
-            for(var i=0; i < data.length; i++) {
-                projects.append(
-                    '<div class="pergunta-container">'+
-                        '<a class="pergunta-imagem" href = "/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
-                            '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
-                        '</a>' +
-                        '<div class="pergunta-desc">' +
-                            '<a class="pergunta-titulo" href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
-                                '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
-                            '</a>'+
-                            '<div class= "pergunta-desc-sub">'+
-                                '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
+                for(var i=0; i < data.length; i++) {
+                    projects.append(
+                        '<div class="pergunta-container">'+
+                            '<a class="pergunta-imagem" href = "/projects/' + data[i].user + '&' + data[i].title + '">' +
+                                '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
+                            '</a>' +
+                            '<div class="pergunta-desc">' +
+                                '<a class="pergunta-titulo" href="/projects/' + data[i].user + '/' + data[i].title + '">' +
+                                    '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
+                                '</a>'+
+                                '<div class= "pergunta-desc-sub">'+
+                                    '<div class="pergunta-tempo">' + data[i].date + '</div>' +
+                                    '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
+                                '</div>'+
+                                    '<div class= "pergunta-tags" > TAGS </div>' +
                             '</div>'+
-                                '<div class= "pergunta-tags" > TAGS </div>' +
-                        '</div>'+
-                    '</div>');
-                    
-            }
-        },
+                        '</div>'); 
+                }
+            },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error ' + textStatus + " " + errorThrown);
             }

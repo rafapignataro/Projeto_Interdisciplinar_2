@@ -95,12 +95,12 @@ router.get('/getProjects', async (req,res) => {
 	} 
 });
 
-router.get("/Project/:user&:title&:date", async (req,res) => {
+router.get("/projects/:user&:title", async (req,res) => {
 	var user = req.params.user;
 	var title = req.params.title;
-	var date = req.params.date;
 
-	res.render("project", {title: "Bug Bank", user: user, project_title: title, posted_date: date});
+	res.render("project", {title: "Bug Bank", user: user});
 });
+
 
 module.exports = router;

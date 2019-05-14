@@ -12,6 +12,7 @@
 <body id="body">
     <div class="drop-zone" id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
   		<p>Drag one or more files to this Drop Zone ...</p>
+  		<input type="file" id="input">
 	</div>
 
 	<script type="text/javascript">
@@ -45,6 +46,9 @@
 		    }
 		  }
 		}
+
+		const selectedFile = document.getElementById('input').files[0];
+		console.log(selectedFile);
 	</script>
 </body>
 </html>
