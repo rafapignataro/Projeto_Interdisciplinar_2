@@ -91,7 +91,7 @@ router.get('/getProjects', async (req,res) => {
 	} 
 });
 
-router.get("/Project/:user&:title&:date", async (req,res) => {
+router.get("/Project/:user&:date&:title", async (req,res) => {
 	var user = req.params.user;
 	var title = req.params.title;
 	var date = req.params.date;
