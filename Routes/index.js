@@ -58,7 +58,6 @@ router.get('/fake_json', wrap(async function(req, res) {
 router.post('/register', function(req, res) {
 
 	let user = req.body;
-	console.log(user);
 	if(user.username && user.email && user.password && user.repeat){
 		if(user.password == user.repeat){
 			Sql.query('SELECT * FROM usuario WHERE login_usuario = ?', user.username, function(error, result, fields) {
@@ -91,16 +90,14 @@ router.get('/getProjects', async (req,res) => {
 			}
 		});
 	} catch (ex) {
-		jsonRes(res, 500, ex.message || ex.toString());
+		res.json(ex);
 	} 
 });
 
-router.get("/projects/:user&:title", async (req,res) => {
-	var user = req.params.user;
-	var title = req.params.title;
+router.get("/projects/:id&:title", async (req,res) => {
+	var questionID = req.params.id;
 
-	res.render("project", {title: "Bug Bank", user: user});
+	res.render("project", {title: "Bug Bank", questionID: questionID});
 });
-
 
 module.exports = router;

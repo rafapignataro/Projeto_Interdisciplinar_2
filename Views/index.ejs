@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
     <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Public/JS/convert.js"></script>
 </head>
 <body id="body">
     <div class="bugbank">
@@ -469,15 +470,15 @@
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '&' + data[i].title + '">' +
                                     '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                    '<a class="pergunta-titulo" href="/projects/' + convertData(data[i].id) + '&' + data[i].title + '">' +
                                         '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
+                                        '<div class="pergunta-tempo">' + convertData(data[i].id) + '</div>' +
                                         '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +

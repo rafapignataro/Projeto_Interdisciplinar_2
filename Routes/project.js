@@ -3,6 +3,10 @@ const router = express.Router();
 const Sql = require("../infra/sql");
 
 router.get('/getProjectInfo', async function(req,res){
+
+	var questionID = req.body.questionID;
+	console.log(questionID);
+
 	try {
 		await Sql.conectar(async (sql) => {
 			try {

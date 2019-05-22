@@ -44,7 +44,7 @@
     <div class="project-stuff">
 		<h2>titulo</h2>
 		<div class="about" id="about">
-			<p class="about-user"><a href="/<%= user %>"><%= user %></a></p>
+			<p class="about-user"><a href="/"></a></p>
 			<p class="about-date">data</p>
 		</div>
 	</div>
@@ -117,19 +117,20 @@
 			var theme = input.options[input.selectedIndex].textContent;
 			editor.setOption("theme", theme);
 		}
-
+		
 		var input2 = document.getElementById("select2");
 		function selectMode(){
 			var mode = input2.options[input2.selectedIndex].textContent;
 			editor.setOption("mode", mode);
 		}
 
+		var questionID = <%= questionID %>;
 		$.ajax({
             url: "/getProjectInfo",
-            type: "GET",
+			type: "GET",
+			data: questionID,
             cache: false,
             success: (data) => {
-
         	},
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error ' + textStatus + " " + errorThrown);
