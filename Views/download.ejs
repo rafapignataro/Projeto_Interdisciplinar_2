@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link type="text/css" rel="stylesheet" href="../public/css/download.css" />
+    <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body id="body">
+    <div class="drop-zone" id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+  		<p>Drag one or more files to this Drop Zone ...</p>
+  		<input type="file" id="input">
+	</div>
+
+	<script type="text/javascript">
+		
+		function dragOverHandler(ev) {
+  			console.log('File(s) in drop zone'); 
+
+				document.getElementById("drop_zone").style.backgroundColor = "red";
+
+  			// Prevent default behavior (Prevent file from being opened)
+  			ev.preventDefault();
+		}
+		
+		function dropHandler(ev) {
+		    console.log('File(s) dropped');
+
+		  // Prevent default behavior (Prevent file from being opened)
+		    ev.preventDefault();
+
+		    if (ev.dataTransfer.items) {
+		    // Use DataTransferItemList interface to access the file(s)
+		    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+		      // If dropped items aren't files, reject them
+		    	if (ev.dataTransfer.items[i].kind === 'file') {
+		        	var file = ev.dataTransfer.items[i].getAsFile();
+		        	console.log('... file[' + i + '].name = ' + file.name);
+		      	}
+		    }
+		  	} else {
+		    // Use DataTransfer interface to access the file(s)
+		    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+		      console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+		    }
+		  }
+		}
+
+	</script>
+</body>
+</html>

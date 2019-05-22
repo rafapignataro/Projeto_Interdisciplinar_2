@@ -9,6 +9,10 @@ router.get('/', function(req, res) {
 	res.render('index', { title: 'Bug Bank' });
 });
 
+router.get('/download', function(req, res) {
+	res.render('download', { title: 'Download' });
+});
+
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
@@ -54,7 +58,6 @@ router.get('/fake_json', wrap(async function(req, res) {
 router.post('/register', function(req, res) {
 
 	let user = req.body;
-	console.log(user);
 	if(user.username && user.email && user.password && user.repeat){
 		if(user.password == user.repeat){
 			Sql.query('SELECT * FROM usuario WHERE login_usuario = ?', user.username, function(error, result, fields) {
@@ -87,16 +90,14 @@ router.get('/getProjects', async (req,res) => {
 			}
 		});
 	} catch (ex) {
-		jsonRes(res, 500, ex.message || ex.toString());
+		res.json(ex);
 	} 
 });
 
-router.get("/Project/:user&:title&:date", async (req,res) => {
-	var user = req.params.user;
-	var title = req.params.title;
-	var date = req.params.date;
+router.get("/projects/:id&:title", async (req,res) => {
+	var questionID = req.params.id;
 
-	res.render("project", {title: "Bug Bank", user: user, project_title: title, posted_date: date});
+	res.render("project", {title: "Bug Bank", questionID: questionID});
 });
 
 module.exports = router;

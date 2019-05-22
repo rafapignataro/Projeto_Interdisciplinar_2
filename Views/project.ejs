@@ -42,10 +42,10 @@
 		</a>   
 	</header>
     <div class="project-stuff">
-		<h2><%= project_title %></h2>
+		<h2>titulo</h2>
 		<div class="about" id="about">
-			<p class="about-user"><a href="/<%= user %>"><%= user %></a></p>
-			<p class="about-date"><%= posted_date %></p>
+			<p class="about-user"><a href="/"></a></p>
+			<p class="about-date">data</p>
 		</div>
 	</div>
   	<div class="jstree-textarea">
@@ -73,8 +73,8 @@
 			<ul>
 				<li>
 					<select onchange="selectTheme()" id="select">
-						<option selected>Temas</option>
-						<option>darcula</option>
+						<option>Temas</option>
+						<option selected>darcula</option>
 						<option>lucario</option>
 						<option>base16-light</option>
 					</select>	
@@ -108,7 +108,8 @@
 	<script type="text/javascript">
 		var editor = CodeMirror.fromTextArea(document.getElementById('textarea'), {
 			lineNumbers : true,
-			extraKeys: {"Ctrl-Space": "autocomplete"}
+			extraKeys: {"Ctrl-Space": "autocomplete"},
+			theme: "darcula"
 		});
 
 		var input = document.getElementById("select");
@@ -116,12 +117,25 @@
 			var theme = input.options[input.selectedIndex].textContent;
 			editor.setOption("theme", theme);
 		}
-
+		
 		var input2 = document.getElementById("select2");
 		function selectMode(){
 			var mode = input2.options[input2.selectedIndex].textContent;
 			editor.setOption("mode", mode);
 		}
+
+		var questionID = <%= questionID %>;
+		$.ajax({
+            url: "/getProjectInfo",
+			type: "GET",
+			data: questionID,
+            cache: false,
+            success: (data) => {
+        	},
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('error ' + textStatus + " " + errorThrown);
+            }
+        });
 	</script>
 </body>
 </html>
