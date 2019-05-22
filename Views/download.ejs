@@ -20,6 +20,8 @@
 		function dragOverHandler(ev) {
   			console.log('File(s) in drop zone'); 
 
+				document.getElementById("drop_zone").style.backgroundColor = "red";
+
   			// Prevent default behavior (Prevent file from being opened)
   			ev.preventDefault();
 		}
@@ -47,8 +49,6 @@
 		  }
 		}
 
-		const selectedFile = document.getElementById('input').files[0];
-		console.log(selectedFile);
 	</script>
 </body>
 </html>
