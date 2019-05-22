@@ -82,7 +82,7 @@ router.get('/getProjects', async (req,res) => {
 	try {
 		await Sql.conectar(async (sql) => {
 			try {
-				sql.query("select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+				sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
 					res.json(result);
 				});		
 			} catch (ex) {
