@@ -2,19 +2,19 @@
 
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bug Bank</title>
-    <link type="text/css" rel="stylesheet" href="../public/css/indexCssFinal.css" />
-    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-    <link href="../dist/hamburgers.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../public/css/indexCss.css" />
+    <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
+    <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body id="body">
     <div class="bugbank">
         <!------------------------------------------------------HEADER------------------------------------------------------------------------>
-        <div class="header-wrapper">
+        <div class="header-wrapper nav-down">
             <div class="header">
                 <div class="header-container">
                     <div class="header-left">
@@ -23,38 +23,52 @@
                                 <span class="hamburger-inner"></span>
                             </span>
                         </button>
-                    </div>
-                    <div class="header-center">
                         <div class="header-logos-wrapper">
                             <div class="header-logos">
-                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false"/>
-                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
                             </div>
                         </div>
                     </div>
+                    <div class="header-center">
+                        <nav class="navbar">
+                            <a href="" class="navbar-item">Explorar</a>
+                            <a href="" class="navbar-item">Criar um Bug</a>
+                            <a href="" class="navbar-item">Gerenciar Bugs.</a>
+                        </nav>
+                        <form id="search-form" method="get" action="/login">
+                            <span class=" search-bar-icon fa fa-search"></span>
+                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <button type="reset" class="search-clear-button">
+                                <span class="fa fa-close"></span>
+                            </button>
+                        </form>
+                    </div>
                     <div class="header-right">
                         <div class="header-search">
-                            <form id="search-form" method="get" action="/login">
-                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
-                                <button type="reset" class="search-clear-button">
-                                    <span class="fa fa-close"></span>
-                                </button>
-                            </form>
                         </div>
-                        <button type="button" class="header-search-button"><span class="fa fa-search"></span></button>
-                        <button type="button" class="header-signin-button"><span class="fa fa-sign-in"></span></button>
+                        <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
+                        <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
+                        <button type="button" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></button>
+                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
                 <div class="header-complement-wrapper">
                     <div class="header-complement">
                         <div class="header-search-mobile">
-                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <form id="search-form" method="get" action="/login">
+                                <span class="search-bar-icon fa fa-search"></span>
+                                <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                                <button type="reset" class="search-clear-button">
+                                    <span class="fa fa-close"></span>
+                                </button>
+                            </form>
+                            <button type="button" class="header-cancel-button" disabled>CANCEL</button>
                         </div>
-                        <button type="button" class="header-cancel-button">CANCEL</button>
                     </div>
                 </div>
                 <div class="login-wrapper fade">
-                    <img src="../Public/Imagens/modal.svg" class="login-shape"/>
+                    <!--<img src="../Public/Imagens/modal.svg" class="login-shape"/>-->
                     <div class="login-modal">
                         <div class="login-modal-switch">
                             <label class="form-select-container">
@@ -112,12 +126,6 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-container">
                 <div class="sidebar-scroller">
-                    <div class="sidebar-logos-wrapper">
-                        <div class="sidebar-logos">
-                            <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
-                            <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-                        </div>
-                    </div>
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
                             <li id="sidebar-list-title" class="noselection">
@@ -128,7 +136,7 @@
                                     <div class="sidebar-list-item">
                                         <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
                                         <div class="sidebar-list-item-name">Projeto 1</div>
-                                        <img src="../Public/Imagens/CurseIcon.svg" class="" style="height:30px; margin-left:auto" />
+                                        <img src="../Public/Imagens/NEW.svg" class="item-notification"/>
                                     </div>
                                 </a>
                             </li>
@@ -202,6 +210,54 @@
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 10</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 11</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 12</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 13</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 14</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="sidebar-list-item">
+                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
+                                        <div class="sidebar-list-item-name">Projeto 15</div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -210,17 +266,49 @@
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper">
             <div class="content">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <div class="perguntas-header">
+                    <div class="perguntas-header-titulo">Todos os Bugs</div>
+                    <div class="perguntas-filtros-container">
+                        <div class="perguntas-filtros" style="padding-left:0">
+                            <div class="perguntas-filtros-dropdown">
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
+                                  <b id="perguntas-filtros-label-1" data-id="todas">TODAS</b>
+                                  <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
+                                  <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
+                                  <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="react">REACT</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="angular">ANGULAR</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
+                                  </div>
+                              </button>
+                            </div>
+                        </div>
+                        <div class="perguntas-filtros">
+                            <div class="perguntas-filtros-dropdown">
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:  
+                                  <b id="perguntas-filtros-label-2" data-id="recente">RECENTE</b>
+                                  <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
+                                  <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
+                                  <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-2-dropdown">
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="recente">RECENTE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="popularidade">POPULARIDADE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="az">A-Z</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="za">Z-A</a>
+                                  </div>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="perguntas" id="projects">
+                    
+                </div>
             </div>
         </div>
-    </div>
+    <!----------------------------------------------------------MOBILE------------------------------------------------------------------------->
     <script>
-
-        //----------------------------------------------------------MOBILE----------------------------------------------------------------------
         var $hamburger = $(".hamburger");
         $hamburger.on("click", function () {
             $hamburger.toggleClass("is-active");
@@ -238,11 +326,13 @@
             $(".header-search-button").toggleClass('header-search-button-after');
             if ($(".header-complement").hasClass('header-complement-after')) {
                 $(".header-complement-wrapper input").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
             }
             else {
                 $(".header-complement-wrapper input").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
             }
-            });
+        });
 
         var $headercancelbutton = $(".header-cancel-button");
         $headercancelbutton.on("click", function () {
@@ -253,9 +343,11 @@
             $(".header-search-button").toggleClass('header-search-button-after');
             if ($(".header-complement").hasClass('header-complement-after')) {
                 $("header-search-bar").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
             }
             else {
                 $("header-search-bar").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
             }
         });
 
@@ -269,7 +361,7 @@
             setTimeout(function () {
                 $(".login-wrapper").toggleClass('fade-show');
                 animRodando = false;
-                setTimeout(function () {  }, 150);
+                setTimeout(function () { }, 150);
             }, 1);
             $(".login-wrapper").toggleClass('login-wrapper-after');
             $(".header-signin-button").toggleClass('header-signin-button-after');
@@ -282,11 +374,199 @@
             $("#signup-form").css({ "display": "none" });
         });
 
+        //---------------------------------------------------------------------------------------------------------------
+        // Hide Header on on scroll down
+       /* var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $(".header-wrapper").outerHeight();
+
+        $(".content-wrapper").scroll(function (event) {
+            didScroll = true;
+        });
+
+        setInterval(function () {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(".content-wrapper").scrollTop();
+
+            // Make sure they scroll more than delta
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('.header-wrapper').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('.header-wrapper').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
+        }*/
+        //-------------------------------
+
         $("#signup-form-button").on("click", function () {
             $("#login-form").css({ "display": "none" });
             $("#signup-form").css({ "display": "flex" });
         });
+
+        $("#perguntas-filtros-btn-1").on("click", function () {
+            $("#perguntas-filtros-btn-1").toggleClass("perguntas-filtros-btn-after");
+            $("#perguntas-filtro-2").prop("checked", false);
+            $("#perguntas-filtros-btn-2").removeClass("perguntas-filtros-btn-after");
+        });
+
+        $("#perguntas-filtros-btn-2").on("click", function () {
+            $("#perguntas-filtros-btn-2").toggleClass("perguntas-filtros-btn-after");
+            $("#perguntas-filtro-1").prop("checked", false);
+            $("#perguntas-filtros-btn-1").removeClass("perguntas-filtros-btn-after");
+        });
+
+        const $menu = $('.perguntas-filtro-check');
+
+        $(document).mouseup(function (e) {
+            if(  !$menu.is(e.target) && $menu.has(e.target).length === 0)//se o target nao for o container ou um dos filhos
+            {
+                $menu.prop("checked",false);
+                $(".perguntas-filtros-btn").removeClass("perguntas-filtros-btn-after");
+            }
+        });
+
+        function cancelEvent(evt) {
+            if (evt) {
+                if ("isCancelled" in evt)
+                    evt.isCancelled = true;
+                if ("preventDefault" in evt)
+                    evt.preventDefault();
+                if ("stopPropagation" in evt)
+                    evt.stopPropagation();
+            }
+            return false;
+        }
+
+        function atualizaContent() {
+            if ($.active)
+                return;
+
+            var projects = $("#projects");
+            projects.empty();
+
+            $.ajax({
+                url: "/getProjects",
+                type: "GET",
+                cache: false,
+                success: (data) => {
+                    for(var i=0; i < data.length; i++) {
+                        projects.append(
+                            '<div class="pergunta-container">'+
+                                '<a class="pergunta-imagem" href = "/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                    '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
+                                '</a>' +
+                                '<div class="pergunta-desc">' +
+                                    '<a class="pergunta-titulo" href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                        '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
+                                    '</a>'+
+                                    '<div class= "pergunta-desc-sub">'+
+                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
+                                        '<div class="pergunta-usuario">' + data[i].user +'</div>' + 
+                                    '</div>'+
+                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                                '</div>'+
+                            '</div>');
+                    
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        }
+
+        function processaLink(e) {
+            if ($.active)
+                return cancelEvent(e);
+            var id = this.getAttribute("data-id");
+            var target = document.getElementById(this.getAttribute("data-target"));
+            target.setAttribute("data-id", id);
+            target.textContent = this.textContent;
+            atualizaContent();
+            return cancelEvent(e);
+        }
+
+        (function () {
+            var links = document.getElementById("perguntas-filtro-1-dropdown").getElementsByTagName("a");
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = processaLink;
+            }
+            links = document.getElementById("perguntas-filtro-2-dropdown").getElementsByTagName("a");
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = processaLink;
+            }
+        })();
+
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
+
+    <!-- Script Backend -->
+    <script type="text/javascript">
+
+        // Login ajax
+        $("#login-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let user = {
+                username: $("#login-form-username").val(),
+                password: $("#login-form-password").val()
+            }
+            $.ajax({
+                url: "/login",
+                type: "GET",
+                data: user,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+        // Signup ajax
+        $("#signup-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let userInfo = {
+                email: $("#signup-form-email").val(),
+                username: $("#signup-form-username").val(),
+                password: $("#signup-form-password").val(),
+                repeat: $("#signup-form-repeat").val()
+            }
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: userInfo,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+
+        atualizaContent();
+    </script>
+</div>
 </body>
 </html>

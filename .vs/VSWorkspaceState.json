@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dist",
     "\\Public",
-    "\\Public\\Css",
-    "\\Public\\Imagens",
+    "\\Public\\CSS",
     "\\Views"
   ],
-  "SelectedNode": "\\Views\\indexCleanupFinal.html",
+  "SelectedNode": "\\Public\\CSS\\indexCss.css",
   "PreviewInSolutionExplorer": false
 }
