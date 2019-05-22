@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Public",
-    "\\Public\\CSS",
-    "\\Views"
+    "\\Public\\Css",
+    "\\Public\\Imagens",
+    "\\Routes"
   ],
-  "SelectedNode": "\\Public\\CSS\\indexCss.css",
   "PreviewInSolutionExplorer": false
 }
