@@ -68,6 +68,7 @@
                     </div>
                 </div>
                 <div class="login-wrapper fade">
+                    <!--<img src="../Public/Imagens/modal.svg" class="login-shape"/>-->
                     <div class="login-modal">
                         <div class="login-modal-switch">
                             <label class="form-select-container">
@@ -468,11 +469,11 @@
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '&' + data[i].title + '">' +
                                     '<div class="pergunta-imagem"><img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href="/Project/' + data[i].user + '&' + data[i].title + '&' + data[i].date + '">' +
+                                    '<a class="pergunta-titulo" href="/projects/' + data[i].id + '&' + data[i].title + '">' +
                                         '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
