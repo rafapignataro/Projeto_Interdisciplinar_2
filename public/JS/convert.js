@@ -1,4 +1,4 @@
-function convertData(data){
+module.exports = function convertData(data){
     var partes;
     if( !data || !(partes = data.split("/")) ||  partes.length !== 3 )
         return null;
