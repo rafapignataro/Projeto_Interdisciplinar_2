@@ -442,15 +442,15 @@
         });
 
         function cancelEvent(evt) {
-	        if (evt) {
-		        if ("isCancelled" in evt)
-			        evt.isCancelled = true;
-		        if ("preventDefault" in evt)
-			        evt.preventDefault();
-		        if ("stopPropagation" in evt)
-			        evt.stopPropagation();
-	        }
-	        return false;
+            if (evt) {
+                if ("isCancelled" in evt)
+                    evt.isCancelled = true;
+                if ("preventDefault" in evt)
+                    evt.preventDefault();
+                if ("stopPropagation" in evt)
+                    evt.stopPropagation();
+            }
+            return false;
         }
 
         function atualizaContent() {
