@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Public",
-    "\\Public\\CSS",
-    "\\Views"
+    "\\Public\\codemirror",
+    "\\Public\\codemirror\\addon",
+    "\\Public\\codemirror\\addon\\scroll",
+    "\\Public\\CSS"
   ],
-  "SelectedNode": "\\Public\\CSS\\indexCss.css",
+  "SelectedNode": "\\Public\\codemirror\\addon\\scroll\\simplescrollbars.js",
   "PreviewInSolutionExplorer": false
 }

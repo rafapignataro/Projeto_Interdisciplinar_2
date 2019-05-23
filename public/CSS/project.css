@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Fira Sans', sans-serif, Consolas;
 }
 
 body{
@@ -62,18 +62,20 @@ body{
 	float: right;
 }
 
-.jstree-textarea{
-	height: 590px;
-	display: flex;
-	justify-content: space-between;
+.jstree-textarea {
+    height: 450px;
+    display: flex;
+    justify-content: space-between;
+    background: #333333;
 }
 
 #jstree {
-	display: inline-block;
-	background-color: #f4f4f4;
-	margin: 0;
-	height: 100%;
-    width: 15%;
+    display: inline-block;
+    background-color: #2d2d30;
+    border-right: 1px solid #3f3f46;
+    margin: 0;
+    height: 100%;
+    width: 250px;
     overflow: auto;
     vertical-align: bottom;
     display: inline-block;
@@ -81,10 +83,11 @@ body{
 }
 
 footer {
-	background-color: #fff;
-	border-top: 1px solid black;
-	display: flex;
-	justify-content: flex-end;
+    background-color: #2d2d30;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    border: none;
 }
 
 footer .theme-mode {
