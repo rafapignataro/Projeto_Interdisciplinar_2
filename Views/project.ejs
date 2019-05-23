@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../public/CSS/project.css">
+	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -10,27 +10,33 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
 	
-	<title><%= title %></title>
+	<title><%= result.title %></title>
 
-	<script type="text/javascript" src="../public/codemirror/lib/codemirror.js"></script>
-	<link rel="stylesheet" href="../public/codemirror/lib/codemirror.css">
+	<script type="text/javascript" src="/public/codemirror/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="/public/codemirror/lib/codemirror.css">
 
 	<!-- temas -->
-	<link rel="stylesheet" href="../public/codemirror/theme/darcula.css">
-	<link rel="stylesheet" href="../public/codemirror/theme/lucario.css">
-	<link rel="stylesheet" href="../public/codemirror/theme/base16-light.css">
-    <link rel="stylesheet" href="../public/codemirror/theme/bugbase-dark.css">
+
+	<link rel="stylesheet" href="/public/codemirror/theme/darcula.css">
+	<link rel="stylesheet" href="/public/codemirror/theme/lucario.css">
+	<link rel="stylesheet" href="/public/codemirror/theme/base16-light.css">
+    <link rel="stylesheet" href="/public/codemirror/theme/bugbase-dark.css">
+
+	<link rel="stylesheet" href="/public/codemirror/theme/darcula.css">
+	<link rel="stylesheet" href="/public/codemirror/theme/lucario.css">
+	<link rel="stylesheet" href="/public/codemirror/theme/base16-light.css">
+
 	<!-- modos -->
-	<script  src="../public/codemirror/mode/css/css.js"></script>
-	<script  src="../public/codemirror/mode/javascript/javascript.js"></script>
-	<script  src="../public/codemirror/mode/xml/xml.js"></script>
-	<script  src="../public/codemirror/mode/sql/sql.js"></script>
+	<script  src="/public/codemirror/mode/css/css.js"></script>
+	<script  src="/public/codemirror/mode/javascript/javascript.js"></script>
+	<script  src="/public/codemirror/mode/xml/xml.js"></script>
+	<script  src="/public/codemirror/mode/sql/sql.js"></script>
 
 	<!-- language hint -->
-	<script src="../public/codemirror/addon/hint/css-hint.js"></script>
-	<script src="../public/codemirror/addon/hint/xml-hint.js"></script>
-	<script src="../public/codemirror/addon/hint/sql-hint.js"></script>
-	<script src="../public/codemirror/addon/hint/javascript-hint.js"></script>
+	<script src="/public/codemirror/addon/hint/css-hint.js"></script>
+	<script src="/public/codemirror/addon/hint/xml-hint.js"></script>
+	<script src="/public/codemirror/addon/hint/sql-hint.js"></script>
+	<script src="/public/codemirror/addon/hint/javascript-hint.js"></script>
 
 	<script src="../public/codemirror/addon/hint/show-hint.js"></script>
 	<link rel="stylesheet" href="../public/codemirror/addon/hint/show-hint.css">
@@ -45,19 +51,23 @@
 
     <script src="../public/codemirror/addon/scroll/simplescrollbars.js"></script>
     <link rel="stylesheet" href="../public/codemirror/addon/scroll/simplescrollbars.css">
+
+	<script src="/public/codemirror/addon/hint/show-hint.js"></script>
+	<link rel="stylesheet" href="/public/codemirror/addon/hint/show-hint.css">
+
 </head>
 <body>
 	<header class="header">
 		<a href="/" class="div-a">
-			<img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-        	<img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+			<img src="/public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+        	<img src="/public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
 		</a>   
 	</header>
     <div class="project-stuff">
-		<h2>titulo</h2>
+		<h2><%= result.title %></h2>
 		<div class="about" id="about">
-			<p class="about-user"><a href="/"></a></p>
-			<p class="about-date">data</p>
+			<p class="about-user"><a href="/"><%= result.user %></a></p>
+			<p class="about-date"><%= result.date %></p>
 		</div>
 	</div>
   	<div class="jstree-textarea">
@@ -142,19 +152,6 @@
 			var mode = input2.options[input2.selectedIndex].textContent;
 			editor.setOption("mode", mode);
 		}
-
-		var questionID = <%= questionID %>;
-		$.ajax({
-            url: "/getProjectInfo",
-			type: "GET",
-			data: questionID,
-            cache: false,
-            success: (data) => {
-        	},
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('error ' + textStatus + " " + errorThrown);
-            }
-        });
 	</script>
 </body>
 </html>

@@ -82,7 +82,7 @@ router.get('/getProjects', async (req,res) => {
 	try {
 		await Sql.conectar(async (sql) => {
 			try {
-				sql.query("select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+				sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
 					res.json(result);
 				});		
 			} catch (ex) {
@@ -94,10 +94,24 @@ router.get('/getProjects', async (req,res) => {
 	} 
 });
 
-router.get("/projects/:id&:title", async (req,res) => {
+router.get("/projects/:id/:title", async (req,res) => {
 	var questionID = req.params.id;
-
-	res.render("project", {title: "Bug Bank", questionID: questionID});
+	console.log(questionID);
+	try {
+		await Sql.conectar(async (sql) => {
+			try {
+				sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta" + 
+				" from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)" + 
+				" where pergunta.id_pergunta = " + questionID , function(error,result){
+					res.render("project", { result: result[0]});
+				});		
+			} catch (ex) {
+				res.json(ex);
+			}
+		});
+	} catch (ex) {
+		res.json(ex);
+	} 	
 });
 
 module.exports = router;
