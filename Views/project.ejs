@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/public/CSS/indexCss.css">
 	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 
@@ -11,147 +12,110 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
 	
 	<title><%= result.title %></title>
-
-	<script type="text/javascript" src="/public/codemirror/lib/codemirror.js"></script>
-	<link rel="stylesheet" href="/public/codemirror/lib/codemirror.css">
-
-	<!-- temas -->
-
-	<link rel="stylesheet" href="/public/codemirror/theme/darcula.css">
-	<link rel="stylesheet" href="/public/codemirror/theme/lucario.css">
-	<link rel="stylesheet" href="/public/codemirror/theme/base16-light.css">
-    <link rel="stylesheet" href="/public/codemirror/theme/bugbase-dark.css">
-
-	<link rel="stylesheet" href="/public/codemirror/theme/darcula.css">
-	<link rel="stylesheet" href="/public/codemirror/theme/lucario.css">
-	<link rel="stylesheet" href="/public/codemirror/theme/base16-light.css">
-
-	<!-- modos -->
-	<script  src="/public/codemirror/mode/css/css.js"></script>
-	<script  src="/public/codemirror/mode/javascript/javascript.js"></script>
-	<script  src="/public/codemirror/mode/xml/xml.js"></script>
-	<script  src="/public/codemirror/mode/sql/sql.js"></script>
-
-	<!-- language hint -->
-	<script src="/public/codemirror/addon/hint/css-hint.js"></script>
-	<script src="/public/codemirror/addon/hint/xml-hint.js"></script>
-	<script src="/public/codemirror/addon/hint/sql-hint.js"></script>
-	<script src="/public/codemirror/addon/hint/javascript-hint.js"></script>
-
-	<script src="../public/codemirror/addon/hint/show-hint.js"></script>
-	<link rel="stylesheet" href="../public/codemirror/addon/hint/show-hint.css">
-
-    <script src="../public/codemirror/addon/selection/active-line.js"></script>
-    <script src="../public/codemirror/addon/selection/mark-selection.js"></script>
-    <script src="../public/codemirror/addon/selection/selection-pointer.js"></script>
-    <script src="../public/codemirror/addon/edit/matchbrackets.js"></script>
-    <script src="../public/codemirror/addon/edit/closebrackets.js"></script>
-    <script src="../public/codemirror/addon/edit/matchtag.js"></script>
-    <script src="../public/codemirror/addon/edit/closetag.js"></script>
-
-    <script src="../public/codemirror/addon/scroll/simplescrollbars.js"></script>
-    <link rel="stylesheet" href="../public/codemirror/addon/scroll/simplescrollbars.css">
-
-	<script src="/public/codemirror/addon/hint/show-hint.js"></script>
-	<link rel="stylesheet" href="/public/codemirror/addon/hint/show-hint.css">
-
 </head>
 <body>
-	<header class="header">
-		<a href="/" class="div-a">
-			<img src="/public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-        	<img src="/public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
-		</a>   
-	</header>
-    <div class="project-stuff">
-		<h2><%= result.title %></h2>
-		<div class="about" id="about">
-			<p class="about-user"><a href="/"><%= result.user %></a></p>
-			<p class="about-date"><%= result.date %></p>
-		</div>
-	</div>
-  	<div class="jstree-textarea">
-		<textarea name="area" class="textarea" id="textarea" cols="30" rows="10"></textarea>
-          		<div id="jstree" class="fa fa-folder">
-			<ul>
-				<li>Root
-					<ul>
-						<li>Filho 1</li>
-						<li>Filho 2
-							<ul>
-								<li>Filho 2.1</li>
-								<li>Filho 2.2</li>
-							</ul>
-						</li>
-						<li>Filho 3</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
+<div class="header-wrapper nav-down">
+            <div class="header">
+                <div class="header-container">
+                    <div class="header-left">
+                        <div class="header-logos-wrapper">
+                            <div class="header-logos">
+                                <img src="../../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-center">
+                        <div class="project-info">
+		                    <h2><%= result.title %></h2>
+		                    <div class="about" id="about">
+                                <p>criado por</p>
+			                    <p class="about-user"><a href="/"><%= result.user %></a></p>
+                                <p>em</p>
+			                    <p class="about-date"><%= result.date %></p>
+		                    </div>
+	                    </div>
+                    </div>
+                    <div class="header-right">
+                        <button type="button" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!------------------------------------------------------------------------------------------------------------------------->
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="editor-header">
 
-	<footer>
-		<div class="theme-mode">
-			<ul>
-				<li>
-					<select onchange="selectTheme()" id="select">
-						<option>Temas</option>
-						<option>darcula</option>
-						<option>lucario</option>
-						<option>base16-light</option>
-                        <option selected>bugbase-dark</option>
-					</select>	
-				</li>
-				<li>
-					<select onchange="selectMode()" id="select2">
-						<option selected>Linguagens</option>
-						<option>javascript</option>
-						<option>css</option>
-						<option>xml</option>
-						<option>sql</option>
-					</select>
-				</li>
-			</ul>
-		</div>	
-	</footer>
+            </div>
+            <div class="editor">
+                <div class="editor-options">
 
-	<script type="text/javascript">
-		$('#jstree').jstree({
-			"core" : {
-      		"check_callback" : true
-    		},
-    		"types" : {
-      			"default" : {
-        			"icon" : "fa fa-folder"
-      			},
-    		},
-			"plugins": ["dnd","sort","types","unique"]
-		});	
-	</script>
-	<script type="text/javascript">
-		var editor = CodeMirror.fromTextArea(document.getElementById('textarea'), {
-            lineNumbers: true,
-            styleActiveLine: true,
-            autoCloseBrackets: true,
-            matchBrackets: true,
-            matchTags: true,
-            autoCloseTags: true,
-            scrollbarStyle: "simple",
-			extraKeys: {"Ctrl-Space": "autocomplete"},
-            theme: "bugbase-dark"
-		});
+                </div>
+                <div id="container"></div>
+                <div class="file-tree">
 
-		var input = document.getElementById("select");
-		function selectTheme(){
-			var theme = input.options[input.selectedIndex].textContent;
-			editor.setOption("theme", theme);
-		}
-		
-		var input2 = document.getElementById("select2");
-		function selectMode(){
-			var mode = input2.options[input2.selectedIndex].textContent;
-			editor.setOption("mode", mode);
-		}
-	</script>
+                </div>
+            </div>
+            <div class ="editor-footer">
+                <div class="project-desc-container">
+                    <input type="checkbox" id="project-desc-dropdown-check" class="project-desc-dropdown-check">
+                    <div class="project-desc-title">
+                        <p>Description</p>
+                    </div>
+                    <div class="project-desc-dropdown-content">
+                        <div class="project-desc-content">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum feugiat nisi nec venenatis. Pellentesque ac sem feugiat, maximus justo in, pellentesque ligula. Vestibulum gravida dolor ultrices scelerisque euismod. Cras in tellus ultrices, maximus tellus sit amet, volutpat nisl. Pellentesque malesuada felis at nulla convallis, nec laoreet nunc luctus. Pellentesque dignissim velit ac augue dictum posuere. In sollicitudin, leo sed tristique faucibus, sapien mi lobortis libero, eget convallis odio ex id felis. Mauris mollis arcu ut elit eleifend dictum. Pellentesque quis ornare lacus. Curabitur ullamcorper, nisi id sollicitudin fermentum, lacus tellus sagittis massa, at cursus libero mi a augue.
+                            </p>
+                        </div>
+                    </div>
+                    <span class="fa fa-chevron-down"></span>
+                </div>
+
+                <div class="informacoes">
+
+                </div>
+            </div>
+
+            <div class="comments-container">
+                <div class="comment-layout">
+                    <div class="comment-left">
+
+                    </div>
+                    <div class="comment-right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SCRIPTS-------------------------------------------------------------------------------------------------------------------------->
+    <script src="../../Public/monaco/min/vs/loader.js"></script>
+    
+    <script>
+	    require.config({ paths: { 'vs': '../../Public/monaco/min/vs' }});
+	    require(['vs/editor/editor.main'], function() {
+		    var editor = monaco.editor.create(document.getElementById('container'), {
+			    value: [
+				    'function x() {',
+				    '\tconsole.log("Hello world!");',
+				    '}'
+			    ].join('\n'),
+                language: 'javascript',
+                theme: "vs-dark",
+                automaticLayout: true,
+                scrollbar: {
+                    verticalHasArrows: true,
+                    horizontalHasArrows: true,
+                    vertical: 'visible',
+                    horizontal: 'visible',
+                    verticalScrollbarSize: 17,
+                    horizontalScrollbarSize: 17,
+                    arrowSize: 30
+                }
+		    });
+	    });
+    </script>
+
 </body>
 </html>

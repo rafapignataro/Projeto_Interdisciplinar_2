@@ -22,7 +22,6 @@ html, body {
     width: 100%;
     top: 0;
     transition: top 0.2s ease-in-out;
-    width: 100%;
 }
 
 .nav-up {
@@ -129,7 +128,6 @@ html, body {
 }
 
 .header-right {
-    width: 65px;
     justify-content: space-between;
     display: flex;
 }
@@ -192,7 +190,6 @@ html, body {
 }
 
 .header-profile-button {
-    display: none;
     color: #848d95;
     border: none;
     background: none;
