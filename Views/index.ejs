@@ -451,16 +451,20 @@
             }
             return false;
         }
+        
+        //Não sabia se era o correto mas na ProcessaLink() enviei a atualizaContent() com o data-id como parametro, dai enviei o
+        //id pela url e peguei ele no banco ( vejam la, fiz um if para cada id que chegasse(mais uma vez n sei se é certo)).
 
-        function atualizaContent() {
+        function atualizaContent(dataID) {
             if ($.active)
                 return;
 
             var projects = $("#projects");
             projects.empty();
 
+
             $.ajax({
-                url: "/getProjects",
+                url: "/getProjects/" + dataID,
                 type: "GET",
                 cache: false,
                 success: (data) => {
@@ -497,7 +501,7 @@
             var target = document.getElementById(this.getAttribute("data-target"));
             target.setAttribute("data-id", id);
             target.textContent = this.textContent;
-            atualizaContent();
+            atualizaContent(id);
             return cancelEvent(e);
         }
 
