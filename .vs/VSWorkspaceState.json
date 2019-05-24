@@ -2,11 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Public",
-    "\\Public\\codemirror",
-    "\\Public\\codemirror\\addon",
-    "\\Public\\codemirror\\addon\\scroll",
-    "\\Public\\CSS"
+    "\\Public\\monaco",
+    "\\Public\\monaco\\esm",
+    "\\Public\\monaco\\esm\\vs",
+    "\\Public\\monaco\\esm\\vs\\editor",
+    "\\Public\\monaco\\esm\\vs\\editor\\standalone",
+    "\\Public\\monaco\\esm\\vs\\editor\\standalone\\common"
   ],
-  "SelectedNode": "\\Public\\codemirror\\addon\\scroll\\simplescrollbars.js",
+  "SelectedNode": "\\Public\\monaco\\esm\\vs\\editor\\standalone\\common\\themes.js",
   "PreviewInSolutionExplorer": false
 }

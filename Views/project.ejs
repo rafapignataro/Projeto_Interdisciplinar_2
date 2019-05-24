@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/public/CSS/indexCss.css">
 	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
@@ -20,7 +19,8 @@
                     <div class="header-left">
                         <div class="header-logos-wrapper">
                             <div class="header-logos">
-                                <img src="../../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/>
+                                <a href="/"> 
+                                    <img src="../../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/></a>
                             </div>
                         </div>
                     </div>
@@ -45,13 +45,45 @@
     <div class="content-wrapper">
         <div class="content">
             <div class="editor-header">
-
+                <div class="file-tabs">
+                    <div class="file-tab-container">
+                        <input type="radio" class="file-radio" name="file" checked/>
+                        <div class="file-tab">
+                            <span>projeto.ejs</span>
+                            <button type="button" class="fa fa-close close-tab"></button>
+                        </div>
+                    </div>
+                    <div class="file-tab-container">
+                        <input type="radio" class="file-radio" name="file"/>
+                        <div class="file-tab">
+                            <span>projetoCss.css</span>
+                            <button type="button" class="fa fa-close close-tab"></button>
+                        </div>
+                    </div>
+                                        <div class="file-tab-container">
+                        <input type="radio" class="file-radio" name="file"/>
+                        <div class="file-tab">
+                            <span>projeto.ejs</span>
+                            <button type="button" class="fa fa-close close-tab"></button>
+                        </div>
+                    </div>
+                    <div class="file-tab-container">
+                        <input type="radio" class="file-radio" name="file"/>
+                        <div class="file-tab">
+                            <span>projetoLayoutIndex.html</span>
+                            <button type="button" class="fa fa-close close-tab"></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="editor">
                 <div class="editor-options">
 
                 </div>
-                <div id="container"></div>
+                <div class="container-wrapper">
+                    <div class="container-spacer"></div>
+                    <div id="container"></div>
+                </div>
                 <div class="file-tree">
 
                 </div>
@@ -80,7 +112,7 @@
             <div class="comments-container">
                 <div class="comment-layout">
                     <div class="comment-left">
-
+                        <a href="/" class="comment-profile-picture fa fa-circle"></a>
                     </div>
                     <div class="comment-right">
 

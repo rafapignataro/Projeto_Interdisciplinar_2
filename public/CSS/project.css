@@ -81,7 +81,84 @@ body{
 
 .editor-header {
     height: 35px;
+    margin-left:40px;
+    display:flex;
+
 }
+
+.file-tabs {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    max-width: calc(100% - 410px);
+}
+
+.file-tab-container {
+    position: relative;
+}
+
+.file-tab {
+    display: flex;
+    background: #2d2d30;
+    color: #dcdcdc;
+    padding: 2px 8px;
+    height: 18px;
+    position: relative;
+}
+
+    .file-tab span {
+        font-size: 14px;
+        font-family: Arial;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+    }
+
+.file-radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(100% - 25px);
+    z-index:1;
+    opacity:0;
+}
+
+    .file-radio:hover ~ .file-tab {
+        background: #dc404f;
+    }
+
+    .file-radio:checked ~ .file-tab{
+        background: #cc2b3b;
+    }
+
+    .file-radio:checked ~ .file-tab span {
+        max-width: 150px;
+        overflow: visible;
+    }
+
+
+.close-tab {
+    margin-left: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    background: none;
+    outline: none;
+    border: none;
+    color: #dcdcdc;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0 4px;
+}
+
+    .close-tab:hover {
+        background: #ed5665;
+    }
+
+    .close-tab:active {
+        background: #ae1d2c;
+    }
 
 .editor {
     width:100%;
@@ -92,28 +169,39 @@ body{
     width: 40px;
 }
 
-#container {
-    background-color: #333333;
-    padding-left: 20px;
-    border-left: solid 1px #3f3f46;
+.container-wrapper {
+    border-top: 2px solid #cc2b3b;
     width: calc(100% - 410px);
+    min-width: 300px;
+    padding-right: 1px;
+    display:flex;
+}
+
+.container-spacer {
+    width: 20px;
+    background-color: #333333;
+    border-left: solid 1px #3f3f46;
+    height: 100%;
+}
+
+#container {
+    width: 100%;
     height: 490px;
     min-width: 300px;
 }
 
 .monaco-editor {
-    border-top: 2px solid #cc2b3b;
 }
 
 .file-tree {
     background-color: #2d2d30;
     width: 350px;
     border: 1px solid #3f3f46;
+    border-left:none;
 }
 
 .editor-footer {
     z-index:1;
-    background: #3f3f46;
     margin-left:40px;
     display:flex;
     flex-direction:row;
@@ -209,17 +297,27 @@ body{
     align-self:center;
 }
 
-.comment-layout{
-    display:flex;
-    flex-direction:row;
-    height:100%;
+.comment-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
     padding: 25px 0;
+    border-top: 1px solid #1e1e1e;
 }
 
-.comment-left{
-    width:36px;
-    padding-right:15px;
-    background:pink;
+.comment-left {
+    width: 36px;
+    padding-right: 15px;
+    background: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment-profile-picture {
+    font-size: 35px;
+    text-decoration: none;
+    color: #848d95;
 }
 
 .comment-right{
