@@ -83,7 +83,6 @@ body{
     height: 35px;
     margin-left:40px;
     display:flex;
-
 }
 
 .file-tabs {
@@ -172,9 +171,9 @@ body{
 .container-wrapper {
     border-top: 2px solid #cc2b3b;
     width: calc(100% - 410px);
-    min-width: 300px;
+    min-width: 550px;
     padding-right: 1px;
-    display:flex;
+    display: flex;
 }
 
 .container-spacer {
@@ -187,7 +186,7 @@ body{
 #container {
     width: 100%;
     height: 490px;
-    min-width: 300px;
+    min-width: 550px;
 }
 
 .monaco-editor {
@@ -198,6 +197,7 @@ body{
     width: 350px;
     border: 1px solid #3f3f46;
     border-left:none;
+    border-bottom:none;
 }
 
 .editor-footer {
@@ -207,13 +207,34 @@ body{
     flex-direction:row;
 }
 
-.informacoes {
-    width: 60%;
-    background-color: #2d2d30;
+.informacoes-container {
     display: flex;
-    border: 1px solid #3f3f46;
+    width: 60%;
     flex-direction: column;
 }
+
+.informacoes {
+    color: #DCDCDC;
+    background-color: #252526;
+    border: 1px solid #3f3f46;
+    font-size:12px;
+}
+
+.submit-answer {
+    padding: 15px 50px;
+    background: #cc2b3b;
+    outline: none;
+    border: none;
+    color: #DCDCDC;
+    margin-top: 20px;
+    align-self: center;
+    transition: background-color linear 0.2s;
+    cursor: pointer;
+}
+
+    .submit-answer:hover {
+        background: #ae1d2c;
+    }
 
 .project-desc-container {
     background-color: #2d2d30;
@@ -226,8 +247,9 @@ body{
 }
 
 .project-desc-title {
+    z-index: 1;
     display: flex;
-    height: 35px;
+    height: 34px;
     align-items: center;
     margin-bottom: 25px;
     box-shadow: 0 1px 0px rgba(0,0,0,0.3);
@@ -247,22 +269,26 @@ body{
     background: #252526;
     color: #fff;
     padding: 10px 15px;
+    box-shadow: rgba(0,0,0,0.2) 0 0 5px inset;
 }
 
     .project-desc-content p {
         font-size: 14px;
-        max-height: 210px;
+        max-height: 250px;
         overflow-y: auto;
+        font-family: Arial;
+        letter-spacing: 0.3px;
     }
 
 .project-desc-container span {
     position: absolute;
     left: 50%;
-    bottom: 4px;
+    bottom: 6px;
     width: 10px;
     transform: none;
     transition: transform 0.05s linear;
     color: #dcdcdc;
+    font-size: 12px;
 }
 
 .project-desc-dropdown-check {
@@ -293,14 +319,12 @@ body{
 .comments-container {
     padding: 25px 16px;
     background-color: #2d2d30;
-    height: 900px;
     align-self:center;
 }
 
 .comment-layout {
     display: flex;
     flex-direction: row;
-    height: 100%;
     padding: 25px 0;
     border-top: 1px solid #1e1e1e;
 }
@@ -308,7 +332,6 @@ body{
 .comment-left {
     width: 36px;
     padding-right: 15px;
-    background: pink;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -318,11 +341,35 @@ body{
     font-size: 35px;
     text-decoration: none;
     color: #848d95;
+    margin-bottom: 20px;
 }
 
 .comment-right{
     width:70vw;
-    background:yellow;
+}
+
+.comment-text {
+    color: #dcdcdc;
+    background:#2d2d30;
+    resize:none;
+    outline:none;
+    width:100%;
+}
+
+.comment-footer{
+    display:flex;
+    flex-direction:column;
+}
+
+.comment-info{
+    display:flex;
+    flex-direction:row;
+}
+
+.comment-info-left {
+}
+
+.comment-info-right {
 }
 
 footer {
@@ -345,4 +392,13 @@ footer {
 
 .line-numbers, .view-line span{
     font-family:Consolas;
+}
+
+.ql-toolbar.ql-snow {
+    padding: 5px 8px;
+    background: #2d2d30;
+}
+
+.ql-editor {
+    box-shadow: rgba(0,0,0,0.2) 0 0 5px inset;
 }

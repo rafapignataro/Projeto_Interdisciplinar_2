@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/public/quill/assets/snow.css">
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/public/CSS/indexCss.css">
 	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
@@ -9,6 +12,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <link rel="stylesheet" href="/Public/upvotejs/dist/upvotejs/upvotejs.css">
+    <script src="/Public/upvotejs/dist/upvotejs/upvotejs.vanilla.js"></script>
+
+
 	
 	<title><%= result.title %></title>
 </head>
@@ -40,90 +48,131 @@
                     </div>
                 </div>
             </div>
-        </div>
+</div>
     <!------------------------------------------------------------------------------------------------------------------------->
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="editor-header">
-                <div class="file-tabs">
-                    <div class="file-tab-container">
-                        <input type="radio" class="file-radio" name="file" checked/>
-                        <div class="file-tab">
-                            <span>projeto.ejs</span>
-                            <button type="button" class="fa fa-close close-tab"></button>
-                        </div>
-                    </div>
-                    <div class="file-tab-container">
-                        <input type="radio" class="file-radio" name="file"/>
-                        <div class="file-tab">
-                            <span>projetoCss.css</span>
-                            <button type="button" class="fa fa-close close-tab"></button>
-                        </div>
-                    </div>
-                                        <div class="file-tab-container">
-                        <input type="radio" class="file-radio" name="file"/>
-                        <div class="file-tab">
-                            <span>projeto.ejs</span>
-                            <button type="button" class="fa fa-close close-tab"></button>
-                        </div>
-                    </div>
-                    <div class="file-tab-container">
-                        <input type="radio" class="file-radio" name="file"/>
-                        <div class="file-tab">
-                            <span>projetoLayoutIndex.html</span>
-                            <button type="button" class="fa fa-close close-tab"></button>
-                        </div>
-                    </div>
+<div class="content-wrapper">
+<div class="content">
+    <div class="editor-header">
+        <div class="file-tabs">
+            <!--MAXIMO 4 TABS ABERTAS POR VEZ, SE MAIS UMA FOR ABERTA, A PRIMEIRA É FECHADA-->
+
+            <div class="file-tab-container">
+                <input type="radio" class="file-radio" name="file" checked/>
+                <div class="file-tab">
+                    <span>projeto.ejs</span>
+                    <button type="button" class="fa fa-close close-tab"></button>
                 </div>
             </div>
-            <div class="editor">
-                <div class="editor-options">
-
-                </div>
-                <div class="container-wrapper">
-                    <div class="container-spacer"></div>
-                    <div id="container"></div>
-                </div>
-                <div class="file-tree">
-
+            <div class="file-tab-container">
+                <input type="radio" class="file-radio" name="file"/>
+                <div class="file-tab">
+                    <span>projetoCss.css</span>
+                    <button type="button" class="fa fa-close close-tab"></button>
                 </div>
             </div>
-            <div class ="editor-footer">
-                <div class="project-desc-container">
-                    <input type="checkbox" id="project-desc-dropdown-check" class="project-desc-dropdown-check">
-                    <div class="project-desc-title">
-                        <p>Description</p>
-                    </div>
-                    <div class="project-desc-dropdown-content">
-                        <div class="project-desc-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum feugiat nisi nec venenatis. Pellentesque ac sem feugiat, maximus justo in, pellentesque ligula. Vestibulum gravida dolor ultrices scelerisque euismod. Cras in tellus ultrices, maximus tellus sit amet, volutpat nisl. Pellentesque malesuada felis at nulla convallis, nec laoreet nunc luctus. Pellentesque dignissim velit ac augue dictum posuere. In sollicitudin, leo sed tristique faucibus, sapien mi lobortis libero, eget convallis odio ex id felis. Mauris mollis arcu ut elit eleifend dictum. Pellentesque quis ornare lacus. Curabitur ullamcorper, nisi id sollicitudin fermentum, lacus tellus sagittis massa, at cursus libero mi a augue.
-                            </p>
+                                <div class="file-tab-container">
+                <input type="radio" class="file-radio" name="file"/>
+                <div class="file-tab">
+                    <span>projeto.ejs</span>
+                    <button type="button" class="fa fa-close close-tab"></button>
+                </div>
+            </div>
+            <div class="file-tab-container">
+                <input type="radio" class="file-radio" name="file"/>
+                <div class="file-tab">
+                    <span>projetoLayoutIndex.html</span>
+                    <button type="button" class="fa fa-close close-tab"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="editor">
+        <div class="editor-options">
+
+        </div>
+        <div class="container-wrapper">
+            <div class="container-spacer"></div>
+            <div id="container"></div>
+        </div>
+        <div class="file-tree">
+
+        </div>
+    </div>
+    <div class ="editor-footer">
+        <div class="project-desc-container">
+            <input type="checkbox" id="project-desc-dropdown-check" class="project-desc-dropdown-check">
+            <div class="project-desc-title">
+                <p>Description</p>
+            </div>
+            <div class="project-desc-dropdown-content">
+                <div class="project-desc-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum feugiat nisi nec venenatis. Pellentesque ac sem feugiat, maximus justo in, pellentesque ligula. Vestibulum gravida dolor ultrices scelerisque euismod. Cras in tellus ultrices, maximus tellus sit amet, volutpat nisl. Pellentesque malesuada felis at nulla convallis, nec laoreet nunc luctus. Pellentesque dignissim velit ac augue dictum posuere. In sollicitudin, leo sed tristique faucibus, sapien mi lobortis libero, eget convallis odio ex id felis. Mauris mollis arcu ut elit eleifend dictum. Pellentesque quis ornare lacus. Curabitur ullamcorper, nisi id sollicitudin fermentum, lacus tellus sagittis massa, at cursus libero mi a augue.
+                    </p>
+                </div>
+            </div>
+            <span class="fa fa-chevron-down"></span>
+        </div>
+
+        <div class="informacoes-container">
+            <div class="informacoes">
+                <div id="editor-container"></div>
+            </div>
+            <input type="submit" class="submit-answer" value="Responder">
+        </div>
+    </div>
+
+    <div class="comments-container">
+        <div class="comment-layout">
+            <div class="comment-left">
+                <a href="/" class="comment-profile-picture fa fa-circle"></a>
+                <div id="basic" class="upvotejs">
+                    <a class="upvote"></a>
+                    <span class="count">0</span>
+                    <a class="downvote"></a>
+                    <a class="star"></a>
+                </div>
+            </div>
+            <div class="comment-right">                                                          <!------------------------------------------------------------------------------------------------->
+
+
+
+                <!------------------------------------------------------------------------------------------------->
+            </div>
+                <div class="comment-footer">
+                    <div class="comment-info">
+                        <div class="comment-info-left">
+
                         </div>
-                    </div>
-                    <span class="fa fa-chevron-down"></span>
-                </div>
+                        <div class="comment-info-right">
 
-                <div class="informacoes">
-
-                </div>
-            </div>
-
-            <div class="comments-container">
-                <div class="comment-layout">
-                    <div class="comment-left">
-                        <a href="/" class="comment-profile-picture fa fa-circle"></a>
-                    </div>
-                    <div class="comment-right">
-
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- SCRIPTS-------------------------------------------------------------------------------------------------------------------------->
+</div>
+    <!-- SCRIPTS------------------------------------------------------------------------------------------------->
+
+
+    <script>
+        var quill = new Quill('#editor-container', {
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline'],
+              ['code-block'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              [{ 'indent': '-1'}, { 'indent': '+1' }], 
+            ]
+          },
+          placeholder: '',
+          theme: 'snow'
+        });
+    </script>
+
+    <script>Upvote.create('basic');</script>
     <script src="../../Public/monaco/min/vs/loader.js"></script>
-    
     <script>
 	    require.config({ paths: { 'vs': '../../Public/monaco/min/vs' }});
 	    require(['vs/editor/editor.main'], function() {
