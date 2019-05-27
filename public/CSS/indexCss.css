@@ -1039,11 +1039,13 @@ html, body {
     text-decoration: none;
 }
 
+.profile p { margin-top: 20px; }
+
 .profile .spacer { padding: 15px; }
 
 .profile .sidebar {
     background: transparent;
-    width: 20%;
+    width: 25%;
 }
 
 .profile .sidebar figure { margin: 0; }
@@ -1059,7 +1061,7 @@ html, body {
     width: 100%;
 }
 
-.profile .content { width: 80%; }
+.profile .content { width: 75%; }
 
 .profile .content nav ul {
     border-color: #ACACAC;
@@ -1094,18 +1096,3 @@ html, body {
     position: absolute;
     width: 100%;
 }
-
-/* .foto-perfil{
-    display: flex;
-    justify-content: center;
-    margin-top: 114px;
-    margin-right: 413px;
-} */
-
-/* .informacoes{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 314px;
-    margin-right: 413px;
-} */
