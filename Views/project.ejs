@@ -35,7 +35,7 @@
                     <div class="header-center">
                         <div class="project-info">
 		                    <h2><%= result.title %></h2>
-		                    <div class="about" id="about">
+		                    <div class="about-projeto" id="about">
                                 <p>criado por</p>
 			                    <p class="about-user"><a href="/"><%= result.user %></a></p>
                                 <p>em</p>
@@ -106,9 +106,7 @@
             </div>
             <div class="project-desc-dropdown-content">
                 <div class="project-desc-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum feugiat nisi nec venenatis. Pellentesque ac sem feugiat, maximus justo in, pellentesque ligula. Vestibulum gravida dolor ultrices scelerisque euismod. Cras in tellus ultrices, maximus tellus sit amet, volutpat nisl. Pellentesque malesuada felis at nulla convallis, nec laoreet nunc luctus. Pellentesque dignissim velit ac augue dictum posuere. In sollicitudin, leo sed tristique faucibus, sapien mi lobortis libero, eget convallis odio ex id felis. Mauris mollis arcu ut elit eleifend dictum. Pellentesque quis ornare lacus. Curabitur ullamcorper, nisi id sollicitudin fermentum, lacus tellus sagittis massa, at cursus libero mi a augue.
-                    </p>
+                    <div id="description"></div>
                 </div>
             </div>
             <span class="fa fa-chevron-down"></span>
@@ -116,9 +114,17 @@
 
         <div class="informacoes-container">
             <div class="informacoes">
-                <div id="editor-container"></div>
+                <div id="form-container" class="container">
+                  <form>
+                      <input name="about" type="hidden">
+                      <div id="editor-container">
+	  
+                      </div>
+                      
+                      <input type="submit" class="submit-answer" value="Responder">
+                  </form>
+                </div>
             </div>
-            <input type="submit" class="submit-answer" value="Responder">
         </div>
     </div>
 
@@ -169,6 +175,18 @@
           placeholder: '',
           theme: 'snow'
         });
+        var form = document.querySelector('form');
+            form.onsubmit = function() {
+              // Populate hidden form on submit
+              var about = document.querySelector('input[name=about]');
+              about.value = JSON.stringify(quill.getContents());
+  
+              console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+  
+              // No back end to actually submit to!
+              alert('Open the console to see the submit data!')
+              return false;
+            };
     </script>
 
     <script>Upvote.create('basic');</script>

@@ -2,13 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Public",
-    "\\Public\\monaco",
-    "\\Public\\monaco\\esm",
-    "\\Public\\monaco\\esm\\vs",
-    "\\Public\\monaco\\esm\\vs\\editor",
-    "\\Public\\monaco\\esm\\vs\\editor\\standalone",
-    "\\Public\\monaco\\esm\\vs\\editor\\standalone\\common"
+    "\\Public\\quill"
   ],
-  "SelectedNode": "\\Public\\monaco\\esm\\vs\\editor\\standalone\\common\\themes.js",
+  "SelectedNode": "\\Public\\quill\\quill.js",
   "PreviewInSolutionExplorer": false
 }
