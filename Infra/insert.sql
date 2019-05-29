@@ -13,6 +13,15 @@ values ("Como fazer get e post em Node?",curdate(),"get/post Node", "Estou com d
 ("Problemas com EJS",curdate(),"Problema EJS", "Não sei como implementar o EJS em meu projeto :(", 2);
 
 select * from pergunta;
+
 select titulo_pergunta as title, dt_pergunta as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user , pergunta.id_pergunta as id 
 from pergunta 
 inner join usuario on ( usuario.id_usuario = pergunta.id_usuario);
+
+INSERT INTO pergunta (titulo_pergunta,dt_pergunta,nick_pergunta,desc_pergunta,id_usuario) 
+values ("Não consigo usar ajax nesse projeto",curdate(),"ajax", "Não consigo implementar o Ajax nessa minha aplicação!", 2);
+
+select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id 
+from pergunta 
+inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)
+order by date DESC;
