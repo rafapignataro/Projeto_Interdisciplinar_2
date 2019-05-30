@@ -13,6 +13,10 @@ router.get('/download', function(req, res) {
 	res.render('download', { title: 'Download' });
 });
 
+router.get('/perfil', function(req, res) {
+	res.render('perfil', { title: 'Perfil' });
+});
+
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
