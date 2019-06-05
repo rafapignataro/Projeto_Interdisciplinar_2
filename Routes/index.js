@@ -13,9 +13,10 @@ router.get('/download', function(req, res) {
 	res.render('download', { title: 'Download' });
 });
 
-router.get('/perfil', function(req, res) {
-	res.render('perfil', { title: 'Perfil' });
-})
+// router.get('/:user', function(req, res) {
+// 	var user = req.params.user;
+// 	res.render('perfil', { title: 'Perfil' });
+// })
 
 router.get('/criar-bug', function(req, res) {
 	res.render('criar-bug', { title: 'criar-bug' });
