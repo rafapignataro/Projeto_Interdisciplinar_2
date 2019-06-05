@@ -453,7 +453,7 @@
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
                                         '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                        '<a class="pergunta-usuario" href="#">' + data[i].user +'</a>' + 
+                                        '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' + 
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +
                                 '</div>'+
@@ -466,7 +466,7 @@
                 }
             });
 
-            //Get user projects
+            //Get user projects sidebar
             var sidebarBugs = $("#lista-bugs");
             sidebarBugs.empty();
 

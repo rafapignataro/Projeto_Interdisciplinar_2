@@ -13,10 +13,19 @@ router.get('/download', function(req, res) {
 	res.render('download', { title: 'Download' });
 });
 
-// router.get('/:user', function(req, res) {
-// 	var user = req.params.user;
-// 	res.render('perfil', { title: 'Perfil' });
-// })
+router.get('/profile/:user', wrap(async function(req, res) {
+	var user = req.params.user;
+	var userLogado = false;
+	let u = await validaCookie(req, res);
+	if (!u){	
+		res.render('perfil', { title: 'Perfil', userLogado: userLogado });
+		console.log(userLogado);
+		return;
+	}
+	userLogado = true
+	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado });
+	console.log(userLogado);
+}));
 
 router.get('/criar-bug', function(req, res) {
 	res.render('criar-bug', { title: 'criar-bug' });

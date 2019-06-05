@@ -126,34 +126,7 @@
                 <div class="sidebar-scroller">
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
-                            <li id="sidebar-list-title" class="noselection">
-                                MEUS BUGS
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 1</div>
-                                        <img src="../Public/Imagens/NEW.svg" class="item-notification"/>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 2</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 3</div>
-                                    </div>
-                                </a>
-                            </li>
+                        
                         </ul>
 
                         <ul class="sidebar" id="lista-contribs">
@@ -294,6 +267,45 @@
             </div>
         </div>
     </div>
+    <script>
+    
+    function atualizaContent(dataID) {
+            if ($.active)
+                return;
 
+            
+            //Get user projects sidebar
+            var sidebarBugs = $("#lista-bugs");
+            sidebarBugs.empty();
+
+            sidebarBugs.append('<li id="sidebar-list-title" class="noselection"> MEUS BUGS </li>');
+
+            $.ajax({
+                url: "/getUserProjects",
+                type: "GET",
+                cache: false,
+                success: (data) => {
+                    for(var i=0; i < data.length; i++) {
+                        sidebarBugs.append(
+                            '<li>'+
+                                '<a href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<div class="sidebar-list-item">'+
+                                        '<img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category"/>'+
+                                        '<div class="sidebar-list-item-name">' + data[i].titulo_pergunta + '</div>' +
+                                    '</div>'+
+                                '</a>' +
+                            '</li>'
+                        );
+                        
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+
+        }
+        atualizaContent();
+    </script>
 </body>
 </html>

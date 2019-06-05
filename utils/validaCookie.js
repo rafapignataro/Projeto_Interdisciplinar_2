@@ -5,8 +5,8 @@ module.exports = async function validaCookie (req, res) {
     let cookieStr = req.cookies["usuario"];
     if (!cookieStr || cookieStr.length !== 40) {
         if (res) {
-            res.statusCode = 403;
-            res.json("Não permitido");
+            // res.statusCode = 403;
+            // res.json("Não permitido");
         }
         return null;
     } else {
@@ -24,8 +24,8 @@ module.exports = async function validaCookie (req, res) {
         });
         if (!login_usuario) {
             if (res) {
-                res.statusCode = 403;
-                res.json("Não permitido");
+                // res.statusCode = 403;
+                // res.json("Não permitido");
             }
             return null;
         }
