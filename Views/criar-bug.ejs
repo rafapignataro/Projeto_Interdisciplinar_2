@@ -262,38 +262,35 @@
             </div>
         </div>
 
-<!-------------------------------------------------------------- PERFIL ----------------------------------------------------------------------->
-    <div class="content-wrapper profile">
-        <!-- Barra lateral esquerda -->
-        <div class="sidebar left">
-            <div class="spacer">
-                <figure>
-                    <img src="https://via.placeholder.com/170x170">
-                    <figcaption>
-                        <p class="bold">Bruna Rodrigues</p>
-                        <p class="italic">brunarodrigues</p>
-                    </figcaption>
-                </figure>
-                
-                <p>Estudante de Tech (Sistemas de informação com gestão e propaganda) na ESPM. Tech student (Information systems with business and advertisement) at ESPM</p>
-                
-                <button>Editar perfil</button>
-            </div>
-        </div>
-        
-        <!-- Conteúdo direita -->
-        <div class="content left">
-            <div class="spacer">
-                <nav>
-                    <ul>
-                        <li><a href="" class="active">Informações</a></li>
-                        <li><a href="">Meus Bugs</a></li>
-                        <li><a href="">Contribuições</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<!-------------------------------------------------------------- CRIAR BUG ----------------------------------------------------------------------->
+<div class="content-wrapper create-bug">
+    <form class="formulario" autocomplete="off">
+      <div class="create-bug-content">
+        <label for="create-bug-title" class="create-bug-label">Título do Projeto: </label>
+        <input type="text" id="create-bug-title" class="create-bug-input" name="create-bug-title"><br>
+        <label for="create-description" class="create-bug-label">Descrição: </label><textarea class="textarea" cols="35" rows="8"></textarea><br>
+        <label for="create-category" class="create-bug-label">Categoria: </label>
+        <input type="text" id="create-category" class="create-bug-input category" name="create-bug-title"><br>
     </div>
+    <div class="submit">
+    <input class="btn_submit" type="submit" value="Upload">
+    <input class="btn_submit" type="submit" value="Enviar">
+    </div>
+    </form>
+</div>  
 
-</body>
-</html>
+
+<div class="login-modal-content">
+    <form id="login-form" method="get" action="/login">
+        <div class="login-modal-item">
+            <label for="login-form-username" class="login-form-label">Username</label>
+            <input type="text" id="login-form-username" class="login-form-input" name="login-form-username">
+        </div>
+        <div class="login-modal-item">
+            <label for="login-form-password" class="login-form-label">Password</label>
+            <input type="password" id="login-form-password" class="login-form-input" name="login-form-password">
+        </div>
+        <div class="login-modal-submit">
+            <input type="submit" class="login-form-submit" value="Log In">
+        </div>
+    </form>
