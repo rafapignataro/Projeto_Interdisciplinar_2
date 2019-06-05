@@ -17,10 +17,16 @@ router.get('/perfil', function(req, res) {
 	res.render('perfil', { title: 'Perfil' });
 })
 
+router.get('/criar-bug', function(req, res) {
+	res.render('criar-bug', { title: 'criar-bug' });
+});
+
+
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
-	var password = req.query["password"];
+    var password = req.query["password"];
+ 
 
 	if (username && password) {
 		await Sql.conectar(async (sql) => {

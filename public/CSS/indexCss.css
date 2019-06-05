@@ -1095,3 +1095,69 @@ html, body {
     position: absolute;
     width: 100%;
 }
+
+
+/*--------------------------------------------- CRIAR BUG --------------------------------------------------------------------------------*/
+
+.formulario{
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    justify-content: center;
+    margin: 0;
+    width: 700px;
+    margin-top: 90px;
+}
+
+.create-bug{
+    display: flex;
+    justify-content: center;
+
+}   
+
+.create-bug-label {
+    align-self: flex-start;
+    color: #80868b;
+    display: flex;
+    margin-bottom: 8px;
+    margin-top: 25px;
+}
+
+.create-bug-input {
+    background-color: #f1f3f4;
+    border: none;
+    border-radius: 2px;
+    color: #3b4045;
+    height: 45px;
+    height: 25px;
+    outline: none;
+    padding: 5px 10px;
+    transition: 0.3s;
+    width: 274px;
+}
+
+.create-description{
+    align-self: flex-start;
+    color: #80868b;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.textarea{
+    background: #F1F3F4;
+    padding: 0;
+    border: none;
+    resize: none;
+}
+
+.category{
+    margin-bottom: 30px;
+}
+
+.submit{
+    display: flex;
+    justify-items: space-between;
+    flex-direction: row;
+}
