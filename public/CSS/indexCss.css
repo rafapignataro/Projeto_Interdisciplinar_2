@@ -758,7 +758,6 @@ html, body {
     color: white;
     box-shadow: 0 8px 6px -6px black;
     text-align: center;
-    >>>>>>> master
 }
 
 .noselection {
@@ -1111,10 +1110,9 @@ html, body {
     margin-top: 90px;
 }
 
-.create-bug{
+.create-bug {
     display: flex;
     justify-content: center;
-
 }   
 
 .create-bug-label {
