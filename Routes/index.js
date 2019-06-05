@@ -15,7 +15,7 @@ router.get('/download', function(req, res) {
 
 router.get('/perfil', function(req, res) {
 	res.render('perfil', { title: 'Perfil' });
-});
+})
 
 router.get('/login', wrap(async function(req,res){
 
@@ -43,36 +43,53 @@ router.get('/login', wrap(async function(req,res){
 	}
 }));
 
-router.get('/fake_pagina', wrap(async function(req, res) {
-	let u = await validaCookie(req);
-	if (!u) {
-		res.redirect('/sem_acesso');
-		return;
-	}
-	res.render('index', { title: 'Bug Bank' });
-}));
+// router.get('/fake_pagina', wrap(async function(req, res) {
+// 	let u = await validaCookie(req);
+// 	if (!u) {
+// 		res.redirect('/sem_acesso');
+// 		return;
+// 	}
+// 	res.render('index', { title: 'Bug Bank' });
+// }));
 
-router.get('/fake_json', wrap(async function(req, res) {
+router.get('/getUserProjects', wrap(async function(req, res) {
 	let u = await validaCookie(req, res);
 	if (!u)
 		return;
-	res.json("obj");
+	await Sql.conectar(async (sql) => {
+		let rows = await sql.query('SELECT * FROM pergunta WHERE id_usuario = ?', [u.id]);
+		if (rows && rows.length) {
+			res.json(rows);
+		} else {
+			res.json("Usuario não possui projetos!");
+		}
+	});
 }));
 
-router.post('/register', function(req, res) {
+router.get('/logout', wrap(async function(req, res) {
+	let u = await validaCookie(req);
+	if (u) {
+		await Sql.conectar(async (sql) => {
+			await sql.query('UPDATE usuario SET token = null WHERE id_usuario = ?', [u.id_usuario]);
+        });
+	}
+	res.cookie("usuario", "", { expires: new Date(Date.now() - 31536000000), httpOnly: true, path: "/", secure: false });
+	res.redirect("/");
+}));
+
+router.post('/register', wrap(async function(req, res) {
 
 	let user = req.body;
 	if(user.username && user.email && user.password && user.repeat){
 		if(user.password == user.repeat){
-			Sql.query('SELECT * FROM usuario WHERE login_usuario = ?', user.username, function(error, result, fields) {
-				if (error) throw error;
-
-				if (result.length > 0) {
+			await Sql.conectar(async (sql) => {
+				let rows = await sql.query('SELECT * FROM usuario WHERE login_usuario = ?', [user.username]);
+				if (rows && rows.length) {
 					res.json('Esse usuario já existe!');
 				} else {
-					Sql.query(`INSERT INTO usuario (login_usuario,email_usuario,senha_usuario, deleted_usuario) values ("${user.username}","${user.email}","${user.password}",1)`);
-					res.json('Cadastro concluído!\n Bem vindo, ' + user.username + "!");
-				}			
+					await sql.query('INSERT INTO usuario (login_usuario,email_usuario,senha_usuario, deleted_usuario) values (?,?,?,1)', [user.username, user.email, user.password]);
+					res.json(`Cadastro concluído!\n Bem vindo, ${user.username}!`);
+				}
 			});
 		}else{
 			res.json("As senhas não coincidem!");
@@ -80,7 +97,7 @@ router.post('/register', function(req, res) {
 	}else{
 		res.json("Complete todos os campos!");
 	}
-});
+}));
 
 router.get('/getProjects/:dataID', async (req,res) => {
 	
@@ -121,6 +138,7 @@ router.get('/getProjects/:dataID', async (req,res) => {
 
 router.get("/projects/:id/:title", async (req,res) => {
 	var questionID = req.params.id;
+
 	try {
 		await Sql.conectar(async (sql) => {
 			try {
