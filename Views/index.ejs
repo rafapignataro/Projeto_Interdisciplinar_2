@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="login-wrapper fade">
-                    <div class="login-modal">
+                    <div class="login-modal" id="login-modal">
                         <div class="login-modal-switch">
                             <label class="form-select-container">
                                 <input type="radio" checked="checked" name="radio">
@@ -117,6 +117,9 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                    <div class="logout-modal" id="logout-modal">
+                        <button id="btnLogout">LOGOUT</button>
                     </div>
                 </div>
             </div>
@@ -324,7 +327,10 @@
         });
 
         var $headersigninbutton = $(".header-signin-button");
+        var logado = <%= userLogado %>;
+
         var animRodando = false;
+        
         $headersigninbutton.on("click", function () {
             if (animRodando) {
                 return;
@@ -340,12 +346,21 @@
             $(".header-signin-button span").toggleClass('fa-sign-in');
             $(".header-signin-button span").toggleClass('fa-close');
         });
-
-        $("#login-form-button").on("click", function () {
-            $("#login-form").css({ "display": "flex" });
-            $("#signup-form").css({ "display": "none" });
+        if(!logado){
+            $("#login-form-button").on("click", function () {
+                $("#login-form").css({ "display": "flex" });
+                $("#signup-form").css({ "display": "none" });
+            });
+            $("#logout-modal").css({ "display": "none" });
+        }else{
+            $("#login-modal").css({ "display": "none" });
+            $("#logout-modal").css({ "display": "flex" });
+        }
+        
+        $("#btnLogout").on("click",function(){
+            window.location.href = "/logout";
         });
-
+        
         //---------------------------------------------------------------------------------------------------------------
         // Hide Header on on scroll down
        /* var didScroll;
