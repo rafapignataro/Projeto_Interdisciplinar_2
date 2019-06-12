@@ -10,11 +10,12 @@ router.get('/', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('index', { title: 'Bug Bank', userLogado: userLogado });
+		res.render('index', { title: 'Bug Bank', userLogado: userLogado, user: u});
 		return;
 	}
 	userLogado = true
 	res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado });
+	res.render('index', { title: 'Bug Bank', user: u.id, userLogado: userLogado, login_usuario: u.login_usuario });
 }));
 
 router.get('/download', function(req, res) {
@@ -189,5 +190,29 @@ router.get("/projects/:id/:title", async (req,res) => {
 		res.json(ex);
 	} 	
 });
+
+router.get('/profile/:user/manage-bugs', wrap(async function(req, res) {
+	var user = req.params.user;
+	var userLogado = false;
+	let u = await validaCookie(req, res);
+	if (!u){	
+		res.render('index', { title: 'Bug Bank', userLogado: userLogado });
+		return;
+	}
+	userLogado = true
+	res.render('criar-bug', { title: 'Criar bug', user: u.id, userLogado: userLogado });
+}));
+
+router.get('/create-bug', wrap(async function(req, res) {
+	var user = req.params.user;
+	var userLogado = false;
+	let u = await validaCookie(req, res);
+	if (!u){	
+		res.render('index', { title: 'Bug Bank', userLogado: userLogado });
+		return;
+	}
+	userLogado = true
+	res.render('criar-bug', { title: 'Criar bug', user: u.id, userLogado: userLogado });
+}));
 
 module.exports = router;
