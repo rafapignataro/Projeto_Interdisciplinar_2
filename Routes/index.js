@@ -22,7 +22,6 @@ router.get('/download', function(req, res) {
 });
 
 router.get('/loginpage', wrap(async function (req, res) {
-    var user = req.params.user;
     var userLogado = false;
     let u = await validaCookie(req, res);
     if (!u) {
@@ -38,7 +37,7 @@ router.get('/profile/:user', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('perfil', { title: 'Perfil', userLogado: userLogado });
+		res.render('loginpage', { title: 'Login Page', userLogado: userLogado });
 		return;
 	}
 	userLogado = true
@@ -49,12 +48,10 @@ router.get('/criar-bug', function(req, res) {
 	res.render('criar-bug', { title: 'criar-bug' });
 });
 
-
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
     var password = req.query["password"];
- 
 
 	if (username && password) {
 		await Sql.conectar(async (sql) => {
@@ -195,7 +192,7 @@ router.get('/profile/:user/manage-bugs', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('index', { title: 'Bug Bank', userLogado: userLogado });
+		res.render('loginpage', { title: 'Login Page', userLogado: userLogado });
 		return;
 	}
 	userLogado = true
@@ -207,7 +204,7 @@ router.get('/create-bug', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('index', { title: 'Bug Bank', userLogado: userLogado });
+		res.render('loginpage', { title: 'Login Page', userLogado: userLogado });
 		return;
 	}
 	userLogado = true
