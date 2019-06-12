@@ -34,10 +34,7 @@
                         <nav class="navbar">
                             <a href="/" class="navbar-item">Explorar</a>
                             <a href="/loginpage" class="navbar-item">Criar um Bug</a>
-                            <a href="/loginpage" class="navbar-item">Gerenciar Bugs.</a>
-                            <a href="" class="navbar-item">Explorar</a>
-                            <a href="/login-page" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
-                            <a href="/login-page" class="navbar-item" id="navbar-genBug">Gerenciar Bugs.</a>
+                            <a href="/loginpage" class="navbar-item">Gerenciar Bugs</a>
                         </nav>
                         <form id="search-form" method="get" action="/login">
                             <span class=" search-bar-icon fa fa-search"></span>
@@ -136,108 +133,6 @@
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs">
                            <!-- Bugs do usuário  -->
-                        </ul>
-
-                        <ul class="sidebar" id="lista-contribs">
-                            <li id="sidebar-list-title" class="noselection">
-                                MINHAS CONTRIBUIÇÕES
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 4</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 5</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 6</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 7</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 8</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 9</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 10</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 11</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 12</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 13</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 14</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="sidebar-list-item">
-                                        <img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category" />
-                                        <div class="sidebar-list-item-name">Projeto 15</div>
-                                    </div>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -471,7 +366,7 @@
                         projects.append(
                             '<div class="pergunta-container">'+
                                 '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"></div>' +
+                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
                                     '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +

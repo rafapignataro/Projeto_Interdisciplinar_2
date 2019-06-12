@@ -163,8 +163,8 @@ html, body {
 }
 
 .search-clear-button {
-    position: absolute;
-    right: 15px;
+    position: relative;
+    right: 30px;
     background: none;
     border: none;
     outline: none;
@@ -278,8 +278,8 @@ html, body {
 }
 
 .search-bar-icon {
-    position: absolute;
-    left: 10px;
+    position: relative;
+    left: 30px;
 }
 
 .header-search-bar {
@@ -735,7 +735,7 @@ html, body {
 
 .pergunta-overlay {
     opacity: 0;
-    background: rgba(227,231,239,0.3);
+    background: rgba(227,231,239,0.75);
     z-index: 1;
     transition: opacity linear 0.25s;
     position: absolute;
@@ -744,9 +744,34 @@ html, body {
     top: 0;
 }
 
+    .pergunta-overlay textarea {
+        opacity: 0;
+        transition: opacity linear 0.25s;
+        color: #1b1b1b;
+        font-weight: 600;
+        padding: 15px 20px;
+        box-sizing:border-box;
+        resize: none;
+        background: none;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        cursor:default;
+
+    }
+
+        .pergunta-overlay textarea::-webkit-scrollbar {
+            display: none;
+        }
+
 .pergunta-overlay:hover {
     opacity: 1;
 }
+
+    .pergunta-overlay:hover textarea{
+        opacity: 1;
+    }
 
 .pergunta-desc {
     display: flex;
@@ -951,7 +976,12 @@ html, body {
         display: none;
     }
 
+    .search-bar-icon {
+    left: 25px;
+    }
+
     .search-clear-button {
+        right:25px;
     }
 
         .search-clear-button:hover {
