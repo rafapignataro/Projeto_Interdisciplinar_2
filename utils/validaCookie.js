@@ -26,6 +26,7 @@ module.exports = async function validaCookie (req, res) {
             if (res) {
                 // res.statusCode = 403;
                 // res.json("Não permitido");
+                return null;
             }
             return null;
         }
