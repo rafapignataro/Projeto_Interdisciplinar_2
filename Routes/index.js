@@ -14,12 +14,24 @@ router.get('/', wrap(async function(req, res) {
 		return;
 	}
 	userLogado = true
-	res.render('index', { title: 'Bug Bank', user: u.id, userLogado: userLogado });
+	res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado });
 }));
 
 router.get('/download', function(req, res) {
 	res.render('download', { title: 'Download' });
 });
+
+router.get('/loginpage', wrap(async function (req, res) {
+    var user = req.params.user;
+    var userLogado = false;
+    let u = await validaCookie(req, res);
+    if (!u) {
+        res.render('loginpage', { title: 'login page', userLogado: userLogado });
+        return;
+    }
+    userLogado = true
+    res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado });
+}));
 
 router.get('/profile/:user', wrap(async function(req, res) {
 	var user = req.params.user;
