@@ -13,8 +13,7 @@ router.get('/', wrap(async function(req, res) {
 		res.render('index', { title: 'Bug Bank', userLogado: userLogado, user: u});
 		return;
 	}
-	userLogado = true
-	res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado });
+    userLogado = true;
 	res.render('index', { title: 'Bug Bank', user: u.id, userLogado: userLogado, login_usuario: u.login_usuario });
 }));
 
