@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bug Bank</title>
-    <link type="text/css" rel="stylesheet" href="/public/css/indexCss.css" />
     <link rel="stylesheet" href="/public/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/public/css/manage.css" />
     <link href="/public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -144,7 +144,7 @@
         <div class="content-wrapper">
             <div class="content">
                 <div class="perguntas-header">
-                    <div class="perguntas-header-titulo">Todos os Bugs</div>
+                    <div class="perguntas-header-titulo">Meus Bugs</div>
                     <div class="perguntas-filtros-container">
                         <div class="perguntas-filtros" style="padding-left:0">
                             <div class="perguntas-filtros-dropdown">
@@ -330,8 +330,8 @@
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
+                                '<a class="pergunta-imagem"' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea><div class="edit-buttons"><button type="button" class="favorite-button fa fa-star"></button><button type="button" class="delete-button fa fa-remove"></button></div></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
                                     '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
