@@ -414,10 +414,9 @@
             });
         });
 
-        // Create Project ajax
         $("#create-bug-form").submit(function(event){
             event.preventDefault(); //prevent default action 
-
+            
             var date = new Date();
 			var current_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
 			var current_time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
@@ -437,7 +436,7 @@
                 dataType: "json",
                 success: (data) => {
                     alert(data);
-                    window.location.href("/");
+                    window.location.href = "/profile/" + '<%= userLogged %>' + "/manage-bugs";
                     //TEXTO PARA SUCESSO DE CRIACAO DO BUG
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
