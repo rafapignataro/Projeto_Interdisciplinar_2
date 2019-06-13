@@ -11,38 +11,36 @@
     <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body id="body">
-    <div class="bugbank">
-        <!------------------------------------------------------HEADER------------------------------------------------------------------------>
-        <div class="header-wrapper nav-down">
-            <div class="header">
-                <div class="header-container">
-                    <div class="header-left">
-                        <button class="hamburger hamburger--slider" type="button" id="header-toggle-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                        <div class="header-logos-wrapper">
-                            <div class="header-logos">
-                                <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-                                <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
-                            </div>
+
+<body>
+    <div class="header-wrapper nav-down">
+        <div class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <button class="hamburger hamburger--slider" type="button" id="header-toggle-sidebar">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                    <div class="header-logos-wrapper">
+                        <div class="header-logos">
+                            <img src="/Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                            <img src="/Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
                         </div>
                     </div>
-                    <div class="header-center">
-                        <nav class="navbar">
-                            <a href="/" class="navbar-item">Explorar</a>
-                            <a href="" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
-                            <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
-                        </nav>
-                        <form id="search-form" method="get" action="/login">
-                            <span class=" search-bar-icon fa fa-search"></span>
-                            <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
-                            <button type="reset" class="search-clear-button">
-                                <span class="fa fa-close"></span>
-                            </button>
-                        </form>
+                </div>
+                <div class="header-center">
+                    <nav class="navbar">
+                        <a href="/" class="navbar-item">Explorar</a>
+                        <a href="" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
+                        <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
+                    </nav>
+                    <form id="search-form" method="get" action="/login">
+                        <span class=" search-bar-icon fa fa-search"></span>
+                        <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
+                        <button type="reset" class="search-clear-button">
+                            <span class="fa fa-close"></span>
+                        </button>
                     </div>
                     <div class="header-right">
                         <div class="header-search">
