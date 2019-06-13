@@ -117,7 +117,7 @@
                                 </div>
                             </form>
                             <div class="logout-modal" id="logout-modal">
-                                <p>Bem-Vindo USUARIO</p>
+                                <p id="welcomeUser"></p>
                                 <button id="btnLogout">LOGOUT</button>
                             </div>
                         </div>
@@ -132,6 +132,10 @@
                 <div class="sidebar-scroller">
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs"></ul>
+                        <div class="sidebar-notlogged">
+                            <p>Entre para ver seus projetos!</p>
+                            <a href="/loginpage">Log In</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -245,9 +249,10 @@
             $("#signup-form").css({ "display": "none" });
             $(".login-modal-switch").css({ "display": "none" });
             $("#logout-modal").css({ "display": "flex" });
+            $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
-            $("#navbar-genBug").attr("href", "/profile/" + <%= user %> + "/manage-bugs");
-            $("#btnPerfil").attr("href", "/profile/" + <%= user %> + "");
+            $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
+            $("#btnPerfil").attr("href", "/profile/" + '<%= user %>');
         }
         
         $("#btnLogout").on("click",function(){
@@ -259,8 +264,6 @@
             $("#signup-form").css({ "display": "flex" });
         });
 
-        
-           
             var sidebarBugs = $("#lista-bugs");
             sidebarBugs.empty();
 
