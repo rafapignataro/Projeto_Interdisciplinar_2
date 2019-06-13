@@ -414,7 +414,6 @@
             });
         });
 
-        // Create Project ajax
         $("#create-bug-form").submit(function(event){
             event.preventDefault(); //prevent default action 
             
@@ -437,7 +436,7 @@
                 dataType: "json",
                 success: (data) => {
                     alert(data);
-                    window.location.href("/");
+                    window.location.href = "/profile/" + '<%= userLogged %>' + "/manage-bugs";
                     //TEXTO PARA SUCESSO DE CRIACAO DO BUG
                 },
                 error: function(jqXHR, textStatus, errorThrown) {

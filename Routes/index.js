@@ -207,7 +207,7 @@ router.post('/createBug', wrap(async function(req, res) {
 		await Sql.conectar(async (sql) => {
 			
 			await sql.query('INSERT INTO pergunta (titulo_pergunta, dt_pergunta, desc_pergunta, id_usuario, tag) values (?,curdate(),?,?,?)', [project.title, project.description, project.userId, project.tag]);
-			res.json(`Bug criado!`);
+			res.json('Bug criado!');
 		});
 	}else{
 		
