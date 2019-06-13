@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/public/quill/assets/snow.css">
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/public/CSS/indexCss.css">
 	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+	
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
@@ -106,7 +109,9 @@
             </div>
             <div class="project-desc-dropdown-content">
                 <div class="project-desc-content">
-                    <div id="description"></div>
+                    <div id="description">
+                        <%= result.description %>
+                    </div>
                 </div>
             </div>
             <span class="fa fa-chevron-down"></span>
