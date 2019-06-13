@@ -76,7 +76,7 @@
                             </label>
                             <label class="form-select-container">
                                 <input type="radio" name="radio"/>
-                                <span class="form-select-button" id="signup-form-button">Sign Up</span>
+                                <span class="form-select-button" id="signup-form-button">Registrar</span>
                             </label>
                         </div>
 
@@ -132,6 +132,10 @@
                 <div class="sidebar-scroller">
                     <div class="sidebar-lists">
                         <ul class="sidebar" id="lista-bugs"></ul>
+                        <div class="sidebar-notlogged">
+                            <p>Entre para ver seus projetos!</p>
+                            <a href="/loginpage">Log In</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,9 +154,10 @@
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="react">REACT</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="angular">ANGULAR</a>
+                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
+                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
                                   </div>
                               </button>
@@ -252,7 +257,9 @@
                 $("#signup-form").css({ "display": "none" });
             });
             $("#logout-modal").css({ "display": "none" });
-        }else{
+            $("#lista-bugs").css({ "display": "none" });
+        } else {
+            $(".sidebar-notlogged").css({ "display": "none" });
             $("#login-form").css({ "display": "none" });
             $("#signup-form").css({ "display": "none" });
             $(".login-modal-switch").css({ "display": "none" });

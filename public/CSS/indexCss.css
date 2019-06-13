@@ -443,6 +443,30 @@ html, body {
     font-size: 20px;
 }
 
+.sidebar-notlogged {
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .sidebar-notlogged a {
+        color: white;
+        background: none;
+        background-color: #3b4045;
+        padding: 15px 50px;
+        border: none;
+        outline: none;
+        transition: background-color linear 0.2s;
+        cursor: pointer;
+        text-decoration:none;
+    }
+
+        .sidebar-notlogged a:hover {
+            background-color: #1b1b1b;
+        }
+
 .item-notification {
     height: 30px;
     margin-left: auto
@@ -1037,6 +1061,11 @@ html, body {
             width: 0px;
         }
 
+    .sidebar-notlogged {
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }  
+
     .login-modal {
         width: auto;
         border: solid 1px #d9dede;
@@ -1171,22 +1200,47 @@ html, body {
 
 /*--------------------------------------------- CRIAR BUG --------------------------------------------------------------------------------*/
 
+.btn_submit {
+    color: white;
+    background: none;
+    background-color: #3b4045;
+    padding: 15px 50px;
+    border: none;
+    outline: none;
+    transition: background-color linear 0.2s;
+    cursor: pointer;
+}
+
+    .btn_submit:hover {
+        background-color: #1b1b1b;
+    }
+
 .formulario{
     align-items: center;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    height: 450px;
     justify-content: center;
     margin: 0;
     width: 700px;
-    margin-top: 90px;
+    text-align:center;
 }
+
+    .formulario p {
+        font-size: 43px;
+        margin: 10px 0 0 0;
+        font-weight: 600;
+        color: #3b4045;
+    }
 
 .create-bug {
     display: flex;
     justify-content: center;
-}   
+    align-items:center;
+}
+
+.create-bug-content {
+}  
 
 .create-bug-label {
     align-self: flex-start;
@@ -1207,6 +1261,8 @@ html, body {
     padding: 5px 10px;
     transition: 0.3s;
     width: 274px;
+    align-self: flex-start;
+    display: flex;
 }
 
 .create-description{
@@ -1216,19 +1272,25 @@ html, body {
     margin-bottom: 8px;
 }
 
-.textarea{
+.textarea {
     background: #F1F3F4;
     padding: 0;
     border: none;
     resize: none;
+    margin-bottom: 25px;
+    outline: none;
+    padding: 10px 15px;
 }
 
 .category{
     margin-bottom: 30px;
 }
 
-.submit{
+.submit {
     display: flex;
-    justify-items: space-between;
+    justify-content: space-around;
+    width: 100%;
     flex-direction: row;
+    margin-top: 30px;
+    padding-bottom: 30px;
 }
