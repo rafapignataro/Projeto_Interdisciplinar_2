@@ -140,35 +140,35 @@
         </div>
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper create-bug">
-            <form class="formulario" autocomplete="off">
+            <div class="create-bug-content">
                 <p>Crie seu Bug</p>
-                <div class="create-bug-content">
+                <form id="create-bug-form" autocomplete="off">
                     <label for="create-bug-title" class="create-bug-label">Título do Projeto: </label>
                     <input type="text" id="create-bug-title" class="create-bug-input" name="create-bug-title" maxlength="140"/>
                     <label for="create-description" class="create-bug-label">Descrição: </label>
-                    <textarea class="textarea" cols="35" rows="8"></textarea>
+                    <textarea id="create-bug-desc" class="textarea" cols="35" rows="8"></textarea>
                     <div class="perguntas-filtros" style="padding-left:0">
-                            <div class="perguntas-filtros-dropdown">
-                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
-                                  <b id="perguntas-filtros-label-1" data-id="todas">SELECIONAR</b>
-                                  <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
-                                  <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
-                                  <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
-                                  </div>
-                              </button>
-                            </div>
+                        <div class="perguntas-filtros-dropdown">
+                            <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
+                                <b id="perguntas-filtros-label-1" data-id="todas">SELECIONAR</b>
+                                <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
+                                <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
+                                <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
+                                </div>
+                            </button>
                         </div>
-                </div>
-                <div class="submit">
-                    <input class="btn_submit" type="submit" value="Upload">
-                    <input class="btn_submit" type="submit" value="Enviar">
-                </div>
-            </form>
+                    </div>
+                    <div class="submit">
+                        <input class="btn_submit" type="submit" value="Upload">
+                        <input class="btn_submit" type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
         </div>       
     <!--------------FOOTER----------------------------------------------------------------------->
 
@@ -307,35 +307,7 @@
             var projects = $("#projects");
             projects.empty();
             
-            $.ajax({
-                url: "/getProjects/" + dataID,
-                type: "GET",
-                cache: false,
-                success: (data) => {
-                    for(var i=0; i < data.length; i++) {
-                        projects.append(
-                            '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
-                                '</a>' +
-                                '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
-                                        '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
-                                    '</a>'+
-                                    '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                        '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' + 
-                                    '</div>'+
-                                        '<div class= "pergunta-tags" > TAGS </div>' +
-                                '</div>'+
-                            '</div>');
-                                    
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('error ' + textStatus + " " + errorThrown);
-                }
-            });
+            
 
             //Get user projects sidebar
             var sidebarBugs = $("#lista-bugs");
@@ -377,16 +349,12 @@
             var target = document.getElementById(this.getAttribute("data-target"));
             target.setAttribute("data-id", id);
             target.textContent = this.textContent;
-            atualizaContent(id);
+
             return cancelEvent(e);
         }
 
         (function () {
             var links = document.getElementById("perguntas-filtro-1-dropdown").getElementsByTagName("a");
-            for (var i = 0; i < links.length; i++) {
-                links[i].onclick = processaLink;
-            }
-            links = document.getElementById("perguntas-filtro-2-dropdown").getElementsByTagName("a");
             for (var i = 0; i < links.length; i++) {
                 links[i].onclick = processaLink;
             }
@@ -438,6 +406,38 @@
                 success: (data) => {
                     alert(data);
                     window.location.reload(); 
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+
+        // Create Project ajax
+        $("#create-bug-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            var date = new Date();
+			var current_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+			var current_time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+			var time = current_date + ' ' + current_time;
+
+            let bugInfo = {
+                userId: '<%= user %>',
+                title: $("#create-bug-title").val(),
+                description: $("#create-bug-desc").val(),
+                tag: $("#perguntas-filtros-label-1").data("id"),
+                dateTime: time          
+            }
+            $.ajax({
+                url: "/createBug",
+                type: "POST",
+                data: bugInfo,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                    window.location.href("/");
+                    //TEXTO PARA SUCESSO DE CRIACAO DO BUG
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);

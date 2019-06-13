@@ -117,7 +117,7 @@
                                 </div>
                             </form>
                             <div class="logout-modal" id="logout-modal">
-                                <p>Bem-Vindo USUARIO</p>
+                                <p id="welcomeUser"></p>
                                 <button id="btnLogout">LOGOUT</button>
                             </div>
                         </div>
@@ -153,12 +153,12 @@
                                   <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
-                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
-                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
+                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
+                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
                                   </div>
                               </button>
                             </div>
@@ -264,9 +264,10 @@
             $("#signup-form").css({ "display": "none" });
             $(".login-modal-switch").css({ "display": "none" });
             $("#logout-modal").css({ "display": "flex" });
+            $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
-            $("#navbar-genBug").attr("href", "/profile/" + <%= user %> + "/manage-bugs");
-            $("#btnPerfil").attr("href", "/profile/" + <%= user %> + "");
+            $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
+            $("#btnPerfil").attr("href", "/profile/" + '<%= user %>');
         }
         
         $("#btnLogout").on("click",function(){

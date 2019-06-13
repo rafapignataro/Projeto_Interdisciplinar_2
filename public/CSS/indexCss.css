@@ -1215,7 +1215,7 @@ html, body {
         background-color: #1b1b1b;
     }
 
-.formulario{
+.create-bug-content{
     align-items: center;
     background-color: #fff;
     display: flex;
@@ -1226,7 +1226,7 @@ html, body {
     text-align:center;
 }
 
-    .formulario p {
+    .create-bug-content p {
         font-size: 43px;
         margin: 10px 0 0 0;
         font-weight: 600;

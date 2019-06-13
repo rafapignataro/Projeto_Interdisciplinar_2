@@ -14,7 +14,7 @@ router.get('/', wrap(async function(req, res) {
 		return;
 	}
     userLogado = true;
-	res.render('index', { title: 'Bug Bank', user: u.id, userLogado: userLogado, login_usuario: u.login_usuario });
+	res.render('index', { title: 'Bug Bank', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
 }));
 
 router.get('/download', function(req, res) {
@@ -29,7 +29,7 @@ router.get('/loginpage', wrap(async function (req, res) {
         return;
     }
     userLogado = true
-    res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado });
+    res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
 }));
 
 router.get('/profile/:user', wrap(async function(req, res) {
@@ -41,7 +41,7 @@ router.get('/profile/:user', wrap(async function(req, res) {
 		return;
 	}
 	userLogado = true
-	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado });
+	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
 }));
 
 
@@ -127,23 +127,23 @@ router.get('/getProjects/:dataID', async (req,res) => {
 		await Sql.conectar(async (sql) => {
 			try {
 				if(dataID == "az"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title ASC", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title ASC", function(error,result){
 						if(error){
 							console.log(error);
 						}
 						res.json(result);
 					});	
 				}else if(dataID == "za"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title DESC", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title DESC", function(error,result){
 						res.json(result);
 					});	
 				}
 				else if(dataID == "recente"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by date asc", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by date asc", function(error,result){
 						res.json(result);
 					});	
 				}else {
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
 						res.json(result);
 					});	
 				}	
@@ -185,7 +185,7 @@ router.get('/profile/:user/manage-bugs', wrap(async function(req, res) {
 		return;
 	}
 	userLogado = true
-	res.render('manage-bugs', { title: 'Gerenciar Projetos', user: u.id, userLogado: userLogado });
+	res.render('manage-bugs', { title: 'Gerenciar Projetos', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
 }));
 
 router.get('/create-bug', wrap(async function(req, res) {
@@ -197,7 +197,23 @@ router.get('/create-bug', wrap(async function(req, res) {
 		return;
 	}
 	userLogado = true
-	res.render('criar-bug', { title: 'Criar bug', user: u.id, userLogado: userLogado });
+	res.render('criar-bug', { title: 'Criar bug', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
+}));
+
+router.post('/createBug', wrap(async function(req, res) {
+
+	let project = req.body;
+	console.log(project.dateTime);
+	if(project.title && project.description && project.tag){
+		await Sql.conectar(async (sql) => {
+			
+			await sql.query('INSERT INTO pergunta (titulo_pergunta, dt_pergunta, desc_pergunta, id_usuario, tag) values (?,curdate(),?,?,?)', [project.title, project.description, project.userId, project.tag]);
+			res.json(`Bug criado!`);
+		});
+	}else{
+		
+		res.json("Complete todos os campos!");
+	}
 }));
 
 module.exports = router;
