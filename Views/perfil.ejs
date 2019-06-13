@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
@@ -10,116 +11,121 @@
     <link href="../public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-
-<body>
-    <div class="header-wrapper nav-down">
-        <div class="header">
-            <div class="header-container">
-                <div class="header-left">
-                    <button class="hamburger hamburger--slider" type="button" id="header-toggle-sidebar">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                    </button>
-                    <div class="header-logos-wrapper">
-                        <div class="header-logos">
-                            <img src="../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
-                            <img src="../Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+<body id="body">
+    <div class="bugbank">
+        <!------------------------------------------------------HEADER------------------------------------------------------------------------>
+        <div class="header-wrapper nav-down">
+            <div class="header">
+                <div class="header-container">
+                    <div class="header-left">
+                        <button class="hamburger hamburger--slider" type="button" id="header-toggle-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                        <div class="header-logos-wrapper">
+                            <div class="header-logos">
+                                <img src="/Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false" />
+                                <img src="/Public/Imagens/BugBank.svg" class="header-logos-bug" draggable="false" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="header-center">
-                    <nav class="navbar">
-                        <a href="" class="navbar-item">Explorar</a>
-                        <a href="" class="navbar-item">Criar um Bug</a>
-                        <a href="" class="navbar-item">Gerenciar Bugs</a>
-                    </nav>
-                    <form id="search-form" method="get" action="/login">
-                        <span class=" search-bar-icon fa fa-search"></span>
-                        <input class="header-search-bar" type="text" placeholder="Pesquisar..">
-                        <button type="reset" class="search-clear-button">
-                            <span class="fa fa-close"></span>
-                        </button>
-                    </form>
-                </div>
-                <div class="header-right">
-                    <div class="header-search">
-                    </div>
-                    <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
-                    <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
-                    <a href="/perfil" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></a>
-                    <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
-                </div>
-            </div>
-            <div class="header-complement-wrapper">
-                <div class="header-complement">
-                    <div class="header-search-mobile">
+                    <div class="header-center">
+                        <nav class="navbar">
+                            <a href="/" class="navbar-item">Explorar</a>
+                            <a href="/loginpage" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
+                            <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
+                        </nav>
                         <form id="search-form" method="get" action="/login">
-                            <span class="search-bar-icon fa fa-search"></span>
-                            <input class="header-search-bar" type="text" placeholder="Pesquisar..">
+                            <span class=" search-bar-icon fa fa-search"></span>
+                            <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
                             <button type="reset" class="search-clear-button">
                                 <span class="fa fa-close"></span>
                             </button>
                         </form>
-                        <button type="button" class="header-cancel-button" disabled>CANCEL</button>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-search">
+                        </div>
+                        <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
+                        <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
+                        <a href="" class="header-profile-button header-buttons" id="btnPerfil"><span class="fa fa-circle"></span></a>
+                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
-            </div>
-            <div class="login-wrapper fade">
-                <!--<img src="../Public/Imagens/modal.svg" class="login-shape"/>-->
-                <div class="login-modal">
-                    <div class="login-modal-switch">
-                        <label class="form-select-container">
-                            <input type="radio" checked="checked" name="radio">
-                            <span class="form-select-button" id="login-form-button">Login</span>
-                        </label>
-                        <label class="form-select-container">
-                            <input type="radio" name="radio">
-                            <span class="form-select-button" id="signup-form-button">Sign Up</span>
-                        </label>
+                <div class="header-complement-wrapper">
+                    <div class="header-complement">
+                        <div class="header-search-mobile">
+                            <form id="search-form-desktop" method="get" action="/login">
+                                <span class="search-bar-icon fa fa-search"></span>
+                                <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
+                                <button type="reset" class="search-clear-button">
+                                    <span class="fa fa-close"></span>
+                                </button>
+                            </form>
+                            <button type="button" class="header-cancel-button" disabled>CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-wrapper fade">
+                    <div class="login-modal" id="login-modal">
+                        <div class="login-modal-switch">
+                            <label class="form-select-container">
+                                <input type="radio" checked="checked" name="radio"/>
+                                <span class="form-select-button" id="login-form-button">Login</span>
+                            </label>
+                            <label class="form-select-container">
+                                <input type="radio" name="radio"/>
+                                <span class="form-select-button" id="signup-form-button">Sign Up</span>
+                            </label>
+                        </div>
+
+                        <div class="login-modal-content">
+                            <form id="login-form" method="get" action="/login">
+                                <div class="login-modal-item">
+                                    <label for="login-form-username" class="login-form-label">Username</label>
+                                    <input type="text" id="login-form-username" class="login-form-input" name="login-form-username"/>
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="login-form-password" class="login-form-label">Password</label>
+                                    <input type="password" id="login-form-password" class="login-form-input" name="login-form-password"/>
+                                </div>
+                                <div class="login-modal-submit">
+                                    <input type="submit" class="login-form-submit" value="Log In"/>
+                                </div>
+                            </form>
+
+                            <form id="signup-form" class="nodisplay" method="post" action="/register">
+                                <div class="login-modal-item">
+                                    <label for="signup-form-email" class="login-form-label">E-mail</label>
+                                    <input type="email" id="signup-form-email" class="login-form-input" name="signup-form-email"/>
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-username" class="login-form-label">Username</label>
+                                    <input type="text" id="signup-form-username" class="login-form-input" name="signup-form-username"/>
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-password" class="login-form-label">Password</label>
+                                    <input type="password" id="signup-form-password" class="login-form-input" name="signup-form-password"/>
+                                </div>
+                                <div class="login-modal-item">
+                                    <label for="signup-form-repeat" class="login-form-label">Repeat Password</label>
+                                    <input type="password" id="signup-form-repeat" class="login-form-input" name="signup-form-repeat"/>
+                                </div>
+                                <div class="login-modal-submit">
+                                    <input type="submit" class="login-form-submit" value="Register"/>
+                                </div>
+                            </form>
+                            <div class="logout-modal" id="logout-modal">
+                                <p id="welcomeUser"></p>
+                                <button id="btnLogout">LOGOUT</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="login-modal-content">
-                        <form id="login-form" method="get" action="/login">
-                            <div class="login-modal-item">
-                                <label for="login-form-username" class="login-form-label">Username</label>
-                                <input type="text" id="login-form-username" class="login-form-input" name="login-form-username">
-                            </div>
-                            <div class="login-modal-item">
-                                <label for="login-form-password" class="login-form-label">Password</label>
-                                <input type="password" id="login-form-password" class="login-form-input" name="login-form-password">
-                            </div>
-                            <div class="login-modal-submit">
-                                <input type="submit" class="login-form-submit" value="Log In">
-                            </div>
-                        </form>
-
-                        <form id="signup-form" class="nodisplay" method="post" action="/register">
-                            <div class="login-modal-item">
-                                <label for="signup-form-email" class="login-form-label">E-mail</label>
-                                <input type="email" id="signup-form-email" class="login-form-input" name="signup-form-email">
-                            </div>
-                            <div class="login-modal-item">
-                                <label for="signup-form-username" class="login-form-label">Username</label>
-                                <input type="text" id="signup-form-username" class="login-form-input" name="signup-form-username">
-                            </div>
-                            <div class="login-modal-item">
-                                <label for="signup-form-password" class="login-form-label">Password</label>
-                                <input type="password" id="signup-form-password" class="login-form-input" name="signup-form-password">
-                            </div>
-                            <div class="login-modal-item">
-                                <label for="signup-form-repeat" class="login-form-label">Repeat Password</label>
-                                <input type="password" id="signup-form-repeat" class="login-form-input" name="signup-form-repeat">
-                            </div>
-                            <div class="login-modal-submit">
-                                <input type="submit" class="login-form-submit" value="Register">
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <!------------------------------------------------------SIDEBAR------------------------------------------------------------------------>
         <div class="sidebar-wrapper">
             <div class="sidebar-container">
@@ -134,46 +140,130 @@
                 </div>
             </div>
         </div>
-<!-------------------------------------------------------------- PERFIL ----------------------------------------------------------------------->
-    <div class="content-wrapper profile">
-        <!-- Barra lateral esquerda -->
-        <div class="sidebar left">
-            <div class="spacer">
-                <figure>
-                    <img src="https://via.placeholder.com/170x170">
-                    <figcaption>
-                        <p class="bold">Bruna Rodrigues</p>
-                        <p class="italic">brunarodrigues</p>
-                    </figcaption>
-                </figure>
-                
-                <p>Estudante de Tech (Sistemas de informação com gestão e propaganda) na ESPM. Tech student (Information systems with business and advertisement) at ESPM</p>
-                
-                <button>Editar perfil</button>
+        <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
+        <div class="content-wrapper profile">
+            <!-- Barra lateral esquerda -->
+            <div class="sidebar left">
+                <div class="spacer">
+                    <figure>
+                        <img src="https://via.placeholder.com/170x170">
+                        <figcaption>
+                            <p class="bold">Bruna Rodrigues</p>
+                            <p class="italic">brunarodrigues</p>
+                        </figcaption>
+                    </figure>
+                    
+                    <p>Estudante de Tech (Sistemas de informação com gestão e propaganda) na ESPM. Tech student (Information systems with business and advertisement) at ESPM</p>
+                    
+                    <button>Editar perfil</button>
+                </div>
             </div>
-        </div>
-        
-        <!-- Conteúdo direita -->
-        <div class="content left">
-            <div class="spacer">
-                <nav>
-                    <ul>
-                        <li><a href="" class="active">Informações</a></li>
-                        <li><a href="">Meus Bugs</a></li>
-                        <li><a href="">Contribuições</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <script>
-    
-    function atualizaContent(dataID) {
-            if ($.active)
-                return;
-
             
-            //Get user projects sidebar
+            <!-- Conteúdo direita -->
+            <div class="content left">
+                <div class="spacer">
+                    <nav>
+                        <ul>
+                            <li><a href="" class="active">Informações</a></li>
+                            <li><a href="">Meus Bugs</a></li>
+                            <li><a href="">Contribuições</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    <!--------------FOOTER----------------------------------------------------------------------->
+
+    <!----------------------------------------------------------MOBILE------------------------------------------------------------------------->
+    <script>
+        var $hamburger = $(".hamburger");
+        $hamburger.on("click", function () {
+            $hamburger.toggleClass("is-active");
+            $(".sidebar-wrapper").toggleClass('sidebar-wrapper-after');
+            $(".content").toggleClass('noscroll');
+
+            // Do something else, like open/close menu
+        });
+
+        var $headersearchbutton = $(".header-search-button");
+        $headersearchbutton.on("click", function () {
+            $(".header-complement").toggleClass('header-complement-after');
+            $(".header-search-mobile").toggleClass('header-search-mobile-after');
+            $(".header-cancel-button").toggleClass('header-cancel-button-after');
+            $(".header-search-button").toggleClass('header-search-button-after');
+            if ($(".header-complement").hasClass('header-complement-after')) {
+                $(".header-complement-wrapper input").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
+            }
+            else {
+                $(".header-complement-wrapper input").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
+            }
+        });
+
+        var $headercancelbutton = $(".header-cancel-button");
+        $headercancelbutton.on("click", function () {
+            $(".header-complement-wrapper").toggleClass('header-complement-wrapper-after');
+            $(".header-complement").toggleClass('header-complement-after');
+            $(".header-search-mobile").toggleClass('header-search-mobile-after');
+            $(".header-cancel-button").toggleClass('header-cancel-button-after');
+            $(".header-search-button").toggleClass('header-search-button-after');
+            if ($(".header-complement").hasClass('header-complement-after')) {
+                $("header-search-bar").prop("disabled", false); //Enable
+                $(".header-cancel-button").prop("disabled", false); //Enable
+            }
+            else {
+                $("header-search-bar").prop("disabled", true); //Disable
+                $(".header-cancel-button").prop("disabled", true); //Disable
+            }
+        });
+
+        var $headersigninbutton = $(".header-signin-button");
+        var logado = <%= userLogado %>;
+
+        var animRodando = false;
+        
+        $headersigninbutton.on("click", function () {
+            if (animRodando) {
+                return;
+            }
+            animRodando = true;
+            setTimeout(function () {
+                $(".login-wrapper").toggleClass('fade-show');
+                animRodando = false;
+                setTimeout(function () { }, 150);
+            }, 1);
+            $(".login-wrapper").toggleClass('login-wrapper-after');
+            $(".header-signin-button").toggleClass('header-signin-button-after');
+            $(".header-signin-button span").toggleClass('fa-sign-in');
+            $(".header-signin-button span").toggleClass('fa-close');
+        });
+        if(!logado){
+            $("#login-form-button").on("click", function () {
+                $("#login-form").css({ "display": "flex" });
+                $("#signup-form").css({ "display": "none" });
+            });
+            $("#logout-modal").css({ "display": "none" });
+        }else{
+            $("#login-form").css({ "display": "none" });
+            $("#signup-form").css({ "display": "none" });
+            $(".login-modal-switch").css({ "display": "none" });
+            $("#logout-modal").css({ "display": "flex" });
+            $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
+            $("#navbar-createBug").attr("href", "/create-bug");
+            $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
+            $("#btnPerfil").attr("href", "/profile/" + '<%= user %>');
+        }
+        
+        $("#btnLogout").on("click",function(){
+            window.location.href = "/logout";
+        });
+
+        $("#signup-form-button").on("click", function () {
+            $("#login-form").css({ "display": "none" });
+            $("#signup-form").css({ "display": "flex" });
+        });
+
             var sidebarBugs = $("#lista-bugs");
             sidebarBugs.empty();
 
@@ -195,16 +285,69 @@
                                 '</a>' +
                             '</li>'
                         );
-                        
+                                 
                     }
+                     
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
+        //--------------------------------------------------------------------------------------------------------------------------------------
+    </script>
 
-        }
+    <!-- Script Backend -->
+    <script type="text/javascript">
+
+        // Login ajax
+        $("#login-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let user = {
+                username: $("#login-form-username").val(),
+                password: $("#login-form-password").val()
+            }
+            $.ajax({
+                url: "/login",
+                type: "GET",
+                data: user,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);          
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+        // Signup ajax
+        $("#signup-form").submit(function(event){
+            event.preventDefault(); //prevent default action 
+
+            let userInfo = {
+                email: $("#signup-form-email").val(),
+                username: $("#signup-form-username").val(),
+                password: $("#signup-form-password").val(),
+                repeat: $("#signup-form-repeat").val()
+            }
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: userInfo,
+                dataType: "json",
+                success: (data) => {
+                    alert(data);
+                    window.location.reload(); 
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+
         atualizaContent();
     </script>
+</div>
 </body>
 </html>
