@@ -1285,6 +1285,30 @@ html, body {
     margin-bottom: 30px;
 }
 
+.create-bug-content{
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    width: 700px;
+    text-align:center;
+}
+
+    .create-bug-content p {
+        font-size: 43px;
+        margin: 10px 0 0 0;
+        font-weight: 600;
+        color: #3b4045;
+    }
+
+.create-bug {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
 .submit {
     display: flex;
     justify-content: space-around;
