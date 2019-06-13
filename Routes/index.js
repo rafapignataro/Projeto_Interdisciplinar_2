@@ -44,8 +44,6 @@ router.get('/profile/:user', wrap(async function(req, res) {
 	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado });
 }));
 
-
-
 router.get('/login', wrap(async function(req,res){
 
 	var username = req.query["username"];
@@ -155,6 +153,7 @@ router.get('/getProjects/:dataID', async (req,res) => {
 		res.json(ex);
 	} 
 });
+
 
 router.get("/projects/:id/:title", async (req,res) => {
 	var questionID = req.params.id;
