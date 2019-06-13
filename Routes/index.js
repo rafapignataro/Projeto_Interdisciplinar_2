@@ -127,23 +127,23 @@ router.get('/getProjects/:dataID', async (req,res) => {
 		await Sql.conectar(async (sql) => {
 			try {
 				if(dataID == "az"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title ASC", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title ASC", function(error,result){
 						if(error){
 							console.log(error);
 						}
 						res.json(result);
 					});	
 				}else if(dataID == "za"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title DESC", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by title DESC", function(error,result){
 						res.json(result);
 					});	
 				}
 				else if(dataID == "recente"){
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by date asc", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) order by date asc", function(error,result){
 						res.json(result);
 					});	
 				}else {
-					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
+					sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)", function(error,result){
 						res.json(result);
 					});	
 				}	
