@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bug Bank</title>
-    <link type="text/css" rel="stylesheet" href="../public/css/indexCss.css" />
-    <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css">
-    <link href="../public/dist/hamburgers.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/public/css/indexCss.css" />
+    <link rel="stylesheet" href="/public/font-awesome/css/font-awesome.min.css">
+    <link href="/public/dist/hamburgers.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body id="body">
@@ -34,7 +34,7 @@
                         <nav class="navbar">
                             <a href="/" class="navbar-item">Explorar</a>
                             <a href="/loginpage" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
-                            <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
+                            <a href="" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
                         </nav>
                         <form id="search-form" method="get" action="/login">
                             <span class=" search-bar-icon fa fa-search"></span>
@@ -49,7 +49,7 @@
                         </div>
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
-                        <a href="" class="header-profile-button header-buttons" id="btnPerfil"><span class="fa fa-circle"></span></a>
+                        <a href="/perfil" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></a>
                         <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
@@ -167,10 +167,10 @@
                                   <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-2-dropdown">
-                                     <a href="/getProjects/recente" data-target="perguntas-filtros-label-2" data-id="recente">RECENTE</a>
-                                     <a href="/getProjects/popularidade" data-target="perguntas-filtros-label-2" data-id="popularidade">POPULARIDADE</a>
-                                     <a href="/getProjects/az" data-target="perguntas-filtros-label-2" data-id="az">A-Z</a>
-                                     <a href="/getProjects/za" data-target="perguntas-filtros-label-2" data-id="za">Z-A</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="recente">RECENTE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="popularidade">POPULARIDADE</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="az">A-Z</a>
+                                     <a href="#" data-target="perguntas-filtros-label-2" data-id="za">Z-A</a>
                                   </div>
                               </button>
                             </div>
@@ -261,7 +261,6 @@
             $("#logout-modal").css({ "display": "flex" });
             $("#navbar-createBug").attr("href", "/create-bug");
             $("#navbar-genBug").attr("href", "/profile/" + <%= user %> + "/manage-bugs");
-            $("#btnPerfil").attr("href", "/profile/" + <%= user %> + "");
         }
         
         $("#btnLogout").on("click",function(){
@@ -318,23 +317,22 @@
             projects.empty();
             
             $.ajax({
-                url: "/getProjects/" + dataID,
+                url: "/getUserProjects",
                 type: "GET",
                 cache: false,
                 success: (data) => {
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
-                                        '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
+                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                        '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                        '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' + 
+                                        '<div class="pergunta-tempo">' + data[i].dt_pergunta + '</div>' +
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +
                                 '</div>'+
@@ -363,7 +361,7 @@
                             '<li>'+
                                 '<a href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
                                     '<div class="sidebar-list-item">'+
-                                        '<img src="../Public/Imagens/circle.svg" class="sidebar-list-item-category"/>'+
+                                        '<img src="/Public/Imagens/circle.svg" class="sidebar-list-item-category"/>'+
                                         '<div class="sidebar-list-item-name">' + data[i].titulo_pergunta + '</div>' +
                                     '</div>'+
                                 '</a>' +

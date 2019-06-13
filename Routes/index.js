@@ -44,9 +44,7 @@ router.get('/profile/:user', wrap(async function(req, res) {
 	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado });
 }));
 
-router.get('/criar-bug', function(req, res) {
-	res.render('criar-bug', { title: 'criar-bug' });
-});
+
 
 router.get('/login', wrap(async function(req,res){
 
@@ -73,15 +71,6 @@ router.get('/login', wrap(async function(req,res){
 		res.json("Complete todos os campos!");
 	}
 }));
-
-// router.get('/fake_pagina', wrap(async function(req, res) {
-// 	let u = await validaCookie(req);
-// 	if (!u) {
-// 		res.redirect('/sem_acesso');
-// 		return;
-// 	}
-// 	res.render('index', { title: 'Bug Bank' });
-// }));
 
 router.get('/getUserProjects', wrap(async function(req, res) {
 	let u = await validaCookie(req, res);
@@ -196,7 +185,7 @@ router.get('/profile/:user/manage-bugs', wrap(async function(req, res) {
 		return;
 	}
 	userLogado = true
-	res.render('criar-bug', { title: 'Criar bug', user: u.id, userLogado: userLogado });
+	res.render('manage-bugs', { title: 'Gerenciar Projetos', user: u.id, userLogado: userLogado });
 }));
 
 router.get('/create-bug', wrap(async function(req, res) {

@@ -19,9 +19,18 @@ from pergunta
 inner join usuario on ( usuario.id_usuario = pergunta.id_usuario);
 
 INSERT INTO pergunta (titulo_pergunta,dt_pergunta,nick_pergunta,desc_pergunta,id_usuario) 
-values ("Não consigo usar ajax nesse projeto",curdate(),"ajax", "Não consigo implementar o Ajax nessa minha aplicação!", 2);
+values ("Não consigo fazer logout em meu site feito com node.js e mysql",curdate(),"node/mySql", "Não consigo fazer logout em meu site feito com node.js e mysql", 2);
 
 select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta as id 
 from pergunta 
 inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)
-order by date DESC;
+order by date ASC;
+
+select * from pergunta;
+
+select p.*, u.login_usuario from pergunta p inner join usuario u on ( usuario.id_usuario = pergunta.id_usuario);
+
+
+select login_usuario, token from usuario where id_usuario = 2;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'
