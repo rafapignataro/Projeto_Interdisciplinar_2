@@ -47,7 +47,7 @@
                         </div>
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
-                        <a href="" class="header-profile-button header-buttons" id="btnPerfil"><span class="fa fa-circle"></span></a>
+                        <a href="" class="header-profile-button header-buttons" id="btnPerfil"><img class="user-photo" src="/Public/Imagens/circle.svg" id="user-photo" style="border-radius: 50%"></a>
                         <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
@@ -255,6 +255,7 @@
             $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
             $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
             $("#btnPerfil").css({ "display": "flex"});
+            $("#user-photo").attr("src", "/Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
         }
         
         $("#btnLogout").on("click",function(){

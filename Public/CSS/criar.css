@@ -217,6 +217,12 @@ html, body {
     color: #e25a68;
 }
 
+.user-photo{
+    height: 30px;
+    display: flex;
+    margin-right: 10px;
+}
+
 .header-notification-button {
     display: none;
     color: #848d95;
