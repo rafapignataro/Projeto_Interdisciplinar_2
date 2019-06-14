@@ -331,17 +331,18 @@
                 cache: false,
                 success: (data) => {
                     for(var i=0; i < data.length; i++) {
+                        
                         projects.append(
                             '<div class="pergunta-container">'+
                                 '<a class="pergunta-imagem"' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea><div class="edit-buttons"><button type="button" class="favorite-button fa fa-star" onClick="favorite(' + data[i].id_pergunta + ')"></button><button type="button" class="delete-button fa fa-remove" onClick="deleteBug(' + data[i].id_pergunta + ')"></button></div></div>' +
+                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea><div class="edit-buttons"><button type="button" class="favorite-button fa fa-star" onClick="favorite(' + data[i].id_pergunta + ')"></button><button type="button" class="delete-button fa fa-remove" onClick="deleteBug(' + data[i].id_pergunta + ')"></button></div></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
                                     '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
                                         '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].dt_pergunta + '</div>' +
+                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' +
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +
                                 '</div>'+
@@ -370,7 +371,7 @@
                             '<li>'+
                                 '<a href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
                                     '<div class="sidebar-list-item">'+
-                                        '<img src="/Public/Imagens/circle.svg" class="sidebar-list-item-category"/>'+
+                                            '<img src="/Public/Imagens/tag-icons/' + data[i].tag + '.png" class="sidebar-list-item-category" style="border-radius:50%"/>'+
                                         '<div class="sidebar-list-item-name">' + data[i].titulo_pergunta + '</div>' +
                                     '</div>'+
                                 '</a>' +

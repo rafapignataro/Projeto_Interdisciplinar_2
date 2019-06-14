@@ -142,6 +142,7 @@ html, body {
 .header-buttons {
     padding: 0;
     margin-right: 10px;
+    height: 30px;
 }
 
 .header-search-button {
@@ -227,6 +228,11 @@ html, body {
     transition: color ease-out 0.25s;
     width: 24px;
     cursor: pointer;
+}
+.user-photo{
+    height: 30px;
+    display: flex;
+    margin-right: 10px;
 }
 
 .header-notification-button:hover {

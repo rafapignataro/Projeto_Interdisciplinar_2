@@ -4,6 +4,7 @@ const crypto_1 = require("crypto");
 const router = express.Router();
 const validaCookie = require("../utils/validaCookie");
 const Sql = require("../infra/sql");
+const fs = require('fs');
 
 router.get('/', wrap(async function(req, res) {
 	var user = req.params.user;
@@ -75,7 +76,7 @@ router.get('/getUserProjects', wrap(async function(req, res) {
 	if (!u)
 		return;
 	await Sql.conectar(async (sql) => {
-		let rows = await sql.query('SELECT * FROM pergunta WHERE id_usuario = ?', [u.id]);
+		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, pergunta.id_pergunta from pergunta WHERE id_usuario = ?", [u.id]);
 		if (rows && rows.length) {
 			res.json(rows);
 		} else {
@@ -105,8 +106,14 @@ router.post('/register', wrap(async function(req, res) {
 				if (rows && rows.length) {
 					res.json('Esse usuario já existe!');
 				} else {
-					await sql.query('INSERT INTO usuario (login_usuario,email_usuario,senha_usuario, deleted_usuario) values (?,?,?,1)', [user.username, user.email, user.password]);
+					await sql.query('INSERT INTO usuario (login_usuario,email_usuario,senha_usuario, deleted_usuario) values (?,?,?,0)', [user.username, user.email, user.password]);
 					res.json(`Cadastro concluído!\n Bem vindo, ${user.username}!`);
+
+					fs.mkdir('Public/Users/' + user.username, function(error, data){
+						if(error){
+							throw error;
+						}
+					});
 				}
 			});
 		}else{
