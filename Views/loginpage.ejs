@@ -48,8 +48,8 @@
                         <div class="header-search">
                         </div>
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
-                        <a href="/perfil" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></a>
-                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
+                        <!-- <a href="/perfil" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></a>
+                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button> -->
                     </div>
                 </div>
                 <div class="header-complement-wrapper">
@@ -217,6 +217,7 @@
             });
             $("#logout-modal").css({ "display": "none" });
             $("#lista-bugs").css({ "display": "none" });
+            
         } else {
             $(".sidebar-notlogged").css({ "display": "none" });
             $("#login-form").css({ "display": "none" });
@@ -229,48 +230,7 @@
         $("#btnLogout").on("click",function(){
             window.location.href = "/logout";
         });
-        
-        //---------------------------------------------------------------------------------------------------------------
-        // Hide Header on on scroll down
-       /* var didScroll;
-        var lastScrollTop = 0;
-        var delta = 5;
-        var navbarHeight = $(".header-wrapper").outerHeight();
-
-        $(".content-wrapper").scroll(function (event) {
-            didScroll = true;
-        });
-
-        setInterval(function () {
-            if (didScroll) {
-                hasScrolled();
-                didScroll = false;
-            }
-        }, 250);
-
-        function hasScrolled() {
-            var st = $(".content-wrapper").scrollTop();
-
-            // Make sure they scroll more than delta
-            if (Math.abs(lastScrollTop - st) <= delta)
-                return;
-
-            // If they scrolled down and are past the navbar, add class .nav-up.
-            // This is necessary so you never see what is "behind" the navbar.
-            if (st > lastScrollTop && st > navbarHeight) {
-                // Scroll Down
-                $('.header-wrapper').removeClass('nav-down').addClass('nav-up');
-            } else {
-                // Scroll Up
-                if (st + $(window).height() < $(document).height()) {
-                    $('.header-wrapper').removeClass('nav-up').addClass('nav-down');
-                }
-            }
-
-            lastScrollTop = st;
-        }*/
-        //-------------------------------
-
+ 
         $("#signup-form-button").on("click", function () {
             $("#login-form").css({ "display": "none" });
             $("#signup-form").css({ "display": "flex" });

@@ -36,7 +36,7 @@
                             <a href="/loginpage" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
                             <a href="" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
                         </nav>
-                        <form id="search-form" method="get" action="/login">
+                        <form id="search-form" method="get" action="/search">
                             <span class=" search-bar-icon fa fa-search"></span>
                             <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
                             <button type="reset" class="search-clear-button">
@@ -49,7 +49,7 @@
                         </div>
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
-                        <a href="/perfil" class="header-profile-button header-buttons"><span class="fa fa-circle"></span></a>
+                        <a href="" class="header-profile-button header-buttons" id="btnPerfil"><span class="fa fa-circle"></span></a>
                         <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
                     </div>
                 </div>
@@ -258,6 +258,7 @@
             });
             $("#logout-modal").css({ "display": "none" });
             $("#lista-bugs").css({ "display": "none" });
+            $("#btnPerfil").css({ "display": "none"});
         } else {
             $(".sidebar-notlogged").css({ "display": "none" });
             $("#login-form").css({ "display": "none" });
@@ -267,7 +268,8 @@
             $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
             $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
-            $("#btnPerfil").attr("href", "/profile/" + '<%= user %>');
+            $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
+            $("#btnPerfil").css({ "display": "flex"});
         }
         
         $("#btnLogout").on("click",function(){
@@ -332,7 +334,7 @@
                         projects.append(
                             '<div class="pergunta-container">'+
                                 '<a class="pergunta-imagem"' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea><div class="edit-buttons"><button type="button" class="favorite-button fa fa-star"></button><button type="button" class="delete-button fa fa-remove"></button></div></div>' +
+                                    '<img src="https://via.placeholder.com/320x160.png?text=Projeto+Curse"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea><div class="edit-buttons"><button type="button" class="favorite-button fa fa-star" onClick="favorite(' + data[i].id_pergunta + ')"></button><button type="button" class="delete-button fa fa-remove" onClick="deleteBug(' + data[i].id_pergunta + ')"></button></div></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
                                     '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
@@ -383,6 +385,51 @@
                 }
             });
 
+        }
+
+        function favorite(bugId){
+
+            $.ajax({
+                url: "/favorite",
+                type: "post",
+                dataType:'json',
+                data: {
+                    bugId: bugId
+                },
+                cache: false,
+                success: (data) => {
+                    //VINICIUS FAÇA O COMANDO AQUI DO TOGGLE DA ESTRELA, O BANCO ESTA TODO PRONTO, FALTA SÓ O TOGGLE
+                    if(data.favorited == true){
+                        //FAVORITOU
+                        console.log(data.bugId + ' foi favoritado!');
+                    }else{
+                        //DESFAVORITOU
+                        console.log(data.bugId + ' foi desfavoritado!');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        }
+
+        function deleteBug(bugId){
+            $.ajax({
+                url: "/deleteBug",
+                type: "delete",
+                dataType:'json',
+                data: {
+                    bugId: bugId
+                },
+                cache: false,
+                success: (data) => {
+                    alert('Bug deletado!');
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
         }
 
         function processaLink(e) {

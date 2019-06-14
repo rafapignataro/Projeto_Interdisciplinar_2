@@ -36,7 +36,7 @@
                             <a href="/loginpage" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
                             <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
                         </nav>
-                        <form id="search-form" method="get" action="/login">
+                        <form id="search-form" method="get" action="/search">
                             <span class=" search-bar-icon fa fa-search"></span>
                             <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
                             <button type="reset" class="search-clear-button">
@@ -50,7 +50,7 @@
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
                         <a href="" class="header-profile-button header-buttons" id="btnPerfil"><span class="fa fa-circle"></span></a>
-                        <button type="button" class="header-notification-button header-buttons"><span class="fa fa-bell"></span></button>
+                        <button type="button" class="header-notification-button header-buttons" id="bellIcon"><span class="fa fa-bell"></span></button>
                     </div>
                     
                 
@@ -260,6 +260,7 @@
             });
             $("#logout-modal").css({ "display": "none" });
             $("#lista-bugs").css({ "display": "none" });
+            $("#btnPerfil").css({ "display": "none" });
         } else {
             $(".sidebar-notlogged").css({ "display": "none" });
             $("#login-form").css({ "display": "none" });
@@ -269,7 +270,8 @@
             $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
             $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
-            $("#btnPerfil").attr("href", "/profile/" + '<%= user %>');
+            $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
+            $("#btnPerfil").css({ "display": "flex"});
         }
         
         $("#btnLogout").on("click",function(){

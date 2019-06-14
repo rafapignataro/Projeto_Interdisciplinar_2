@@ -10,7 +10,7 @@ router.get('/', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('index', { title: 'Bug Bank', userLogado: userLogado, user: u});
+		res.render('index', { title: 'Bug Bank', userLogado: userLogado, user: u, userLogged: null});
 		return;
 	}
     userLogado = true;
@@ -37,7 +37,7 @@ router.get('/profile/:user', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('loginpage', { title: 'Login Page', userLogado: userLogado });
+		res.render('perfil', { title: 'Perfil', userLogado: userLogado, userLogged: null });
 		return;
 	}
 	userLogado = true
@@ -202,7 +202,6 @@ router.get('/create-bug', wrap(async function(req, res) {
 router.post('/createBug', wrap(async function(req, res) {
 
 	let project = req.body;
-	console.log(project.dateTime);
 	if(project.title && project.description && project.tag){
 		await Sql.conectar(async (sql) => {
 			
@@ -214,5 +213,41 @@ router.post('/createBug', wrap(async function(req, res) {
 		res.json("Complete todos os campos!");
 	}
 }));
+
+router.post('/favorite', async function(req,res){
+
+	var bugFavoritedId = req.body.bugId;
+
+	await Sql.conectar(async (sql) => {
+		let rows = await sql.query('SELECT favorited FROM pergunta WHERE id_pergunta = ?', [bugFavoritedId]);
+		if(rows && rows[0].favorited == 0){
+			await sql.query('UPDATE pergunta SET favorited = true where id_pergunta = ?', [bugFavoritedId]);
+			return res.json({
+				favorited: true,
+				bugId: bugFavoritedId
+			});
+		}else{
+			await sql.query('UPDATE pergunta SET favorited = false where id_pergunta = ?', [bugFavoritedId]);
+			return res.json({
+				favorited: false,
+				bugId: bugFavoritedId
+			});
+		}
+	});
+});
+
+router.delete('/deleteBug', async function(req,res){
+	var bugDeletedId = req.body.bugId;
+
+	await Sql.conectar(async (sql) => {
+		let rows = await sql.query('SELECT id_pergunta FROM pergunta WHERE id_pergunta = ?', [bugDeletedId]);
+		if(rows && rows.length){
+			await sql.query('DELETE FROM pergunta where id_pergunta = ?', [bugDeletedId]);
+			return res.json(bugDeletedId + "foi deletado");
+		}else{
+			return res.json(bugDeletedId + "não pôde ser deletado");
+		}
+	});
+});
 
 module.exports = router;
