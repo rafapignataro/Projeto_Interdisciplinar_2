@@ -11,15 +11,6 @@ html, body {
 ::placeholder {
     color: #80868b;
 }
-
-/* Helpers */
-.left { float: left; }
-
-.bold { font-weight: bold; }
-
-.italic { font-style: italic; }
-/* End */
-
 .bugbank {}
 
 .header-wrapper {
@@ -621,6 +612,7 @@ html, body {
 }
 
 .content {
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
@@ -942,6 +934,124 @@ html, body {
     border-top-left-radius: 0px;*/
 }
 
+
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    height: 1000px;
+}
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile-pic {
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select-photo {
+    display: none;
+    width: 102px;
+    position: absolute;
+    top: 100px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profile{
+    position:relative;
+    margin-bottom: 20px;
+}
+
+.edit-profile-btn {
+    color: white;
+    background: none;
+    background-color: #3b4045;
+    padding: 15px 50px;
+    border: none;
+    outline: none;
+    transition: background-color linear 0.2s;
+    cursor: pointer;
+}
+
+    .edit-profile-btn:hover {
+        background-color: #1b1b1b;
+    }
+
+#editar-profile-button{
+    display:flex;
+}
+
+#salvar-profile-button {
+    display: none;
+}
+
+.profile-info-desc {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    resize: none;
+    outline: none;
+    width: 80%;
+    height: 120px;
+    border: none;
+}
+
+.profile-display-name {
+    resize: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-weight: 600;
+    color: #3b4045;
+    height: 30pt;
+    overflow: hidden;
+    width: 100%;
+}
+
+.profile-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-right-content {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.profile-right-header {
+    display: flex;
+    flex-direction: row;
+}
+
+    .profile-right-header p {
+        font-size: 32px;
+        font-weight: 600;
+        color: #80868b;
+        margin: 0;
+    }
+
 @media only screen and (min-width: 1159px) {
     .header {
     }
@@ -1134,72 +1244,14 @@ html, body {
     .perguntas-filtros-dropdown-content-after {
         display: block;
     }
-}
 
-/*--------------------------------------------- PERFIL --------------------------------------------------------------------------------*/
-.profile { color: #3B4045; }
+    .profile {
+        width: 90%;
+    }
 
-.profile a {
-    color: #3B4045;
-    text-decoration: none;
-}
-
-.profile p { margin-top: 20px; }
-
-.profile .spacer { padding: 15px; }
-
-.profile .sidebar {
-    background: transparent;
-    width: 25%;
-}
-
-.profile .sidebar figure { margin: 0; }
-.profile .sidebar figure img { width: 100%; }
-.profile .sidebar figure figcaption p { margin: 0; }
-
-.profile .sidebar button {
-    background: #FFF;
-    border: 0.8px solid #000;
-    border-radius: 5px;
-    color: #ED3B4D;
-    padding: 4px;
-    width: 100%;
-}
-
-.profile .content { width: 75%; }
-
-.profile .content nav ul {
-    border-color: #ACACAC;
-    border-bottom: 0.8px solid;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.profile .content nav ul li {
-    display: inline-block;
-}
-
-.profile .content nav ul li a {
-    display: block;
-    padding: 20px;
-}
-
-.profile .content nav ul li a:hover,
-.profile .content nav ul li a.active {
-    color: #ED3B4D;
-    position: relative;
-}
-
-.profile .content nav ul li a:hover::after,
-.profile .content nav ul li a.active::after {
-    bottom: -0.8px;
-    background: #ED3B4D;
-    content: "";
-    height: 0.8px;
-    left: 0;
-    position: absolute;
-    width: 100%;
+    .profile-right-content {
+        margin-top: 25px;
+    }
 }
 
 

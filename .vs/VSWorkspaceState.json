@@ -3,9 +3,8 @@
     "",
     "\\Public",
     "\\Public\\CSS",
-    "\\Routes",
     "\\Views"
   ],
-  "SelectedNode": "\\Views\\project.ejs",
+  "SelectedNode": "\\Views\\criar-bug.ejs",
   "PreviewInSolutionExplorer": false
 }
