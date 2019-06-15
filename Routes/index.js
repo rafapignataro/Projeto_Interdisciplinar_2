@@ -38,11 +38,15 @@ router.get('/profile/:user', wrap(async function(req, res) {
 	var userLogado = false;
 	let u = await validaCookie(req, res);
 	if (!u){	
-		res.render('perfil', { title: 'Perfil', userLogado: userLogado, userLogged: null });
+		res.render('perfil', { title: 'Perfil', userLogado: userLogado, userLogged: null, profileOwner: false, profileOwnerName: user });
 		return;
 	}
 	userLogado = true
-	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
+	var profileOwner = false;
+	if(u.login_usuario == user){
+		profileOwner = true;
+	}
+	res.render('perfil', { title: 'Perfil', user: u.id, userLogado: userLogado, userLogged: u.login_usuario, profileOwner: profileOwner, profileOwnerName: user});
 }));
 
 router.get('/login', wrap(async function(req,res){
@@ -73,10 +77,11 @@ router.get('/login', wrap(async function(req,res){
 
 router.get('/getUserProjects', wrap(async function(req, res) {
 	let u = await validaCookie(req, res);
-	if (!u)
-		return;
+	if (!u){
+			return;
+	}
 	await Sql.conectar(async (sql) => {
-		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, pergunta.id_pergunta from pergunta WHERE id_usuario = ?", [u.id]);
+		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, id_pergunta, favorited from pergunta WHERE id_usuario = ?", [u.id]);
 		if (rows && rows.length) {
 			res.json(rows);
 		} else {
@@ -84,6 +89,23 @@ router.get('/getUserProjects', wrap(async function(req, res) {
 		}
 	});
 }));
+
+router.get('/getProjectsOff', wrap(async function(req, res) {
+
+	var data = req.query["profileOwnerOffline"];
+	await Sql.conectar(async (sql) => {
+		let rows2 = await sql.query("select id_usuario from usuario where login_usuario = ?", [data]);
+		var profileOwnerId = rows2[0].id_usuario;
+		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, id_pergunta, favorited from pergunta WHERE id_usuario = ?", [profileOwnerId]);
+		if (rows && rows.length) {
+			console.log(rows);
+			res.json(rows);
+		} else {
+			res.json("Usuario não possui projetos!");
+		}
+	});
+}));
+
 
 router.get('/logout', wrap(async function(req, res) {
 	let u = await validaCookie(req);
