@@ -26,8 +26,16 @@ from pergunta
 inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)
 order by date ASC;
 
+select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, id_pergunta, favorited, u.email_usuario from pergunta inner join usuario u on ( usuario.id_usuario = pergunta.id_usuario) WHERE login_usuario = 'Sergio123';
+
+alter table pergunta drop column nick_pergunta;
+
 select * from pergunta;
 select * from usuario;
+desc pergunta;
+select id_usuario from usuario where login_usuario = 'Sergio123';
+
+delete from usuario where id_usuario > 2;
 
 select p.*, u.login_usuario from pergunta p inner join usuario u on ( usuario.id_usuario = pergunta.id_usuario);
 
@@ -38,4 +46,10 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
 select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario);
 
+select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, nick_pergunta as nick, desc_pergunta as description, tag, usuario.login_usuario as user, pergunta.id_pergunta as id from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario) where tag = 'javascript';
 
+alter table pergunta add column favorited boolean;
+
+SELECT favorited FROM pergunta WHERE id_pergunta = 1;
+
+update pergunta set favorited = false where id_pergunta = 1;
