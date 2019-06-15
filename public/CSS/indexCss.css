@@ -60,7 +60,7 @@ html, body {
         display: block;
         height: 4px;
         left: 50%;
-        top: -20px;
+        top: -21px;
         position: absolute;
         background: #ff2e42;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
@@ -1119,6 +1119,10 @@ html, body {
     }
 
 @media only screen and (min-width: 1159px) {
+    .footer-wrapper {
+        display:none;
+    }
+
     .header {
     }
 
