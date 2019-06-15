@@ -368,40 +368,8 @@
         var data = {
                 profileOwnerOffline: '<%= profileOwnerName %>'
         }  
-        if(!logado){
-            $.ajax({
-                url: "/getProjectsOff",
-                type: "GET",
-                dataType: "json",
-                data: data,
-                cache: false,
-                success: (data) => {
-                    for(var i=0; i < data.length; i++) {
-                        projects.append(
-                            '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
-                                '</a>' +
-                                '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                        '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
-                                    '</a>'+
-                                    '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
-                                    '</div>'+
-                                        '<div class= "pergunta-tags" > TAGS </div>' +
-                                '</div>'+
-                            '</div>'
-                            );                
-                    }                     
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('error ' + textStatus + " " + errorThrown);
-                }
-            });
-        }else{
-            $.ajax({
-            url: "/getProjectsOff",
+        $.ajax({
+            url: "/getProjectsProfile",
             type: "GET",
             dataType: "json",
             data: data,
@@ -409,28 +377,32 @@
             success: (data) => {
                 for(var i=0; i < data.length; i++) {
                     projects.append(
-                            '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
-                                '</a>' +
-                                '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
-                                        '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
-                                    '</a>'+
-                                    '<div class= "pergunta-desc-sub">'+
-                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
-                                    '</div>'+
-                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                        '<div class="pergunta-container">'+
+                            '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
+                            '</a>' +
+                            '<div class="pergunta-desc">' +
+                                '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
+                                '</a>'+
+                                '<div class= "pergunta-desc-sub">'+
+                                    '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
                                 '</div>'+
-                            '</div>'
-                            );             
-                }                     
+                                    '<div class= "pergunta-tags" > TAGS </div>' +
+                            '</div>'+
+                        '</div>'
+                        );                
+                }
+                // MUDAR NOMES NA PAGINA PERFIL
+                $('.profile-display-name').html('<%= profileOwnerName %>');
+                $('.profile-user-name').html(data[0].email_usuario);
+                //BIO NAO TEM, TEMOS QUE ADICIONAR NO BANCO
+                $("#profile-photo").attr("src", "/Public/Users/" + '<%= profileOwnerName %>' + "/user-photo.jpg");                     
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error ' + textStatus + " " + errorThrown);
             }
-            });
-        }
+        });
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
 

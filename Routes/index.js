@@ -90,15 +90,14 @@ router.get('/getUserProjects', wrap(async function(req, res) {
 	});
 }));
 
-router.get('/getProjectsOff', wrap(async function(req, res) {
+router.get('/getProjectsProfile', wrap(async function(req, res) {
 
 	var data = req.query["profileOwnerOffline"];
 	await Sql.conectar(async (sql) => {
-		let rows2 = await sql.query("select id_usuario from usuario where login_usuario = ?", [data]);
-		var profileOwnerId = rows2[0].id_usuario;
-		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, id_pergunta, favorited from pergunta WHERE id_usuario = ?", [profileOwnerId]);
+		let rows = await sql.query("select titulo_pergunta, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta, tag, id_pergunta, favorited, u.email_usuario from pergunta inner join usuario u on ( u.id_usuario = pergunta.id_usuario) WHERE login_usuario = ?", [data]);
 		if (rows && rows.length) {
 			console.log(rows);
+			
 			res.json(rows);
 		} else {
 			res.json("Usuario não possui projetos!");
