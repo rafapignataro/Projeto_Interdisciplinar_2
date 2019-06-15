@@ -672,7 +672,7 @@ html, body {
     width: auto;
     z-index: 0;
     top: 60px;
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
     background-color: #e3e7ef;
 }
@@ -1265,6 +1265,7 @@ html, body {
         border: 1px solid #d9dede;
         border-right: none;
         width: calc(100% - 350px);
+        bottom: 0;
     }
 
     .header-notification-button {
