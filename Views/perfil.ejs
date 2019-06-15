@@ -150,18 +150,13 @@
                         <form action="/" method="post" class="" id="profile-information-form">
                             <div class="profile-left">
                                 <div class="profile-pic">
-                                    <!--CARREGAR AQUI A FOTO DA PESSOA -->
                                     <img id="profile-photo" src="/Public/Users/admin/user-photo.jpg" style="border-radius: 50%"/>
-                                    <!--CAMPO DE FAZER UPLOAD DA IMAGEM // RENDERIZAR CASO ENTRE NO MODO EDICAO -->
                                     <input class="select-photo" id="profile-pic" type="file" name="profile_photo"/>
                                 </div>
                                 <div class="profile-info">
-                                    <!-- AONDE APARECE O EDITAR PERFIL                                  -->
-                                    <div class="profile-display-name">
-                                        <!--CAMPO DE MUDAR NOME // REMOVER READONLY E TROCAR CLASSE AO ENTRAR NO MODO EDICAO -->
-                                        <!--CARREGAR AQUI O NOME DA PESSOA -->
-                                        <textarea maxlength="30" form="profile-information-form" class="profile-display-name" readonly>NOME</textarea>
-                                    </div>
+                                    <textarea maxlength="30" form="profile-information-form" class="profile-display-name" readonly>
+                                        
+                                    </textarea>
                                     <div class="profile-user-name">
                                         <!--CARREGAR AQUI O USERNAME PESSOA (ESTE CAMPO NAO E ALTERAVEL)-->
                                         <i>username</i>
@@ -222,7 +217,19 @@
             </div>
         </div>
     <!--------------FOOTER----------------------------------------------------------------------->
-
+                <div class="footer-wrapper">
+            <div class="footer">
+                <div class="footer-container">
+                    <div class="footer-center">
+                        <nav class="navbar-footer">
+                            <a href="/" class="navbar-item-footer">Explorar</a>
+                            <a href="/loginpage" class="navbar-item-footer" id="navbar-createBug2">Criar um Bug</a>
+                            <a href="/loginpage" class="navbar-item-footer" id="navbar-genBug2">Gerenciar Bugs</a>
+                        </nav>
+                    </div>        
+                </div>
+            </div>
+        </div>
     <!----------------------------------------------------------MOBILE------------------------------------------------------------------------->
     <script>
         var $hamburger = $(".hamburger");
@@ -230,8 +237,6 @@
             $hamburger.toggleClass("is-active");
             $(".sidebar-wrapper").toggleClass('sidebar-wrapper-after');
             $(".content").toggleClass('noscroll');
-
-            // Do something else, like open/close menu
         });
 
         var $headersearchbutton = $(".header-search-button");
@@ -303,9 +308,11 @@
             $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
             $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
+            $("#navbar-createBug2").attr("href", "/create-bug");
+            $("#navbar-genBug2").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
             $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
             $("#btnPerfil").css({ "display": "flex"});
-            $("#user-photo").attr("src", "/Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
+            $("#user-photo").attr("src", "Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
         }
         
         $("#btnLogout").on("click",function(){
@@ -454,6 +461,18 @@
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
+        });
+
+        var $editar = $("#editar-profile-button");
+        $editar.on("click", function () {
+            $editar.css({ "display": "none" });
+            $("#salvar-profile-button").css({ "display": "flex" });
+            $("#profile-photo").css({ "opacity": "0.5" });
+            $("#profile-pic").css({ "display": "flex" });
+            $(".profile-display-name").prop("readonly", false);
+            $(".profile-info-desc").prop("readonly", false);
+            $(".profile-display-name").css({ "background-color": "#f1f3f4" });
+            $(".profile-info-desc").css({ "background-color": "#f1f3f4" });
         });
 
     </script>

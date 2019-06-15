@@ -193,8 +193,8 @@
                     <div class="footer-center">
                         <nav class="navbar-footer">
                             <a href="/" class="navbar-item-footer">Explorar</a>
-                            <a href="/loginpage" class="navbar-item-footer" id="navbar-createBug">Criar um Bug</a>
-                            <a href="/loginpage" class="navbar-item-footer" id="navbar-genBug">Gerenciar Bugs</a>
+                            <a href="/loginpage" class="navbar-item-footer" id="navbar-createBug2">Criar um Bug</a>
+                            <a href="/loginpage" class="navbar-item-footer" id="navbar-genBug2">Gerenciar Bugs</a>
                         </nav>
                     </div>        
                 </div>
@@ -281,6 +281,8 @@
             $('#welcomeUser').html("Bem-Vindo " + '<%= userLogged %>');
             $("#navbar-createBug").attr("href", "/create-bug");
             $("#navbar-genBug").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
+            $("#navbar-createBug2").attr("href", "/create-bug");
+            $("#navbar-genBug2").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
             $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
             $("#btnPerfil").css({ "display": "flex"});
             $("#user-photo").attr("src", "Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");

@@ -111,6 +111,76 @@ html, body {
     color: #3b4045;
 }
 
+.footer-wrapper {
+    z-index: 3;
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer {
+    background-color: #fff;
+    height: 100%;
+}
+
+.footer-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.navbar-item-footer {
+    text-decoration: none;
+    color: #3b4045;
+    font-weight: 600;
+    padding: 0 20px;
+    position: relative;
+    font-size: 14px;
+    transition: color cubic-bezier(.165, .84, .44, 1) .25s;
+    text-align: center;
+}
+
+    .navbar-item-footer:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 4px;
+        left: 50%;
+        top: -21px;
+        position: absolute;
+        background: #ff2e42;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .navbar-item-footer:hover:after {
+        text-decoration: none;
+        color: #ff2e42;
+        font-weight: 600;
+        width: calc(100% - 40px);
+        left: 20px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .navbar-item-footer:hover {
+        color: #3b4045;
+    }
+
 .header-logos-wrapper {
     height: 100%;
     display: inline-block;
@@ -615,7 +685,7 @@ html, body {
     width: auto;
     z-index: 0;
     top: 60px;
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
     background-color: #e3e7ef;
 }
@@ -942,7 +1012,69 @@ html, body {
     border-top-left-radius: 0px;*/
 }
 
+.create-bug{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.create-bug-content {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+    .create-bug-content p {
+        font-size: 43px;
+        margin: 40px 0 0 0;
+        font-weight: 600;
+        color: #3b4045;
+    }
+
+.create-bug-label {
+    align-self: flex-start;
+    color: #80868b;
+    display: flex;
+    margin-bottom: 8px;
+    margin-top: 25px;
+}
+
+.create-bug-input {
+    background-color: #f1f3f4;
+    border: none;
+    border-radius: 2px;
+    color: #3b4045;
+    height: 45px;
+    height: 25px;
+    outline: none;
+    padding: 5px 10px;
+    transition: 0.3s;
+    width: 274px;
+    align-self: flex-start;
+    display: flex;
+}
+
+.create-description {
+    align-self: flex-start;
+    color: #80868b;
+    display: flex;
+    margin-bottom: 8px;
+}
+
 @media only screen and (min-width: 1159px) {
+    .create-bug-content {
+        width: 80%;
+    }
+
+    .footer-wrapper {
+        display: none;
+    }
+
     .header {
     }
 
@@ -1085,6 +1217,7 @@ html, body {
         border: 1px solid #d9dede;
         border-right: none;
         width: calc(100% - 350px);
+        bottom:0;
     }
 
     .header-notification-button {
@@ -1238,45 +1371,6 @@ html, body {
         color: #3b4045;
     }
 
-.create-bug {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-
-.create-bug-content {
-}  
-
-.create-bug-label {
-    align-self: flex-start;
-    color: #80868b;
-    display: flex;
-    margin-bottom: 8px;
-    margin-top: 25px;
-}
-
-.create-bug-input {
-    background-color: #f1f3f4;
-    border: none;
-    border-radius: 2px;
-    color: #3b4045;
-    height: 45px;
-    height: 25px;
-    outline: none;
-    padding: 5px 10px;
-    transition: 0.3s;
-    width: 274px;
-    align-self: flex-start;
-    display: flex;
-}
-
-.create-description{
-    align-self: flex-start;
-    color: #80868b;
-    display: flex;
-    margin-bottom: 8px;
-}
-
 .textarea {
     background: #F1F3F4;
     padding: 0;
@@ -1289,30 +1383,6 @@ html, body {
 
 .category{
     margin-bottom: 30px;
-}
-
-.create-bug-content{
-    align-items: center;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    width: 700px;
-    text-align:center;
-}
-
-    .create-bug-content p {
-        font-size: 43px;
-        margin: 10px 0 0 0;
-        font-weight: 600;
-        color: #3b4045;
-    }
-
-.create-bug {
-    display: flex;
-    justify-content: center;
-    align-items:center;
 }
 
 .submit {
