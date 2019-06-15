@@ -361,8 +361,8 @@
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +
                                 '</div>'+
-                            '</div>');
-                                    
+                            '</div>'
+                            );                                   
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -382,25 +382,24 @@
                 cache: false,
                 success: (data) => {
                     for(var i=0; i < data.length; i++) {
-                        sidebarBugs.append(
+                        if(data[i].favorited == true){
+                            sidebarBugs.append(
                             '<li>'+
                                 '<a href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
                                     '<div class="sidebar-list-item">'+
-                                        '<img src="/Public/Imagens/tag-icons/' + data[i].tag + '.png" class="sidebar-list-item-category" style="border-radius:50%"/>'+
+                                            '<img src="/Public/Imagens/tag-icons/' + data[i].tag + '.png" class="sidebar-list-item-category" style="border-radius:50%"/>'+
                                         '<div class="sidebar-list-item-name">' + data[i].titulo_pergunta + '</div>' +
                                     '</div>'+
                                 '</a>' +
                             '</li>'
-                        );
-                                 
-                    }
-                     
+                            );
+                        }                
+                    }                  
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
-
         }
 
         function processaLink(e) {

@@ -151,19 +151,12 @@
                             <div class="profile-left">
                                 <div class="profile-pic">
                                     <!--CARREGAR AQUI A FOTO DA PESSOA -->
-                                    <img id="profile-photo" src="../Public/Users/admin/user-photo.jpg" style="border-radius: 50%"/>
+                                    <img id="profile-photo" src="/Public/Users/admin/user-photo.jpg" style="border-radius: 50%"/>
                                     <!--CAMPO DE FAZER UPLOAD DA IMAGEM // RENDERIZAR CASO ENTRE NO MODO EDICAO -->
-                                    <input class="select-photo" "id="profile-pic" type="file" name="profile_photo"/>
+                                    <input class="select-photo" id="profile-pic" type="file" name="profile_photo"/>
                                 </div>
                                 <div class="profile-info">
-                                    <div class="edit-profile">
-                                        <!--SE ESTIVER LOGADO E O SEU ID FOR O MESMO ID DO PERFIL, RENDERIZAR ESTE BOTAO -->
-                                        <button type="button" class="edit-profile-btn" id="editar-profile-button">
-                                            Editar Perfil
-                                        </button>
-                                        <!--APOS O BOTAO ANTERIOR TER SIDO CLICADO, REMOVÊ-LO DA PAGINA E RENDERIZAR ESTE. CLICAR NESTE PARA ENVIAR O FORMULARIO PARA O BANCO E RECARREGAR A PAGINA DE PERFIL-->
-                                        <input type="submit" value="Salvar" class="edit-profile-btn" id="salvar-profile-button"/>
-                                    </div>
+                                    <!-- AONDE APARECE O EDITAR PERFIL                                  -->
                                     <div class="profile-display-name">
                                         <!--CAMPO DE MUDAR NOME // REMOVER READONLY E TROCAR CLASSE AO ENTRAR NO MODO EDICAO -->
                                         <!--CARREGAR AQUI O NOME DA PESSOA -->
@@ -221,7 +214,7 @@
                             </div>
                             <!--CARREGAR AQUI OS PROJETOS DA PESSOA -->
                             <div class="perguntas" id="projects">
-                    
+                                
                             </div>
                             </div>
                     </div>
@@ -324,18 +317,20 @@
             $("#signup-form").css({ "display": "flex" });
         });
 
-            var sidebarBugs = $("#lista-bugs");
-            sidebarBugs.empty();
+        var sidebarBugs = $("#lista-bugs");
+        sidebarBugs.empty();
 
-            sidebarBugs.append('<li id="sidebar-list-title" class="noselection"> MEUS BUGS </li>');
+        
 
-            $.ajax({
+        $.ajax({
                 url: "/getUserProjects",
                 type: "GET",
                 cache: false,
                 success: (data) => {
+                    sidebarBugs.append('<li id="sidebar-list-title" class="noselection"> MEUS BUGS </li>');
                     for(var i=0; i < data.length; i++) {
-                        sidebarBugs.append(
+                        if(data[i].favorited == true){
+                            sidebarBugs.append(
                             '<li>'+
                                 '<a href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
                                     '<div class="sidebar-list-item">'+
@@ -344,15 +339,98 @@
                                     '</div>'+
                                 '</a>' +
                             '</li>'
-                        );
-                                 
-                    }
-                     
+                            );
+                        }                
+                    }                  
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
                 }
             });
+
+        var profileOwnerBool = <%= profileOwner %>;
+        if(profileOwnerBool){
+            var profileInfo = $(".profile-info");
+            profileInfo.prepend(
+                '<div class="edit-profile">' +
+                '<button type="button" class="edit-profile-btn" id="editar-profile-button">' +
+                    'Editar Perfil' +
+                '</button>' +
+                '<input type="submit" value="Salvar" class="edit-profile-btn" id="salvar-profile-button"/>' +
+                '</div>'
+                ); 
+        }
+
+        var teste = '<%= profileOwnerName %>';
+
+        var projects = $("#projects");
+        projects.empty();
+        var data = {
+                profileOwnerOffline: '<%= profileOwnerName %>'
+        }  
+        if(!logado){
+            $.ajax({
+                url: "/getProjectsOff",
+                type: "GET",
+                dataType: "json",
+                data: data,
+                cache: false,
+                success: (data) => {
+                    for(var i=0; i < data.length; i++) {
+                        projects.append(
+                            '<div class="pergunta-container">'+
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
+                                '</a>' +
+                                '<div class="pergunta-desc">' +
+                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                        '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
+                                    '</a>'+
+                                    '<div class= "pergunta-desc-sub">'+
+                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
+                                    '</div>'+
+                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                                '</div>'+
+                            '</div>'
+                            );                
+                    }                     
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        }else{
+            $.ajax({
+            url: "/getProjectsOff",
+            type: "GET",
+            dataType: "json",
+            data: data,
+            cache: false,
+            success: (data) => {
+                for(var i=0; i < data.length; i++) {
+                    projects.append(
+                            '<div class="pergunta-container">'+
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].desc_pergunta + '</textarea></div>' +
+                                '</a>' +
+                                '<div class="pergunta-desc">' +
+                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id_pergunta + '/' + data[i].titulo_pergunta + '">' +
+                                        '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
+                                    '</a>'+
+                                    '<div class= "pergunta-desc-sub">'+
+                                        '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
+                                    '</div>'+
+                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                                '</div>'+
+                            '</div>'
+                            );             
+                }                     
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('error ' + textStatus + " " + errorThrown);
+            }
+            });
+        }
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
 
@@ -406,7 +484,6 @@
             });
         });
 
-        atualizaContent();
     </script>
 </div>
 </body>
