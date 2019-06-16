@@ -350,11 +350,11 @@
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '+') + '">' +
                                     '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + data[i].title + '">' +
+                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '+') + '">' +
                                         '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
