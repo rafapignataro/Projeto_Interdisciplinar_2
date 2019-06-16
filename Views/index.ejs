@@ -51,8 +51,8 @@
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
                         <a href="" class="header-profile-button header-buttons" id="btnPerfil"><img class="user-photo" src="Public/Imagens/circle.svg" id="user-photo" style="border-radius: 50%"></a>
                     </div>
-                    
-                
+
+
                 </div>
                 <div class="header-complement-wrapper">
                     <div class="header-complement">
@@ -149,7 +149,7 @@
                     <div class="perguntas-filtros-container">
                         <div class="perguntas-filtros" style="padding-left:0">
                             <div class="perguntas-filtros-dropdown">
-                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA:
                                   <b id="perguntas-filtros-label-1" data-id="todas">TODAS</b>
                                   <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="perguntas-filtros">
                             <div class="perguntas-filtros-dropdown">
-                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:  
+                              <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:
                                   <b id="perguntas-filtros-label-2" data-id="recente">RECENTE</b>
                                   <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
@@ -182,10 +182,10 @@
                     </div>
                 </div>
                 <div class="perguntas" id="projects">
-                    
+
                 </div>
             </div>
-        </div>        
+        </div>
     <!--------------FOOTER----------------------------------------------------------------------->
         <div class="footer-wrapper">
             <div class="footer">
@@ -196,7 +196,7 @@
                             <a href="/loginpage" class="navbar-item-footer" id="navbar-createBug2">Criar um Bug</a>
                             <a href="/loginpage" class="navbar-item-footer" id="navbar-genBug2">Gerenciar Bugs</a>
                         </nav>
-                    </div>        
+                    </div>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
         var logado = <%= userLogado %>;
 
         var animRodando = false;
-        
+
         $headersigninbutton.on("click", function () {
             if (animRodando) {
                 return;
@@ -286,9 +286,9 @@
             $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
             $("#btnPerfil").css({ "display": "flex"});
             $("#user-photo").attr("src", "Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
-           
+
         }
-        
+
         $("#btnLogout").on("click",function(){
             window.location.href = "/logout";
         });
@@ -331,7 +331,7 @@
             }
             return false;
         }
-        
+
         //Não sabia se era o correto mas na ProcessaLink() enviei a atualizaContent() com o data-id como parametro, dai enviei o
         //id pela url e peguei ele no banco ( vejam la, fiz um if para cada id que chegasse(mais uma vez n sei se é certo)).
 
@@ -341,7 +341,7 @@
 
             var projects = $("#projects");
             projects.empty();
-            
+
             $.ajax({
                 url: "/getProjects/" + dataID,
                 type: "GET",
@@ -350,21 +350,21 @@
                     for(var i=0; i < data.length; i++) {
                         projects.append(
                             '<div class="pergunta-container">'+
-                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '+') + '">' +
+                                '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '-') + '">' +
                                     '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
-                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '+') + '">' +
+                                    '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '-') + '">' +
                                         '<div class= "pergunta-titulo">' + data[i].title + '</div>'+
                                     '</a>'+
                                     '<div class= "pergunta-desc-sub">'+
                                         '<div class="pergunta-tempo">' + data[i].date + '</div>' +
-                                        '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' + 
+                                        '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' +
                                     '</div>'+
                                         '<div class= "pergunta-tags" > TAGS </div>' +
                                 '</div>'+
                             '</div>'
-                            );                                   
+                            );
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -395,8 +395,8 @@
                                 '</a>' +
                             '</li>'
                             );
-                        }                
-                    }                  
+                        }
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
@@ -434,7 +434,7 @@
 
         // Login ajax
         $("#login-form").submit(function(event){
-            event.preventDefault(); //prevent default action 
+            event.preventDefault(); //prevent default action
 
             let user = {
                 username: $("#login-form-username").val(),
@@ -446,7 +446,7 @@
                 data: user,
                 dataType: "json",
                 success: (data) => {
-                    alert(data);          
+                    alert(data);
                     window.location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -456,7 +456,7 @@
         });
         // Signup ajax
         $("#signup-form").submit(function(event){
-            event.preventDefault(); //prevent default action 
+            event.preventDefault(); //prevent default action
 
             let userInfo = {
                 email: $("#signup-form-email").val(),
@@ -471,7 +471,7 @@
                 dataType: "json",
                 success: (data) => {
                     alert(data);
-                    window.location.reload(); 
+                    window.location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);

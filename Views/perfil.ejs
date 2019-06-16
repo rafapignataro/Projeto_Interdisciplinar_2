@@ -36,7 +36,7 @@
                             <a href="/loginpage" class="navbar-item" id="navbar-createBug">Criar um Bug</a>
                             <a href="/loginpage" class="navbar-item" id="navbar-genBug">Gerenciar Bugs</a>
                         </nav>
-                        <form id="search-form" method="get" action="/search">
+                        <form id="search-form">
                             <span class=" search-bar-icon fa fa-search"></span>
                             <input class="header-search-bar" type="text" placeholder="Pesquisar.."/>
                             <button type="reset" class="search-clear-button">
@@ -50,7 +50,7 @@
                         <button type="button" class="header-search-button header-buttons"><span class="fa fa-search"></span></button>
                         <button type="button" class="header-signin-button header-buttons"><span class="fa fa-sign-in"></span></button>
                         <a href="" class="header-profile-button header-buttons" id="btnPerfil">
-                            <img class="user-photo" src="/Public/Imagens/circle.svg" id="user-photo" style="border-radius: 50%"/>
+                            <img class="user-photo" src="Public/Imagens/circle.svg" id="user-photo" style="border-radius: 50%"/>
                         </a>
                     </div>
                 </div>
@@ -141,21 +141,21 @@
                 </div>
             </div>
         </div>
-        <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
+        <!-- ----------------------------------------------------CONTENT---------------------------------------------------------------------- -->
         <div class="content-wrapper">
             <div class="content">
                 <div class="profile-container">
                     <div class="profile">
-                        
-                        <form action="/" method="post" class="" id="profile-information-form">
+
+                        <form action="/updateProfile" method="post" class="" id="profile-information-form">
                             <div class="profile-left">
                                 <div class="profile-pic">
-                                    <img id="profile-photo" src="/Public/Users/admin/user-photo.jpg" style="border-radius: 50%"/>
+                                    <img id="profile-photo" src="" style="border-radius: 50%"/>
                                     <input class="select-photo" id="profile-pic" type="file" name="profile_photo"/>
                                 </div>
                                 <div class="profile-info">
                                     <textarea maxlength="30" form="profile-information-form" class="profile-display-name" readonly>
-                                        
+
                                     </textarea>
                                     <div class="profile-user-name">
                                         <!--CARREGAR AQUI O USERNAME PESSOA (ESTE CAMPO NAO E ALTERAVEL)-->
@@ -163,7 +163,7 @@
                                     </div>
                                     <!--CAMPO DE MUDAR BIO // REMOVER READONLY E TROCAR CLASSE AO ENTRAR NO MODO EDICAO -->
                                     <!--CARREGAR AQUI A BIO DA PESSOA -->
-                                    <textarea maxlength="150" form="profile-information-form" class="profile-info-desc" readonly>BIO DA PESSOA AQUI</textarea>
+                                    <textarea maxlength="150" form="profile-information-form" class="profile-info-desc" readonly></textarea>
                                 </div>
                             </div>
                         </form>
@@ -175,7 +175,7 @@
                                 <div class="perguntas-filtros-container">
                                     <div class="perguntas-filtros" style="padding-left:0">
                                         <div class="perguntas-filtros-dropdown">
-                                          <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
+                                          <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA:
                                               <b id="perguntas-filtros-label-1" data-id="todas">TODAS</b>
                                               <input type="checkbox" id="perguntas-filtro-1" class="perguntas-filtro-check"/>
                                               <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="perguntas-filtros">
                                         <div class="perguntas-filtros-dropdown">
-                                          <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:  
+                                          <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-2">ORDENAR:
                                               <b id="perguntas-filtros-label-2" data-id="recente">RECENTE</b>
                                               <input type="checkbox" id="perguntas-filtro-2" class="perguntas-filtro-check">
                                               <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
@@ -209,7 +209,7 @@
                             </div>
                             <!--CARREGAR AQUI OS PROJETOS DA PESSOA -->
                             <div class="perguntas" id="projects">
-                                
+
                             </div>
                             </div>
                     </div>
@@ -226,7 +226,7 @@
                             <a href="/loginpage" class="navbar-item-footer" id="navbar-createBug2">Criar um Bug</a>
                             <a href="/loginpage" class="navbar-item-footer" id="navbar-genBug2">Gerenciar Bugs</a>
                         </nav>
-                    </div>        
+                    </div>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@
         var logado = <%= userLogado %>;
 
         var animRodando = false;
-        
+
         $headersigninbutton.on("click", function () {
             if (animRodando) {
                 return;
@@ -312,9 +312,9 @@
             $("#navbar-genBug2").attr("href", "/profile/" + '<%= userLogged %>' + "/manage-bugs");
             $("#btnPerfil").attr("href", "/profile/" + '<%= userLogged %>');
             $("#btnPerfil").css({ "display": "flex"});
-            $("#user-photo").attr("src", "Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
+            $("#user-photo").attr("src", "/Public/Users/" + '<%= userLogged %>' + "/user-photo.jpg");
         }
-        
+
         $("#btnLogout").on("click",function(){
             window.location.href = "/logout";
         });
@@ -326,8 +326,6 @@
 
         var sidebarBugs = $("#lista-bugs");
         sidebarBugs.empty();
-
-        
 
         $.ajax({
                 url: "/getUserProjects",
@@ -347,8 +345,8 @@
                                 '</a>' +
                             '</li>'
                             );
-                        }                
-                    }                  
+                        }
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
@@ -365,7 +363,7 @@
                 '</button>' +
                 '<input type="submit" value="Salvar" class="edit-profile-btn" id="salvar-profile-button"/>' +
                 '</div>'
-                ); 
+                );
         }
 
         var teste = '<%= profileOwnerName %>';
@@ -374,7 +372,7 @@
         projects.empty();
         var data = {
                 profileOwnerOffline: '<%= profileOwnerName %>'
-        }  
+        }
         $.ajax({
             url: "/getProjectsProfile",
             type: "GET",
@@ -393,22 +391,45 @@
                                     '<div class= "pergunta-titulo">' + data[i].titulo_pergunta + '</div>'+
                                 '</a>'+
                                 '<div class= "pergunta-desc-sub">'+
-                                    '<div class="pergunta-tempo">' + data[i].date + '</div>' + 
+                                    '<div class="pergunta-tempo">' + data[i].date + '</div>' +
                                 '</div>'+
                                     '<div class= "pergunta-tags" > TAGS </div>' +
                             '</div>'+
                         '</div>'
-                        );                
+                        );
                 }
                 // MUDAR NOMES NA PAGINA PERFIL
                 $('.profile-display-name').html('<%= profileOwnerName %>');
                 $('.profile-user-name').html(data[0].email_usuario);
+                $('.profile-info-desc').val(data[0].bio_usuario);
                 //BIO NAO TEM, TEMOS QUE ADICIONAR NO BANCO
-                $("#profile-photo").attr("src", "/Public/Users/" + '<%= profileOwnerName %>' + "/user-photo.jpg");                     
+                $("#profile-photo").attr("src", "/Public/Users/" + '<%= profileOwnerName %>' + "/user-photo.jpg");
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error ' + textStatus + " " + errorThrown);
             }
+        });
+
+        $("#profile-information-form").submit(function(event){
+            event.preventDefault(); //prevent default action
+
+            let profileContent = {
+                bio: $('.profile-info-desc').val(),
+                profileOwnerName: '<%= profileOwnerName %>'
+            }
+            $.ajax({
+                url: "/updateProfile",
+                type: "post",
+                dataType:'json',
+                data: profileContent,
+                cache: false,
+                success: (data) => {
+                  window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
         });
         //--------------------------------------------------------------------------------------------------------------------------------------
     </script>
@@ -418,7 +439,7 @@
 
         // Login ajax
         $("#login-form").submit(function(event){
-            event.preventDefault(); //prevent default action 
+            event.preventDefault(); //prevent default action
 
             let user = {
                 username: $("#login-form-username").val(),
@@ -430,7 +451,7 @@
                 data: user,
                 dataType: "json",
                 success: (data) => {
-                    alert(data);          
+                    alert(data);
                     window.location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -440,7 +461,7 @@
         });
         // Signup ajax
         $("#signup-form").submit(function(event){
-            event.preventDefault(); //prevent default action 
+            event.preventDefault(); //prevent default action
 
             let userInfo = {
                 email: $("#signup-form-email").val(),
@@ -455,7 +476,7 @@
                 dataType: "json",
                 success: (data) => {
                     alert(data);
-                    window.location.reload(); 
+                    window.location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('error ' + textStatus + " " + errorThrown);
