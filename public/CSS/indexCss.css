@@ -1087,9 +1087,9 @@ html, body {
     text-align: center;
     font-weight: 600;
     color: #3b4045;
-    height: 30pt;
     overflow: hidden;
-    width: 50%;
+    font-size: 16pt;
+    margin: 0 0 10px 0;
 }
 
 .profile-right {

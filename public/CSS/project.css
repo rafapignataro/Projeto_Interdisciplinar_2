@@ -38,6 +38,7 @@ body{
     width: 100%;
     border: none;
     background-color: #2d2d30;
+    bottom: 0;
 }
 
 .content{
