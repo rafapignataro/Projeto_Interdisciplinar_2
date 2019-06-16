@@ -150,13 +150,11 @@
                         <form action="/" method="post" class="" id="profile-information-form">
                             <div class="profile-left">
                                 <div class="profile-pic">
-                                    <img id="profile-photo" src="/Public/Users/admin/user-photo.jpg" style="border-radius: 50%"/>
+                                    <img id="profile-photo" src="" style="border-radius: 50%"/>
                                     <input class="select-photo" id="profile-pic" type="file" name="profile_photo"/>
                                 </div>
                                 <div class="profile-info">
-                                    <textarea maxlength="30" form="profile-information-form" class="profile-display-name" readonly>
-                                        
-                                    </textarea>
+                                    <p class="profile-display-name"></p>
                                     <div class="profile-user-name">
                                         <!--CARREGAR AQUI O USERNAME PESSOA (ESTE CAMPO NAO E ALTERAVEL)-->
                                         <i>username</i>
@@ -469,10 +467,8 @@
             $("#salvar-profile-button").css({ "display": "flex" });
             $("#profile-photo").css({ "opacity": "0.5" });
             $("#profile-pic").css({ "display": "flex" });
-            $(".profile-display-name").prop("readonly", false);
             $(".profile-info-desc").prop("readonly", false);
-            $(".profile-display-name").css({ "background-color": "#f1f3f4" });
-            $(".profile-info-desc").css({ "background-color": "#f1f3f4" });
+            $(".profile-info-desc").css({ "background-color": "#f1f3f4" , "box-shadow": "0 0 5px rgba(0,0,0,0.15) inset" });
         });
 
     </script>
