@@ -6,6 +6,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bug Bank</title>
+    <link rel="stylesheet" type="text/css" href="/public/quill/assets/snow.css">
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <link type="text/css" rel="stylesheet" href="/public/css/indexCss.css" />
     <link rel="stylesheet" href="../public/font-awesome/css/font-awesome.min.css"/>
     <link href="../public/dist/hamburgers.css" rel="stylesheet"/>
@@ -351,7 +353,7 @@
                         projects.append(
                             '<div class="pergunta-container">'+
                                 '<a class="pergunta-imagem" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '-') + '">' +
-                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay"><textarea readonly>'+ data[i].description + '</textarea></div>' +
+                                    '<img src="/Public/Imagens/placeholders/' + data[i].tag + '.png"/><div class="pergunta-overlay ql-snow ql-container"><div class="ql-editor">'+ data[i].description + '</div></div>' +
                                 '</a>' +
                                 '<div class="pergunta-desc">' +
                                     '<a class="pergunta-titulo" href = "/projects/' + data[i].id + '/' + (data[i].title).replace(/ /g, '-') + '">' +

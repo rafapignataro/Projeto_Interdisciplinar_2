@@ -822,7 +822,7 @@ html, body {
 
 .pergunta-overlay {
     opacity: 0;
-    background: rgba(227,231,239,0.75);
+    background: rgba(0,0,0,0.7);
     z-index: 1;
     transition: opacity linear 0.25s;
     position: absolute;
@@ -1415,4 +1415,16 @@ html, body {
     flex-direction: row;
     margin-top: 30px;
     padding-bottom: 30px;
+}
+
+    .ql-editor p {
+        color: white
+    }
+
+.ql-toolbar {
+    background-color: #f1f3f4;
+    box-shadow: none;
+}
+
+.ql-container {
 }

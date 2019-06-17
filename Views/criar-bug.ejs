@@ -447,29 +447,6 @@
 			var current_time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 			var time = current_date + ' ' + current_time;
 
-            let bugInfo = {
-                userId: '<%= user %>',
-                title: $("#create-bug-title").val(),
-                description: $("#create-bug-desc").val(),
-                tag: $("#perguntas-filtros-label-1").data("id"),
-                dateTime: time          
-            }
-            $.ajax({
-                url: "/createBug",
-                type: "POST",
-                data: bugInfo,
-                dataType: "json",
-                success: (data) => {
-                    alert(data);
-                    window.location.href = "/profile/" + '<%= userLogged %>' + "/manage-bugs";
-                    //TEXTO PARA SUCESSO DE CRIACAO DO BUG
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('error ' + textStatus + " " + errorThrown);
-                }
-            });
-        });
-
         atualizaContent();
     </script>
     <script>

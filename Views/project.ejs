@@ -106,9 +106,9 @@
                 <p>Description</p>
             </div>
             <div class="project-desc-dropdown-content">
-                <div class="project-desc-content">
-                    <div id="description" class="ql-editor">
-                        <%= result.description %>
+                <div class="project-desc-content ql-snow ql-container">
+                    <div class="ql-editor">
+                        <%- result.description %>
                     </div>
                 </div>
             </div>
@@ -161,8 +161,207 @@
     <script>
 	    require.config({ paths: { 'vs': '../../Public/monaco/min/vs' }});
         require(['vs/editor/editor.main'], function () {
-            var originalModel = monaco.editor.createModel("This line is removed on the right.\njust some text\nabcd\nefgh\nSome more text", "text/plain");
-            var modifiedModel = monaco.editor.createModel("just some text\nabcz\nzzzzefgh\nSome more text\nThis line is removed on the left.", "text/plain");
+            var originalModel = monaco.editor.createModel(
+                "var express = require('express')();\n "+
+"var http = require('http').Server(express);                                                                                                                                        \n "+
+"var request = require('request');                                                                                                                                                  \n "+
+"																																													\n	 "+
+"	var io = require('socket.io')(http);                                                                                                                                            \n    "+
+"	var fs = require('fs');                                                                                                                                                         \n    "+
+"	var xml = require('xml2js');                                                                                                                                                    \n    "+
+"																																													\n	 "+
+"	var parser = new xml.Parser();                                                                                                                                                  \n    "+
+"																																													\n	 "+
+"	express.get('/', function(req, res){                                                                                                                                            \n    "+
+"		res.send('Dedicated server of Turn Network running!');                                                                                                                      \n    "+
+"	});                                                                                                                                                                             \n    "+
+"																																													\n	 "+
+"	var tMusic;                                                                                                                                                                     \n    "+
+"	var aTurn = {                                                                                                                                                                   \n    "+
+"		url: {                                                                                                                                                                      \n    "+
+"			history: '../../../Playlist/pgm/Montagem/MusicHistory.xml',                                                                                                             \n    "+
+"			current: '../../../Playlist/pgm/current.xml'                                                                                                                            \n    "+
+"		},                                                                                                                                                                          \n    "+
+"		startServer: function(){                                                                                                                                                    \n    "+
+"			aTurn.readData();                                                                                                                                                       \n    "+
+"																																													\n	 "+
+"			setTimeout(function(){                                                                                                                                                  \n    "+
+"				aTurn.updateData();                                                                                                                                                 \n    "+
+"			}, 3000);                                                                                                                                                               \n    "+
+"		},                                                                                                                                                                          \n    "+
+"		readData: function(){                                                                                                                                                       \n    "+
+"			fs.readFile(aTurn.url.history, function(err, data){                                                                                                                     \n    "+
+"				parser.parseString(data, function(err, result){                                                                                                                     \n    "+
+"					tMusic = result['MusicHistory']['Item0'][0].$.Music;                                                                                                            \n    "+
+"				});                                                                                                                                                                 \n    "+
+"			});                                                                                                                                                                     \n    "+
+"			setTimeout(function(){                                                                                                                                                  \n    "+
+"				aTurn.readData();                                                                                                                                                   \n    "+
+"			}, 1000);                                                                                                                                                               \n    "+
+"		},                                                                                                                                                                          \n    "+
+"		updateData: function(){                                                                                                                                                     \n    "+
+"			fs.readFile(aTurn.url.history, function(err, data){                                                                                                                     \n    "+
+"				parser.parseString(data, function(err, result){                                                                                                                     \n    "+
+"					var current = result['MusicHistory']['Item0'][0].$.Music;                                                                                                       \n    "+
+"					var split = current.split(' - ');                                                                                                                               \n    "+
+"																																													\n	 "+
+"					if(tMusic === current){                                                                                                                                         \n    "+
+"					}                                                                                                                                                               \n    "+
+"					else if(tMusic == undefined || tMusic.length <= 0){                                                                                                             \n    "+
+"						aTurn.emitData();                                                                                                                                           \n    "+
+"					}                                                                                                                                                               \n    "+
+"					else{                                                                                                                                                           \n    "+
+"						aTurn.emitData();                                                                                                                                           \n    "+
+"					}                                                                                                                                                               \n    "+
+"				});                                                                                                                                                                 \n    "+
+"			});                                                                                                                                                                     \n    "+
+"			setTimeout(function(){                                                                                                                                                  \n    "+
+"				aTurn.updateData();                                                                                                                                                 \n    "+
+"			}, 1000);                                                                                                                                                               \n    "+
+"		},                                                                                                                                                                          \n    "+
+"		emitData: function(){                                                                                                                                                       \n    "+
+"			function album(music){                                                                                                                                                  \n    "+
+"				return new Promise(function(resolve, reject){                                                                                                                       \n    "+
+"					request('http://source.localhost/provider/saveArt/'+music+'', function (error, response, result){                                                               \n    "+
+"						data = JSON.parse(result);                                                                                                                                  \n    "+
+"						resolve(data['returnAlbum']);                                                                                                                               \n    "+
+"					});                                                                                                                                                             \n    "+
+"				});                                                                                                                                                                 \n    "+
+"			}                                                                                                                                                                       \n    "+
+"			fs.readFile(aTurn.url.current, function(err, data){                                                                                                                     \n    "+
+"				parser.parseString(data, function(err, result){                                                                                                                     \n    "+
+"					var music = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'] + ' - ' + result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];   \n    "+
+"					var music = music.toString();                                                                                                                                   \n    "+
+"																																													\n	 "+
+"					var startTime = result['Playlist']['OnAir'][0]['CurIns'][0]['StartedTime'];                                                                                     \n    "+
+"					var startTime = startTime.toString().split(' ');                                                                                                                \n    "+
+"																																													\n	 "+
+"					var endTime = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0].$.SchedTime;                                                                            \n    "+
+"					var endTime = endTime.split(' ');                                                                                                                               \n    "+
+"																																													\n	 "+
+"					var nextArtist = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'];                                                                           \n    "+
+"					var nextMusic = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];                                                                             \n    "+
+"																																													\n	 "+
+"					album(music).then(function(nextAlbum){                                                                                                                          \n    "+
+"						io.emit('updateNext', {                                                                                                                                     \n    "+
+"							'nextArtist': nextArtist.toString(),                                                                                                                    \n    "+
+"							'nextMusic': nextMusic.toString(),                                                                                                                      \n    "+
+"							'nextAlbum': nextAlbum                                                                                                                                  \n    "+
+"						});                                                                                                                                                         \n    "+
+"					});                                                                                                                                                             \n    "+
+"					io.emit('updateTime', {                                                                                                                                         \n    "+
+"						'startTime': startTime[1],                                                                                                                                  \n    "+
+"						'endTime': endTime[1],                                                                                                                                      \n    "+
+"						'maxTime': ''                                                                                                                                               \n    "+
+"					});                                                                                                                                                             \n    "+
+"				});                                                                                                                                                                 \n    "+
+"			});                                                                                                                                                                     \n    "+
+"		}                                                                                                                                                                           \n    "+
+"	}                                                                                                                                                                               \n    "+
+"																																													\n	 "+
+"	io.on('connection', function(socket){                                                                                                                                           \n    "+
+"		aTurn.emitData();                                                                                                                                                           \n    "+
+"	});                                                                                                                                                                             \n    "+
+"																																													\n	 "+
+"	http.listen(3000, function(){                                                                                                                                                   \n    "+
+"		console.log('Client server running on port 3000!');                                                                                                                         \n    "+
+"	});                                                                                                                                                                             \n    "+
+"																																													\n	 "+
+"aTurn.startServer();                                                                                                                                                               \n "
+                , "javascript");
+
+            var modifiedModel = monaco.editor.createModel(
+                "var express = require('express')();                                                                                                                                                        \n"+
+"var http = require('http').Server(express);                                                                                                                                                \n"+
+"var request = require('request');                                                                                                                                                          \n"+
+"                                                                                                                                                                                           \n"+
+"var io = require('socket.io')(http);                                                                                                                                                       \n"+
+"var fs = require('fs');                                                                                                                                                                    \n"+
+"var xml = require('xml2js');                                                                                                                                                               \n"+
+"                                                                                                                                                                                           \n"+
+"var parser = new xml.Parser();                                                                                                                                                             \n"+
+"                                                                                                                                                                                           \n"+
+"express.get('/', function(req, res){                                                                                                                                                       \n"+
+"    res.send('Dedicated server of Turn Network running!');                                                                                                                                 \n"+
+"});                                                                                                                                                                                        \n"+
+"                                                                                                                                                                                           \n"+
+"var tMusic;                                                                                                                                                                                \n"+
+"var aTurn = {                                                                                                                                                                              \n"+
+"    url: {                                                                                                                                                                                 \n"+
+"        history: '../../../Playlist\pgm\Montagem\MusicHistory.xml',                                                                                                                        \n"+
+"        current: '../../../Playlist\pgm\current.xml'                                                                                                                                       \n"+
+"    },                                                                                                                                                                                     \n"+
+"    startServer: function(){                                                                                                                                                               \n"+
+"        aTurn.watchData(function(result) {                                                                                                                                                 \n"+
+"            aTurn.updateData(result);                                                                                                                                                      \n"+
+"        });                                                                                                                                                                                \n"+
+"    },                                                                                                                                                                                     \n"+
+"    watchData: function(callback) {                                                                                                                                                        \n"+
+"        fs.watchFile(aTurn.url.history, function () {                                                                                                                                      \n"+
+"            fs.readFile(aTurn.url.history, function(err, data){                                                                                                                            \n"+
+"                parser.parseString(data, function(err, result){                                                                                                                            \n"+
+"                    tMusic = result['MusicHistory']['Item0'][0].$.Music;                                                                                                                   \n"+
+"                                                                                                                                                                                           \n"+
+"                    if (callback)                                                                                                                                                          \n"+
+"                        callback(result);                                                                                                                                                  \n"+
+"                });                                                                                                                                                                        \n"+
+"            });                                                                                                                                                                            \n"+
+"        });                                                                                                                                                                                \n"+
+"    },                                                                                                                                                                                     \n"+
+"    updateData: function() {                                                                                                                                                               \n"+
+"        aTurn.emitData();                                                                                                                                                                  \n"+
+"    },                                                                                                                                                                                     \n"+
+"    emitData: function(){                                                                                                                                                                  \n"+
+"        function album(music){                                                                                                                                                             \n"+
+"            return new Promise(function(resolve, reject){                                                                                                                                  \n"+
+"                request('http://source.localhost\provider\saveArt/' + music, function (error, response, result){                                                                           \n"+
+"                    var data = JSON.parse(result);                                                                                                                                         \n"+
+"                    resolve(data['returnAlbum']);                                                                                                                                          \n"+
+"                });                                                                                                                                                                        \n"+
+"            });                                                                                                                                                                            \n"+
+"        }                                                                                                                                                                                  \n"+
+"                                                                                                                                                                                           \n"+
+"        fs.readFile(aTurn.url.current, function(err, data){                                                                                                                                \n"+
+"            parser.parseString(data, function(err, result){                                                                                                                                \n"+
+"                var music = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'] + ' - ' + result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];              \n"+
+"                                                                                                                                                                                           \n"+
+"                var startTime = result['Playlist']['OnAir'][0]['CurIns'][0]['StartedTime'];                                                                                                \n"+
+"                var startTime = startTime.toString().split(' ');                                                                                                                           \n"+
+"                                                                                                                                                                                           \n"+
+"                var endTime = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0].$.SchedTime;                                                                                       \n"+
+"                var endTime = endTime.split(' ');                                                                                                                                          \n"+
+"                                                                                                                                                                                           \n"+
+"                var nextArtist = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'];                                                                                      \n"+
+"                var nextMusic = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];                                                                                        \n"+
+"                                                                                                                                                                                           \n"+
+"                album(music).then(function(nextAlbum){                                                                                                                                     \n"+
+"                    io.emit('updateNext', {                                                                                                                                                \n"+
+"                        'nextArtist': nextArtist.toString(),                                                                                                                               \n"+
+"                        'nextMusic': nextMusic.toString(),                                                                                                                                 \n"+
+"                        'nextAlbum': nextAlbum                                                                                                                                             \n"+
+"                    });                                                                                                                                                                    \n"+
+"                });                                                                                                                                                                        \n"+
+"                                                                                                                                                                                           \n"+
+"                io.emit('updateTime', {                                                                                                                                                    \n"+
+"                    'startTime': startTime[1],                                                                                                                                             \n"+
+"                    'endTime': endTime[1],                                                                                                                                                 \n"+
+"                    'maxTime': ''                                                                                                                                                          \n"+
+"                });                                                                                                                                                                        \n"+
+"            });                                                                                                                                                                            \n"+
+"        });                                                                                                                                                                                \n"+
+"    }                                                                                                                                                                                      \n"+
+"}                                                                                                                                                                                          \n"+
+"                                                                                                                                                                                           \n"+
+"io.on('connection', function(socket) {                                                                                                                                                     \n"+
+"    aTurn.emitData();                                                                                                                                                                      \n"+
+"});                                                                                                                                                                                        \n"+
+"                                                                                                                                                                                           \n"+
+"http.listen(3000, function(){                                                                                                                                                              \n"+
+"    console.log('Client server running on port 3000!');                                                                                                                                    \n"+
+"});                                                                                                                                                                                        \n"+
+"                                                                                                                                                                                           \n"+
+"aTurn.startServer();                                                                                                                                                                       \n"
+                , "javascript");
 		    var editor = monaco.editor.createDiffEditor(document.getElementById('container'), {
                 language: 'javascript',
                 theme: "vs-dark",
