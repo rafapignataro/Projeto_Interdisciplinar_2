@@ -155,11 +155,11 @@
                                   <span class="fa fa-chevron-down perguntas-filtros-arrow"></span>
                                   <div class="perguntas-filtros-dropdown-content" id="perguntas-filtro-1-dropdown">
                                     <a href="#" data-target="perguntas-filtros-label-1" data-id="todas">TODAS</a>
-                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
-                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
-                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
-                                    <a href="#" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
-                                      <a href="#" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
+                                    <a href="/getProjects/node" data-target="perguntas-filtros-label-1" data-id="node">NODE</a>
+                                    <a href="/getProjects/html" data-target="perguntas-filtros-label-1" data-id="html">HTML</a>
+                                    <a href="/getProjects/java" data-target="perguntas-filtros-label-1" data-id="java">JAVA</a>
+                                    <a href="/getProjects/css" data-target="perguntas-filtros-label-1" data-id="css">CSS</a>
+                                    <a href="/getProjects/javascript" data-target="perguntas-filtros-label-1" data-id="javascript">JAVASCRIPT</a>
                                   </div>
                               </button>
                             </div>
@@ -361,7 +361,7 @@
                                         '<div class="pergunta-tempo">' + data[i].date + '</div>' +
                                         '<a class="pergunta-usuario" href="/profile/' + data[i].user + '">' + data[i].user +'</a>' +
                                     '</div>'+
-                                        '<div class= "pergunta-tags" > TAGS </div>' +
+                                        '<div class= "pergunta-tags" >' + data[i].tag.toUpperCase() + '</div>' +
                                 '</div>'+
                             '</div>'
                             );
