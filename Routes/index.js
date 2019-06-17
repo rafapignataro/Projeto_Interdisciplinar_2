@@ -29,7 +29,7 @@ router.get('/loginpage', wrap(async function (req, res) {
         res.render('loginpage', { title: 'login page', userLogado: userLogado });
         return;
     }
-    userLogado = true
+    userLogado = true;
     res.render('index', { title: 'Bugbase', user: u.id, userLogado: userLogado, userLogged: u.login_usuario });
 }));
 
@@ -182,15 +182,16 @@ router.get('/getProjects/:dataID', async (req,res) => {
 
 
 router.get("/projects/:id/:title", async (req,res) => {
-	var questionID = req.params.id;
 
+	var questionID = req.params.id;
+	var content;
 	try {
 		await Sql.conectar(async (sql) => {
 			try {
 				sql.query("select titulo_pergunta as title, DATE_FORMAT(dt_pergunta, '%d/%m/%Y') as date, desc_pergunta as description, usuario.login_usuario as user, pergunta.id_pergunta" +
 				" from pergunta inner join usuario on ( usuario.id_usuario = pergunta.id_usuario)" +
 				" where pergunta.id_pergunta = " + questionID , function(error,result){
-					res.render("project", { result: result[0]});
+					content =  result[0];
 				});
 			} catch (ex) {
 				res.json(ex);
@@ -199,6 +200,14 @@ router.get("/projects/:id/:title", async (req,res) => {
 	} catch (ex) {
 		res.json(ex);
 	}
+	var userLogado = false;
+	let u = await validaCookie(req, res);
+	if (!u) {
+			res.render('project', { title: 'Bug Base', userLogado: userLogado, result: content, user: null });
+			return;
+	}
+	userLogado = true;
+	res.render('project', { title: 'Bug Base', user: u.id, userLogado: userLogado, userLogged: u.login_usuario, result: content });
 });
 
 router.get('/profile/:user/manage-bugs', wrap(async function(req, res) {
@@ -281,6 +290,28 @@ router.post('/updateProfile', wrap(async function(req, res) {
 	await Sql.conectar(async (sql) => {
 			var row = await sql.query('select id_usuario from usuario where login_usuario = ?', [req.body.profileOwnerName]);
 			await sql.query('UPDATE usuario SET bio_usuario = ? WHERE id_usuario = ?', [req.body.bio, row[0].id_usuario]);
+			res.json("Bio editada");
+			});
+}));
+// select r.*, u.login_usuario from resposta r inner join usuario u on (u.id_usuario = r.id_usuario) where id_pergunta = ?", [projectId],
+
+router.get('/getRespostas/:projectId', wrap(async function(req, res) {
+
+		var projectId = req.params.projectId;
+		await Sql.conectar(async (sql) => {
+				var rows = await sql.query("select r.*, DATE_FORMAT(r.dt_resposta, '%d/%m/%Y') as date, u.login_usuario from resposta r inner join usuario u on (u.id_usuario = r.id_usuario) where id_pergunta = ?", [projectId]);
+				console.log(rows);
+				res.json(rows);
+		});
+
+}));
+
+router.post('/postResposta', wrap(async function(req, res) {
+
+	var content = req.body;
+	console.log(content);
+	await Sql.conectar(async (sql) => {
+			await sql.query('INSERT INTO resposta (id_pergunta,id_usuario,text_resposta,dt_resposta) VALUES (?,?,?,curdate())', [content.projectId, content.userId, content.content]);
 			res.json("Bio editada");
 			});
 }));

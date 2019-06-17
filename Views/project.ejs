@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/public/CSS/indexCss.css">
 	<link rel="stylesheet" type="text/css" href="/public/CSS/project.css">
-	
-	
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
@@ -20,8 +20,8 @@
     <script src="/Public/upvotejs/dist/upvotejs/upvotejs.vanilla.js"></script>
 
 
-	
-	<title><%= result.title %></title>
+
+	<title><%= title %></title>
 </head>
 <body>
 <div class="header-wrapper nav-down">
@@ -30,7 +30,7 @@
                     <div class="header-left">
                         <div class="header-logos-wrapper">
                             <div class="header-logos">
-                                <a href="/"> 
+                                <a href="/">
                                     <img src="../../Public/Imagens/CurseIcon.svg" class="header-logos-curse" draggable="false"/></a>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
 <div class="content">
     <div class="editor-header">
         <div class="file-tabs">
-            <!--MAXIMO 4 TABS ABERTAS POR VEZ, SE MAIS UMA FOR ABERTA, A PRIMEIRA É FECHADA-->
+            <!--MAXIMO 4 TABS ABERTAS POR VEZ, SE MAIS UMA FOR ABERTA, A PRIMEIRA ï¿½ FECHADA-->
 
             <div class="file-tab-container">
                 <input type="radio" class="file-radio" name="file" checked/>
@@ -119,13 +119,11 @@
         <div class="informacoes-container">
             <div class="informacoes">
                 <div id="form-container" class="container">
-                  <form>
-                      <input name="about" type="hidden">
+                  <form id="form-resposta">
                       <div id="editor-container">
-	  
+
                       </div>
-                      
-                      <input type="submit" class="submit-answer" value="Responder"/>
+                      <input class="submit-answer" value="Responder"/>
                       <!-- FAZER O POST DO CONTEUDO DA RESPOSTA -->
                   </form>
                 </div>
@@ -134,39 +132,11 @@
     </div>
 
     <div class="comments-container">
-        <div class="comment-layout">
-            <div class="comment-left">
-                <a href="/" class="comment-profile-picture fa fa-circle"></a>
-                <div id="basic" class="upvotejs">
-                    <a class="upvote"></a>
-                    <span class="count">0</span>
-                    <a class="downvote"></a>
-                    <a class="star"></a>
-                </div>
-            </div>
-            <div class="comment-right ql-container ql-snow">     
-                <div class="comment-footer">
-                    <div class="comment-info">
-                        <div class="autor-resposta-picture">
-                            <!-- IMAGEM DO DONO DA RESPOSTA -->
-                            <a href="" class="header-profile-button header-buttons" id="btnPerfil"><img class="user-photo" src="" style="border-radius: 50%"></a>
-                        </div>
-                        <div class="about-resposta" id="about-answer">
-			                <p class="about-user-resposta"><a href="/"><!-- DONO DA RESPOSTA --></a></p>
-			                <p class="about-date-resposta"><!-- DATA DA RESPOSTA --></p>
-		                </div>
-                    </div>
-                </div>
-                <div class="ql-editor comment-right-comp">
-                    <!--CONTEUDO DO COMMENT-->
-                </div>
-            </div>
-        </div>
-        </div>
+      <!-- RESPOSTAS -->
     </div>
+  </div>
 </div>
     <!-- SCRIPTS------------------------------------------------------------------------------------------------->
-
 
     <script>
         var quill = new Quill('#editor-container', {
@@ -175,7 +145,7 @@
               ['bold', 'italic', 'underline'],
               ['code-block'],
               [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-              [{ 'indent': '-1'}, { 'indent': '+1' }], 
+              [{ 'indent': '-1'}, { 'indent': '+1' }],
             ]
           },
           placeholder: '',
@@ -183,7 +153,12 @@
         });
     </script>
 
-    <script>Upvote.create('basic');</script>
+    <script>
+    $(document).load(function () {
+     Upvote.create('basic');
+    });
+
+    </script>
     <script src="../../Public/monaco/min/vs/loader.js"></script>
     <script>
 	    require.config({ paths: { 'vs': '../../Public/monaco/min/vs' }});
@@ -216,9 +191,70 @@
         var $submitanswer = $(".submit-answer");
         $submitanswer.on("click", function () {
             html = Editor.children[0].innerHTML;
+            var data = {
+              content: html,
+              projectId: <%= result.id_pergunta %>,
+              userId: <%= user %>,
+            };
+            $.ajax({
+                url: "/postResposta",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                cache: false,
+                success: (data) => {
+                    alert("resposta postada");
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
 
+        var commentContainer = $(".comments-container");
+
+
+        var id_pergunta = <%= result.id_pergunta %>;
+        $.ajax({
+            url: "/getRespostas/" + id_pergunta,
+            type: "GET",
+            cache: false,
+            success: (data) => {
+                console.log(data);
+                for(var i=0; i < data.length; i++) {
+                    commentContainer.append(
+                      '<div class="comment-layout">' +
+                        '<div class="comment-left">' +
+                          '<a href="/Profile/' + data[i].login_usuario + '" class="comment-profile-picture" id="btnPerfil"><img class="user-photo" src="/Public/Users/' + data[i].login_usuario + '/user-photo.jpg" style="border-radius: 50%"></a>' +
+                          '<div id="basic" class="upvotejs">'+
+                            '<a class="upvote"></a>'+
+                            '<span class="count">0</span>'+
+                            '<a class="downvote"></a>'+
+                            '<a class="star"></a>'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="comment-right ql-container ql-snow">'+
+                          '<div class="comment-footer">'+
+                            '<div class="comment-info">'+
+                              '<div class="about-resposta" id="about-answer">'+
+              			             '<p class="about-user-resposta"><a href="/Profile/' + data[i].login_usuario + '">' + data[i].login_usuario + '</a></p>'+
+              			             '<p class="about-date-resposta">' + data[i].date + '</p>'+
+              		            '</div>'+
+                            '</div>'+
+                          '</div>'+
+                          '<div class="ql-editor comment-right-comp">'+
+                            data[i].text_resposta +
+                          '</div>'+
+                        '</div>'+
+                      '</div>'
+                    );
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('error ' + textStatus + " " + errorThrown);
+            }
         });
     </script>
-
 </body>
 </html>
