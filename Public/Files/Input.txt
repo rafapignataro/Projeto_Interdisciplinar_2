@@ -1,0 +1,106 @@
+var express = require('express')();
+var http = require('http').Server(express);
+var request = require('request');
+
+var io = require('socket.io')(http);
+var fs = require('fs');
+var xml = require('xml2js');
+
+var parser = new xml.Parser();
+
+express.get('/', function(req, res){
+    res.send('Dedicated server of Turn Network running!');
+});
+
+var tMusic;
+var aTurn = {
+    url: {
+        history: '../../../Playlist/pgm/Montagem/MusicHistory.xml',
+        current: '../../../Playlist/pgm/current.xml'
+    },
+    startServer: function(){
+        aTurn.readData();
+
+        setTimeout(function(){
+            aTurn.updateData();
+        }, 3000);
+    },
+    readData: function(){
+        fs.readFile(aTurn.url.history, function(err, data){
+            parser.parseString(data, function(err, result){
+                tMusic = result['MusicHistory']['Item0'][0].$.Music;
+            });
+        });
+        setTimeout(function(){
+            aTurn.readData();
+        }, 1000);
+    },
+    updateData: function(){
+        fs.readFile(aTurn.url.history, function(err, data){
+            parser.parseString(data, function(err, result){
+                var current = result['MusicHistory']['Item0'][0].$.Music;
+                var split = current.split(' - ');
+
+                if(tMusic === current){
+                }
+                else if(tMusic == undefined || tMusic.length <= 0){
+                    aTurn.emitData();
+                }
+                else{
+                    aTurn.emitData();
+                }
+            });
+        });
+        setTimeout(function(){
+            aTurn.updateData();
+        }, 1000);
+    },
+    emitData: function(){
+        function album(music){
+            return new Promise(function(resolve, reject){
+                request('http://source.localhost/provider/saveArt/'+music+'', function (error, response, result){
+                    data = JSON.parse(result);
+                    resolve(data['returnAlbum']);
+                });
+            });
+        }
+        fs.readFile(aTurn.url.current, function(err, data){
+            parser.parseString(data, function(err, result){
+                var music = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'] + ' - ' + result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];
+                var music = music.toString();
+
+                var startTime = result['Playlist']['OnAir'][0]['CurIns'][0]['StartedTime'];
+                var startTime = startTime.toString().split(' ');
+
+                var endTime = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0].$.SchedTime;
+                var endTime = endTime.split(' ');
+
+                var nextArtist = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Artist'];
+                var nextMusic = result['Playlist']['Next'][0]['NextMusic'][0]['Music'][0]['Title'];
+
+                album(music).then(function(nextAlbum){
+                    io.emit('updateNext', {
+                        'nextArtist': nextArtist.toString(), 
+                        'nextMusic': nextMusic.toString(),
+                        'nextAlbum': nextAlbum
+                    });
+                });
+                io.emit('updateTime', {
+                    'startTime': startTime[1], 
+                    'endTime': endTime[1],
+                    'maxTime': ''
+                });
+            });
+        });
+    }
+}
+
+io.on('connection', function(socket){
+    aTurn.emitData();
+});
+
+http.listen(3000, function(){
+    console.log('Client server running on port 3000!');
+});
+
+aTurn.startServer();
