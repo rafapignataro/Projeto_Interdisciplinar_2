@@ -4,6 +4,8 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/public/quill/assets/snow.css">
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bug Bank</title>
     <link type="text/css" rel="stylesheet" href="../public/css/criar.css" />
@@ -143,12 +145,16 @@
         <!------------------------------------------------------CONTENT------------------------------------------------------------------------>
         <div class="content-wrapper create-bug">
             <div class="create-bug-content">
-                <p>Crie seu Bug</p>
+                <p class="crie-seu-bug">Crie seu Bug</p>
                 <form id="create-bug-form" autocomplete="off">
                     <label for="create-bug-title" class="create-bug-label">Título do Projeto: </label>
                     <input type="text" id="create-bug-title" class="create-bug-input" name="create-bug-title" maxlength="140"/>
                     <label for="create-description" class="create-bug-label">Descrição: </label>
-                    <textarea id="create-bug-desc" class="textarea" cols="35" rows="8"></textarea>
+                    <div id="editor-wrapper">
+                    <div id="editor-container">
+
+                    </div>
+                    </div>
                     <div class="perguntas-filtros" style="padding-left:0">
                         <div class="perguntas-filtros-dropdown">
                             <button class="perguntas-filtros-btn" id="perguntas-filtros-btn-1">CATEGORIA: 
@@ -466,6 +472,61 @@
 
         atualizaContent();
     </script>
-</div>
+    <script>
+        var quill = new Quill('#editor-container', {
+          modules: {
+            toolbar: [
+              ['bold', 'italic', 'underline'],
+              ['code-block'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              [{ 'indent': '-1'}, { 'indent': '+1' }],
+            ]
+          },
+          placeholder: '',
+          theme: 'snow'
+        });
+    </script>
+
+    <script>
+        var date = new Date();
+		var current_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+		var current_time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+		var time = current_date + ' ' + current_time;
+        var Editor = document.querySelector("#editor-container");
+        var html;
+        var $btnsubmit = $(".btn_submit");
+        $btnsubmit.on("click", function () {
+            html = Editor.children[0].innerHTML;
+            var data = {
+              userId: '<%= user %>',
+              title: $("#create-bug-title").val(),
+              description: html,
+              tag: $("#perguntas-filtros-label-1").data("id"),
+              dateTime: time
+            };
+            $.ajax({
+                url: "/createBug",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                cache: false,
+                success: (data) => {
+                    alert("resposta postada");
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
+
+        const limit = 30000;
+
+        quill.on('text-change', function (delta, old, source) {
+          if (quill.getLength() > limit) {
+            quill.deleteText(limit, quill.getLength());
+          }
+        });
+    </script>
 </body>
 </html>

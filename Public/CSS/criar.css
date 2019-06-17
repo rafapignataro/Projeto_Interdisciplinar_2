@@ -1029,15 +1029,14 @@ html, body {
     width: 100%;
 }
 
-    .create-bug-content p {
-        font-size: 43px;
-        margin: 40px 0 0 0;
-        font-weight: 600;
-        color: #3b4045;
-    }
+.crie-seu-bug {
+    font-size: 43px;
+    margin: 40px 0 0 0;
+    font-weight: 600;
+    color: #3b4045;
+}
 
 .create-bug-label {
-    align-self: flex-start;
     color: #80868b;
     display: flex;
     margin-bottom: 8px;
@@ -1055,7 +1054,6 @@ html, body {
     padding: 5px 10px;
     transition: 0.3s;
     width: 274px;
-    align-self: flex-start;
     display: flex;
 }
 
@@ -1392,4 +1390,39 @@ html, body {
     flex-direction: row;
     margin-top: 30px;
     padding-bottom: 30px;
+}
+
+#editor-wrapper {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#create-bug-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ql-toolbar.ql-snow {
+    padding: 5px 8px;
+}
+
+.ql-editor {
+    font-family: Arial;
+    height:250px;
+    box-shadow: rgba(0,0,0,0.2) 0 0 5px inset;
+}
+
+    .ql-editor p {
+        color: #3b4045;
+    }
+
+.ql-toolbar {
+    background-color: #f1f3f4;
+    box-shadow:none;
+}
+
+.ql-container {
 }

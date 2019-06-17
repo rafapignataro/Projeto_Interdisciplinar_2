@@ -108,7 +108,7 @@
             </div>
             <div class="project-desc-dropdown-content">
                 <div class="project-desc-content">
-                    <div id="description">
+                    <div id="description" class="ql-editor">
                         <%= result.description %>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                       <div id="editor-container">
 
                       </div>
-                      <input class="submit-answer" value="Responder"/>
+                      <input type="submit" class="submit-answer" value="Responder"/>
                       <!-- FAZER O POST DO CONTEUDO DA RESPOSTA -->
                   </form>
                 </div>
@@ -157,8 +157,8 @@
     $(document).load(function () {
      Upvote.create('basic');
     });
-
     </script>
+
     <script src="../../Public/monaco/min/vs/loader.js"></script>
     <script>
 	    require.config({ paths: { 'vs': '../../Public/monaco/min/vs' }});
@@ -185,6 +185,7 @@
             });
 	    });
     </script>
+
     <script>
         var Editor = document.querySelector("#editor-container");
         var html;
@@ -212,8 +213,15 @@
             });
         });
 
-        var commentContainer = $(".comments-container");
+        const limit = 30000;
 
+        quill.on('text-change', function (delta, old, source) {
+          if (quill.getLength() > limit) {
+            quill.deleteText(limit, quill.getLength());
+          }
+        });
+
+        var commentContainer = $(".comments-container");
 
         var id_pergunta = <%= result.id_pergunta %>;
         $.ajax({

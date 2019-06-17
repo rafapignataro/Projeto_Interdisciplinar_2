@@ -289,7 +289,6 @@ html, body {
 .user-photo{
     height: 30px;
     display: flex;
-    margin-right: 10px;
 }
 
 .header-notification-button:hover {
