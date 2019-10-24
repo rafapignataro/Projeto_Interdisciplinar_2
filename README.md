@@ -1,3 +1,6 @@
-# Projeto_Interdisciplinar_2
-Projeto interdisciplinar do primeiro semestre(2018_2) de TECH ESPM
-Site Node gerenciável com banco mySQL
+# Projeto Interdisciplinar 2
+Projeto realizado no segundo semestre (2019_1)
+
+- Node
+- Express
+- Mysql
