@@ -22,7 +22,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-async-error-wrapper": "^1.0.3",
-    "express-fileupload": "^1.1.3-alpha.1",
+    "express-fileupload": "^1.1.9",
     "express-session": "^1.16.1",
     "formidable": "^1.2.1",
     "monaco-editor": "^0.16.1",
